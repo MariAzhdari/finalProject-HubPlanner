@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-// import React from "react";
+import React from "react";
 import About from "./pages/About";
 // import Attendance from "./pages/Attendance";
 import Home from "./pages/Home";
