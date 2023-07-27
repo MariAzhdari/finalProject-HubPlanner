@@ -1,0 +1,71 @@
+/* calendar.css */
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: white;
+}
+.navList {
+  display: flex;
+  justify-content: space-evenly;
+  /* margin: 0; */
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+  margin-left: 40px;
+  
+}
+
+.navListItem {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 20px;
+  
+}
+
+.navListItem:hover{
+    color: brown;
+    
+}
+
+
+.logo-img {
+  max-width: 100px;
+  margin-right: 40px;
+  margin-top: 30px;
+  /* width: 150px;
+  height: 150px; */
+}
+
+/* Main container styles */
+.main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Left container styles */
+.left {
+  flex: 1;
+  border: 1px solid brown;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  
+  }
+
+h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  text-align: center;
+}
+h1:hover {
+  color: brown;
+
+}
