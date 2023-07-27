@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Attendance = () => {
+        const [volunteers, setVolunteers] = useState([]);
+		const [trainees, setTrainees] = useState([]);
+		const [loading, setLoading] = useState(true);
 	return (
 		<div>
 			<h2>Attendance</h2>
