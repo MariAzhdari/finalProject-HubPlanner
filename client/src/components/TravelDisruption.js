@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TravelDisruption.css";
+
 
 const TravelDisruption = () => {
 	const [disruptions, setDisruptions] = useState([]);
