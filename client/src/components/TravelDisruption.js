@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 const TravelDisruption = () => {
 	const [disruptions, setDisruptions] = useState([]);
 	const [loading, setLoading] = useState(false);
