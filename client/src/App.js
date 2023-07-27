@@ -7,8 +7,7 @@ const App = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
 		<Route path="/about/this/site" element={<About />} />
-
-	</Routes>
+    </Routes>
 );
 
 export default App;
