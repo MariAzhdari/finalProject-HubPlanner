@@ -1,0 +1,71 @@
+/* Attendance.css */
+
+/* Styles for the main container */
+.attendance-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles for headings */
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 20px;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Styles for loading message */
+.loading-message {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Styles for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th,
+table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Styles for the select input */
+select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 120px;
+}
+
+select:focus {
+    outline: none;
+}
+
+/* Styles for the select options */
+option {
+    background-color: #fff;
+}
+
+/* Apply some spacing between tables */
+h3+table {
+    margin-top: 20px;
+}
