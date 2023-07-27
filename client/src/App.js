@@ -5,17 +5,17 @@ import Attendance from "./pages/Attendance";
 // import Home from "./pages/Home";
 
 
-// const App = () => (
-// 	<Routes>
-// 		<Route path="/" element={<Home />} />
-// 		<Route path="/about/this/site" element={<About />} />
-//     </Routes>
-// );
-const App = () => {
-	return (
-		<div className="App">
-			<Attendance />
-		</div>
-	);
-};
+const App = () => (
+	<Routes>
+		<Route path="/" element={<Home />} />
+		<Route path="/about/this/site" element={<About />} />
+    </Routes>
+);
+// const App = () => {
+// 	return (
+// 		<div className="App">
+// 			<Attendance />
+// 		</div>
+// 	);
+// };
 export default App;
