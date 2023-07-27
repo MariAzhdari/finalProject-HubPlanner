@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TravelDisruption.css";
 
 const TravelDisruption = () => {
 	const [disruptions, setDisruptions] = useState([]);
@@ -25,11 +26,15 @@ const TravelDisruption = () => {
 	};
 
 	return (
-		<div>
+		<div className="travel-disruptions-container">
 			<h2>Travel Disruptions</h2>
-			<button onClick={fetchDisruptions} disabled={loading}></button>
-			{error && <p>{error}</p>}
-			{!loading && disruptions.length === 0 && <p>No disruptions found.</p>}
+			<button onClick={fetchDisruptions} disabled={loading}>
+				{loading ? "Loading..." : "Fetch Disruptions"}
+			</button>
+			{error && <p className="error-message">{error}</p>}
+			{!loading && disruptions.length === 0 && (
+				<p className="no-disruptions">No disruptions found.</p>
+			)}
 			<ul>
 				{disruptions.map((disruption) => (
 					<li key={disruption.id}>{disruption.message}</li>
