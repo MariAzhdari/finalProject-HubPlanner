@@ -1,7 +1,8 @@
 import React from "react";
-// import "./attendance.css";
+import "./attendance.css";
 import Logo from "./img/cyfLogo1.png";
-const AttendanceTable = () => {
+
+const Attendance = () => {
 	return (
 		<div className="table-container">
 			<div className="navbar">
@@ -74,5 +75,5 @@ const AttendanceTable = () => {
 		</div>
 	);
 };
-export default AttendanceTable;
+export default Attendance;
 
