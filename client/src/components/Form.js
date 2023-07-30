@@ -33,7 +33,7 @@ function Form() {
 				</select>
 
 				<label>Role</label>
-				<select className="loginInput">
+				<select className="PersonInput">
 					<option value="volunteer">Volunteer</option>
 					<option value="trainee">Trainee</option>
 				</select>
