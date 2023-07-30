@@ -33,14 +33,13 @@ function Form() {
 				</select>
 
 				<label>Role</label>
-				<select className="PersonInput">
+				<select className="loginInput">
 					<option value="volunteer">Volunteer</option>
 					<option value="trainee">Trainee</option>
 				</select>
 
 				<button className="loginButton">Login</button>
 			</form>
-
 		</div>
 	);
 }
