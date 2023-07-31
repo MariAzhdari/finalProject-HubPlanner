@@ -14,15 +14,26 @@ const TravelCheck = () => {
 				</ul>
 				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
+			<div className="Right">
+				<div className="">
+					<button className="Travelbutton">Check Travel Disruption</button>
+				</div>
+				<div className="">
+					<button className="Datebutton">Date</button>
+				</div>
+			</div>
+
+			<div className="list-container">
+				<div className="list">
+					<ul>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-<div>
-<div>
-<button className="travel-button">check Travel Disruptions</button>
-</div>
-<div>
-<p>Date</p>
-<div/>
-<div/>
 	);
 };
 

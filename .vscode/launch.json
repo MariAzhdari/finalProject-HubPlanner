@@ -1,6 +1,10 @@
 {
 	"version": "0.2.0",
 	"configurations": [
+
+
+
+	
 		{
 			"type": "node",
 			"request": "attach",
@@ -14,6 +18,7 @@
 			"name": "Debug client",
 			"url": "http://localhost:3000",
 			"webRoot": "${workspaceFolder}"
-		}
+		},
+		
 	]
 }
