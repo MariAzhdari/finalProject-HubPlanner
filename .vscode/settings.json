@@ -3,5 +3,20 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": true
 	},
-	"files.eol": "\n"
+	"files.eol": "\n",
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "default",
+				"enableSsl": "Disabled"
+			},
+			"previewLimit": 50,
+			"server": "localhost",
+			"port": 3306,
+			"driver": "MySQL",
+			"name": "Mysqlconnection",
+			"database": "cyf",
+			"username": "Admin"
+		}
+	]
 }
