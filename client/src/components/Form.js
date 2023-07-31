@@ -40,7 +40,6 @@ function Form() {
 
 				<button className="loginButton">Login</button>
 			</form>
-
 		</div>
 	);
 }
