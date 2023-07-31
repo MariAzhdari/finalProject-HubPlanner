@@ -16,7 +16,7 @@ const Main = () => {
 				<div className="container">
 					<div className="up">
 						<h1>Hub Planner</h1>
-						<p>Your Attendance, Your Journey, One Click Away!add</p>
+						<p>Your Attendance, Your Journey, One Click Away!</p>
 					</div>
 					<div className="down">
 						<div className="downLeft">
