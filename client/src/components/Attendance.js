@@ -19,30 +19,30 @@ const Attendance = () => {
 					<div className="input-container">
 						<input type="text" id="name-input" placeholder="Name"></input>
 					</div>
-                        <div className="role-select">
+					<div className="role-select">
 						<select className="select-container">
 							<option>Role</option>
 							<option value="volunteer">Volunteer</option>
 							<option value="trainee">Trainee</option>
 						</select>
-                        </div>
-						<div className="attendence-select">
-							<select className="select-container" id="attendanceType">
-								<option>Attendance</option>
-								<option value="in-person">In-Person</option>
-								<option value="remote">Remote</option>
-							</select>
-						</div>
+					</div>
+					<div className="attendence-select">
+						<select className="select-container" id="attendanceType">
+							<option>Attendance</option>
+							<option value="in-person">In-Person</option>
+							<option value="remote">Remote</option>
+						</select>
+					</div>
 				</form>
 			</div>
 			<div className="bottom-container">
 				<div>
 					<table className="custom-table">
-						<caption>Trainee</caption>
+						<caption>Remote</caption>
 						<thead>
 							<tr>
-								<th className="border-right">Name</th>
-								<th>Attendance</th>
+								<th className="border-right">Volunteers</th>
+								<th>Trainee</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -56,11 +56,11 @@ const Attendance = () => {
 				</div>
 				<div>
 					<table className="custom-table">
-						<caption>Volunteers</caption>
+						<caption>In-person</caption>
 						<thead>
 							<tr>
-								<th className="border-right">Name</th>
-								<th>Attendance</th>
+								<th className="border-right">Volunteers</th>
+								<th>Trainee</th>
 							</tr>
 						</thead>
 						<tbody>
