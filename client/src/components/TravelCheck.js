@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "./img/cyfLogo1.png";
-import "./travel-check.css";
+import "./travelCheck.css";
 
 const TravelCheck = () => {
 	return (

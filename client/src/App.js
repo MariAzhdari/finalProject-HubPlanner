@@ -1,16 +1,23 @@
-import { Route, Routes } from "react-router-dom";
-import About from "./pages/About";
-import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Form from "./components/Form";
+import Main from "./components/Main";
+import Calendar from "./components/Calendar";
+import Attendance from "./components/Attendance";
+import TravelCheck from "./components/TravelCheck";
 
 
 const App = () => (
-	<Routes>
-		<Route path="/" element={<Home />} />
-		<Route path="/about/this/site" element={<About />} />
-	</Routes>
+	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<Login />} />
+			<Route path="/form" element={<Form />} />
+			<Route path="/main" element={<Main />} />
+			<Route path="/calendar" element={<Calendar />} />
+			<Route path="/attendance" element={<Attendance />} />
+			<Route path="/travel" element={<TravelCheck />} />
+		</Routes>
+	</BrowserRouter>
 );
 
 export default App;
-
-
-
