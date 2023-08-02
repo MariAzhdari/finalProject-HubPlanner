@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./attendance.css";
 import Logo from "./img/cyfLogo1.png";
 
@@ -7,10 +8,10 @@ const Attendance = () => {
 		<div className="top-container">
 			<div className="navbar">
 				<ul className="navList">
-					<li className="navListItem">CYF CALENDAR</li>
-					<li className="navListItem">ATTENDANCE</li>
-					<li className="navListItem">TRAVEL CHECK</li>
-					<li className="navListItem">ABOUT US</li>
+					<li className="navListItem"><Link className="link" to="/main">MAIN</Link></li>
+					<li className="navListItem"><Link className="link" to="/calendar">CYF CALENDAR</Link></li>
+					<li className="navListItem"><Link className="link" to="/attendance">ATTENDANCE</Link></li>
+					<li className="navListItem"><Link className="link" to="/travel">TRAVEL CHECK</Link></li>
 				</ul>
 				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
