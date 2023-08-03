@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Form from "./components/Form";
 import Main from "./components/Main";
@@ -8,7 +8,7 @@ import TravelCheck from "./components/TravelCheck";
 
 
 const App = () => (
-	<BrowserRouter>
+
 		<Routes>
 			<Route path="/" element={<Login />} />
 			<Route path="/form" element={<Form />} />
@@ -17,7 +17,6 @@ const App = () => (
 			<Route path="/attendance" element={<Attendance />} />
 			<Route path="/travel" element={<TravelCheck />} />
 		</Routes>
-	</BrowserRouter>
 );
 
 export default App;

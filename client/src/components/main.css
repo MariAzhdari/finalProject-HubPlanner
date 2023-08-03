@@ -55,17 +55,32 @@
 
 .container {
   border: 4px solid brown;
-  height: 80vh;
+  height: 60vh;
   margin: 40px 40px 40px 40px;
+  justify-content: center;
 }
 
-.logo-img {
-  margin-top: 500px;
+.logo-img2 {
+  width: 500px;
+  height: 400px;
 }
 .up h1 {
   color:brown;
   font-size: 50px;
+  
 }
 .up p {
   font-size: 30px;
+}
+.up{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.link:hover {
+  color: brown;
+}
+.link {
+  text-decoration: none;
+  color: black;
 }

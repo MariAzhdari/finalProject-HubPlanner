@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/CYF-logo2.png";
+import Logo1 from "./img/cyfLogo1.png";
 import "./main.css";
 
 const Main = () => {
@@ -29,21 +30,21 @@ const Main = () => {
 						</Link>
 					</li>
 				</ul>
-
-				<div className="container">
-					<div className="up">
-						<h1>Hub Planner</h1>
-						<p>Your Attendance, Your Journey, One Click Away!</p>
+				<img className="logo-img" src={Logo1} alt="logo" />
+			</div>
+			<div className="container">
+				<div className="up">
+					<h1>Hub Planner</h1>
+					<p>Your Attendance, Your Journey, One Click Away!</p>
+				</div>
+				<div className="down">
+					<div className="downLeft">
+						<i className="topIcon fab fa-facebook-square"></i>
+						<i className="topIcon fab fa-instagram-square"></i>
+						<i className="topIcon fab fa-pinterest-square"></i>
+						<i className="topIcon fab fa-twitter-square"></i>
 					</div>
-					<div className="down">
-						<div className="downLeft">
-							<i className="topIcon fab fa-facebook-square"></i>
-							<i className="topIcon fab fa-instagram-square"></i>
-							<i className="topIcon fab fa-pinterest-square"></i>
-							<i className="topIcon fab fa-twitter-square"></i>
-						</div>
-						<img className="logo-img" src={Logo} alt="logo" />
-					</div>
+					<img className="logo-img2" src={Logo} alt="logo" />
 				</div>
 			</div>
 		</div>
