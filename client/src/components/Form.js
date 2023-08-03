@@ -1,14 +1,40 @@
 import React from "react";
+import Logo1 from "./img/cyfLogo1.png";
+import { Link } from "react-router-dom";
 import "./form.css";
 
 function Form() {
   return (
+	<>
+       <div className="navbar">
+				<ul className="navList">
+					<li className="navListItem">
+						<Link className="link" to="/main">
+							MAIN
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/calendar">
+							CYF CALENDAR
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/attendance">
+							ATTENDANCE
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
+						</Link>
+					</li>
+				</ul>
+				<img className="logo-img" src={Logo1} alt="logo" />
+			</div>
+
 		<div className="login">
 			<span className="loginTitle">
-				<img
-					src="https://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
-					width={200}
-				/>
+				<img className="logo1" src={Logo1} alt="logo" />
 			</span>
 
 			<form className="loginForm">
@@ -41,6 +67,7 @@ function Form() {
 				<button className="loginButton">Login</button>
 			</form>
 		</div>
+		</>
 	);
 }
 
