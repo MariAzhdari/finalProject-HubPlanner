@@ -17,6 +17,17 @@
     width: 100%;
     height: auto;
 }
+@keyframes flash {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.cyfName {
+  margin-top: 100px;
+  color: red;
+  animation: flash 2s linear infinite; /* Adjusted the speed here */
+}
 
 .contentContainer {
     flex: 1 0 30%;
@@ -38,26 +49,28 @@
  margin: 0px 40px;
  font-size: 1.2rem;
 }
-.loginButton {
-    margin-top: 4em;
-    padding: 10px 20px;
-    color: rgb(207, 49, 49);
+.loginButton a{
+    padding: 20px 30px;
+    color: rgb(16, 14, 14);
     border-radius: 4px;
+    margin-bottom: 60px;
+    font-size: 1.2rem;
+
 }
-.contactButton{
+/* .contactButton{
  margin-top: 2em;
- padding: 8px 40px;
+ padding: 20px 40px;
  color: red;
  border-radius: 5px;
-}
+} */
 
 .down {
     display: flex;
     justify-content: center; 
-    margin-top:20px ;
 }
 
 .downLeft {
+    margin-top: 60px;
     display: flex; 
     gap: 10px; 
 }

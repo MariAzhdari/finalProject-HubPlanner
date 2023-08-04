@@ -10,8 +10,8 @@ function Login() {
 		<div className="container">
 			<div className="imageContainer">
 				<img src={Logo} alt="placeholder" />
-				<h1>Code Your Future</h1>
-				<button className="contactButton">CONTACT Us</button>
+				<h1 className="cyfName">Code Your Future</h1>
+				{/* <button className="contactButton">CONTACT Us</button> */}
 				<div className="down">
 					<div className="downLeft">
 						<a
