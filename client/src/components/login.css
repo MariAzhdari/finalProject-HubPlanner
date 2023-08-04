@@ -33,9 +33,10 @@
  color:red ;
 }
 
-.contentContainer p{
+.contentContainer p li{
  text-align: center;
  margin: 0px 40px;
+ font-size: 1.2rem;
 }
 .loginButton {
     margin-top: 4em;
