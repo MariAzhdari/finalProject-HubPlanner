@@ -10,8 +10,8 @@ function Login() {
 		<div className="container">
 			<div className="imageContainer">
 				<img src={Logo} alt="placeholder" />
-				<h1>Code Your Future</h1>
-				<button className="contactButton">CONTACT Us</button>
+				<h1 className="cyfName">Code Your Future</h1>
+				{/* <button className="contactButton">CONTACT Us</button> */}
 				<div className="down">
 					<div className="downLeft">
 						<a
@@ -50,14 +50,19 @@ function Login() {
 			<div className="contentContainer">
 				<h1>CYF Hub Planner</h1>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate,
-					suscipit. Ipsum aliquid pariatur sit in saepe voluptates quam
-					repudiandae aspernatur aperiam sapiente debitis adipisci sed
-					temporibus, quaerat facilis, architecto quisquam.orem ipsum dolor sit
-					amet consectetur adipisicing elit. Cupiditate, suscipit. Ipsum aliquid
-					pariatur sit in saepe voluptates quam repudiandae aspernatur aperiam
-					sapiente debitis adipisci sed temporibus, quaerat facilis, architecto
-					quisquam.
+					<li>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate,
+						suscipit. Ipsum aliquid pariatur sit in saepe voluptates quam
+					</li>
+					<li>
+						amet consectetur adipisicing elit. Cupiditate, suscipit. Ipsum
+						aliquid pariatur sit in saepe voluptates quam repudiandae aspernatur
+						aperiam
+					</li>
+					<li>
+						sapiente debitis adipisci sed temporibus, quaerat facilis,
+						architecto quisquam.
+					</li>
 				</p>
 				<button className="loginButton">
 					<Link className="link" to="/form">

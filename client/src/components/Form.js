@@ -5,8 +5,8 @@ import "./form.css";
 
 function Form() {
   return (
-	<>
-       <div className="navbar">
+		<>
+			<div className="navbar">
 				<ul className="navList">
 					<li className="navListItem">
 						<Link className="link" to="/main">
@@ -32,41 +32,40 @@ function Form() {
 				<img className="logo-img" src={Logo1} alt="logo" />
 			</div>
 
-		<div className="login">
-			<span className="loginTitle">
-				<img className="logo1" src={Logo1} alt="logo" />
-			</span>
+			<div className="login">
+				<span className="loginTitle">
+					<img className="logo1" src={Logo1} alt="logo" />
+				</span>
 
-			<form className="loginForm">
-				<label>Email</label>
-				<input
-					className="loginInput"
-					type="text"
-					placeholder="Enter your email..."
-				/>
+				<form className="loginForm">
+					<label>Email</label>
+					<input
+						className="loginInput"
+						type="text"
+						placeholder="Enter your email..."
+					/>
 
-				<label>Password</label>
-				<input
-					className="loginInput"
-					type="password"
-					placeholder="Enter your password..."
-				/>
+					<label>Password</label>
+					<input
+						className="loginInput"
+						type="password"
+						placeholder="Enter your password..."
+					/>
 
-				<label>City</label>
-				<select className="loginInput">
-					<option value="london">London</option>
-					<option value="manchester">Manchester</option>
-				</select>
+					<label>City</label>
+					<select className="loginInput">
+						<option value="london">London</option>
+					</select>
 
-				<label>Role</label>
-				<select className="loginInput">
-					<option value="volunteer">Volunteer</option>
-					<option value="trainee">Trainee</option>
-				</select>
-
-				<button className="loginButton">Login</button>
-			</form>
-		</div>
+					<label>Role</label>
+					<select className="loginInput">
+						<option value="trainee">Trainee</option>
+						<option value="volunteer">PD-Volunteer</option>
+						<option value="volunteer">Tech-Volunteer</option>
+					</select>
+					<button className="loginButton">Login</button>
+				</form>
+			</div>
 		</>
 	);
 }
