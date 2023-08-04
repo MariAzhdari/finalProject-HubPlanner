@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./login.css";
+import Logo from "./img/CYF-logo2.png";
+
 
 
 function Login() {
 	return (
 		<div className="container">
 			<div className="imageContainer">
-				<img
-					src="https://scd.infomigrants.net/media/resize/my_image_medium/dea47db2bea62a59af3aeb9151ff77c0b3d1a12f.jpeg"
-					alt="placeholder"
-				/>
+				<img src={Logo} alt="placeholder" />
 				<h1>Code Your Future</h1>
 				<button className="contactButton">CONTACT Us</button>
 				<div className="down">
@@ -62,7 +61,7 @@ function Login() {
 				</p>
 				<button className="loginButton">
 					<Link className="link" to="/form">
-						Login with github
+						Register
 					</Link>
 				</button>
 			</div>
