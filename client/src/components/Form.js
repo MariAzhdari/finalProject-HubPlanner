@@ -1,9 +1,15 @@
 import React from "react";
 import Logo1 from "./img/cyfLogo1.png";
 import { Link } from "react-router-dom";
+import  axios  from "axios";
 import "./form.css";
 
 function Form() {
+	async function loginHandler(e){
+		e.preventDefault();
+		const response =await axios.post("/api/register",{ email:"nik@gmail.com",password:"123j" ,role:"tr",city:"shiraz" });
+		console.log(response.data);
+		}
   return (
 		<>
 			<div className="navbar">
@@ -63,7 +69,7 @@ function Form() {
 						<option value="volunteer">PD-Volunteer</option>
 						<option value="volunteer">Tech-Volunteer</option>
 					</select>
-					<button className="loginButton">Login</button>
+					<button className="loginButton" onClick={loginHandler}>Login</button>
 				</form>
 			</div>
 		</>

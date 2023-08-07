@@ -12,7 +12,7 @@ import { Router } from "express";
 
 import bcrypt from "bcryptjs/dist/bcrypt";
 import pool from "./db";
-import jwtGenerator from "./utils/middelware/jwtGenerator";
+// import jwtGenerator from "./utils/middelware/jwtGenerator";
 
 
 
@@ -31,20 +31,21 @@ router.post("/register",  async (req, res) => {
 	console.log(req.body);
 
 	try {
-		const user = await pool.query("SELECT * FROM users WHERE email = $1", [
-			email,
-		]);
+		// const user = await pool.query("SELECT * FROM users WHERE email = $1", [
+		// 	email,
+		// ]);
 
-		if (user.rows.length > 0) {
-			return res.status(401).json(user.rows[0]);
-		}
+		// if (user.rows.length > 0) {
+		// 	return res.json(user.rows[0]);
+
+		// }
 
 		// const salt = await bcrypt.genSalt(10);
 		// const bcyPassword = await bcrypt.hash(password, salt);
 
 		let newUser = await pool.query(
-			"INSERT INTO users (email,password,role,city) VALUES ($1, $2,$3,$4) RETURNING *",
-			[ email, password,role,city]
+			"INSERT INTO users (email,password,role,city) VALUES ($1, $2, $3, $4) RETURNING *",
+			[ email, password, role, city]
 		);
         res.json(newUser.rows[0]);
 		// const jwtToken = jwtGenerator(newUser.rows[0].user_id);
@@ -56,32 +57,32 @@ router.post("/register",  async (req, res) => {
 	}
 });
 
-router.post("/login", async (req, res) => {
-	const { email, password } = req.body;
+// router.post("/login", async (req, res) => {
+// 	const { email, password } = req.body;
 
-	try {
-		const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
-			email,
-		]);
+// 	try {
+// 		const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+// 			email,
+// 		]);
 
-		if (user.rows.length === 0) {
-			return res.status(401).json("Invalid Credential");
-		}
+// 		if (user.rows.length === 0) {
+// 			return res.status(401).json("Invalid Credential");
+// 		}
 
-		const validPassword = await bcrypt.compare(
-			password,
-			user.rows[0].user_password
-		);
+// 		const validPassword = await bcrypt.compare(
+// 			password,
+// 			user.rows[0].user_password
+// 		);
 
-		if (!validPassword) {
-			return res.status(401).json("Invalid Credential");
-		}
-		const jwtToken = jwtGenerator(user.rows[0].user_id);
-		return res.json({ jwtToken });
-	} catch (err) {
-		res.status(500).send("Server error");
-	}
-});
+// 		if (!validPassword) {
+// 			return res.status(401).json("Invalid Credential");
+// 		}
+// 		const jwtToken = jwtGenerator(user.rows[0].user_id);
+// 		return res.json({ jwtToken });
+// 	} catch (err) {
+// 		res.status(500).send("Server error");
+// 	}
+// });
 
 
 
