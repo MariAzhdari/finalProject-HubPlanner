@@ -1,47 +1,31 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100vh;
-    margin: 0px 70px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.imageContainer {
-    flex: 1 0 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.imageContainer img {
-    width: 100%;
-    height: auto;
-}
-@keyframes flash {
-  0% {opacity: 1;}
-  50% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-.cyfName {
-  margin-top: 100px;
-  color: red;
-  animation: flash 2s linear infinite; /* Adjusted the speed here */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .contentContainer {
-    flex: 1 0 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2em;
+  flex: 1 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
 }
 
 .contentContainer h1{
  padding-bottom: 40px;
  text-align: center;
- color:red ;
+ color:red;
 }
 
 .contentContainer p li{
@@ -49,51 +33,90 @@
  margin: 0px 40px;
  font-size: 1.2rem;
 }
-.loginButton a{
-    padding: 20px 30px;
-    color: rgb(16, 14, 14);
-    border-radius: 4px;
-    margin-bottom: 60px;
-    font-size: 1.2rem;
 
+.loginButton a{
+  padding: 20px 30px;
+  color: rgb(16, 15, 14);
+  border-radius: 4px;
+  margin-bottom: 60px;
+  font-size: 1.2rem;
 }
-/* .contactButton{
- margin-top: 2em;
- padding: 20px 40px;
- color: red;
- border-radius: 5px;
-} */
 
 .down {
-    display: flex;
-    justify-content: center; 
+  display: flex;
+  justify-content: center; 
 }
 
 .downLeft {
-    margin-top: 60px;
-    display: flex; 
-    gap: 10px; 
+  margin-top: 60px;
+  display: flex; 
+  gap: 10px; 
 }
 
-
-/* Change the layout for narrow screens */
 @media (max-width: 600px) {
-    .imageContainer, .contentContainer {
-        flex: 1 0 100%;
-    }
+  .contentContainer {
+    flex: 1 0 100%;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
-    .imageContainer, .contentContainer {
-        flex: 1 0 50%;
-    }
+  .contentContainer {
+    flex: 1 0 50%;
+  }
 }
 
-/* Change layout for large screens */
 @media (min-width: 1025px) {
-    .imageContainer, .contentContainer {
-        flex: 1 0 30%;
-    }
+  .contentContainer {
+    flex: 1 0 30%;
+  }
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px;
+}
 
+.loginForm, .registerForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.loginInput, .registerInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.loginButton, .registerButton {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.loginButton:hover, .registerButton:hover {
+  background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .loginForm, .registerForm {
+    width: 45%;
+  }
+}

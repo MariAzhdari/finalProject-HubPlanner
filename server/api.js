@@ -12,7 +12,7 @@ router.get("/", (_, res) => {
 });
 
 
-router.post("/login",  async (req, res) => {
+router.post("/register",  async (req, res) => {
 	const { name ,email,  password ,role ,city } = req.body;
 	//  console.log(req.body);
 
@@ -23,7 +23,6 @@ router.post("/login",  async (req, res) => {
 
 		// if (user.rows.length > 0) {
 		// 	return res.json(user.rows[0]);
-
 		// }
 
 		// const salt = await bcrypt.genSalt(10);
@@ -43,32 +42,29 @@ router.post("/login",  async (req, res) => {
 	}
 });
 
-// router.post("/login", async (req, res) => {
-// 	const { email, password } = req.body;
 
-// 	try {
-// 		const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
-// 			email,
-// 		]);
 
-// 		if (user.rows.length === 0) {
-// 			return res.status(401).json("Invalid Credential");
-// 		}
+router.post("/login", async (req, res) => {
+	const { email, password } = req.body;
 
-// 		const validPassword = await bcrypt.compare(
-// 			password,
-// 			user.rows[0].user_password
-// 		);
+	try {
+		const user = await pool.query("SELECT * FROM users WHERE email = $1", [
+			email,
+		]);
 
-// 		if (!validPassword) {
-// 			return res.status(401).json("Invalid Credential");
-// 		}
-// 		const jwtToken = jwtGenerator(user.rows[0].user_id);
-// 		return res.json({ jwtToken });
-// 	} catch (err) {
-// 		res.status(500).send("Server error");
-// 	}
-// });
+		if (user.rows.length === 0) {
+			return res.status(401).json("Invalid Credential");
+		}
+
+		if (!password === user.rows[0].password) {
+			return res.status(401).json("Invalid Credential");
+		}
+		console.log(user.rows[0]);
+	res.json(user.rows[0]);
+	} catch (err) {
+		res.status(500).send("Server error");
+	}
+});
 
 
 
