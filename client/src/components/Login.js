@@ -88,10 +88,11 @@ import Logo from "./img/CYF-logo2.png";
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const navigate = useNavigate();
+	const [user, setUser] = useState(localStorage.getItem("user") || null);
+    const navigate = useNavigate();
+
 
 	const allFieldsFilled = email && password;
-
 
 
 	async function loginHandler(e) {
@@ -107,10 +108,13 @@ function Login() {
 			password,
 		});
 
-		if (response.data) {
+   setUser(response.data);
+   console.log(response.data);
+		localStorage.setItem("user", JSON.stringify(response.data));
+		if (response.data.email) {
 			navigate("/main");
-		} else {
-			alert("Invalid credentials.");
+		}else{
+			alert(response.data);
 		}
 	}
 
@@ -155,11 +159,12 @@ function Login() {
 					/>
 
 					<button onClick={loginHandler} className="loginButton" type="submit">
-						{allFieldsFilled ? "Login" : "Login"}
+						Login
 					</button>
 					<p>
 						Don't have an account? <Link to="/form">Register</Link>
 					</p>
+					{!allFieldsFilled && <p>all filled </p>}
 				</form>
 			</div>
 		</div>

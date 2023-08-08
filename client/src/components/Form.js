@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Logo1 from "./img/cyfLogo1.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./form.css";
 
@@ -11,7 +11,8 @@ function Form() {
 	const [password, setPassword] = useState("");
 	const [city, setCity] = useState("london"); // Default value
 	const [role, setRole] = useState("trainee"); // Default value
-
+    const [user, setUser] = useState(localStorage.getItem("user") || null);
+	const navigate =useNavigate();
 	const allFieldsFilled = name && email && password;
 
 
@@ -32,6 +33,12 @@ function Form() {
 			city,
 		});
 		console.log(response.data);
+
+		setUser(response.data);
+		localStorage.setItem("user", JSON.stringify(response.data));
+		if (user?.email) {
+			navigate("/");
+		}
 
 	}
 
@@ -89,13 +96,7 @@ function Form() {
 				</select>
 
 				<button onClick={loginHandler}  className="loginButton" type="submit">
-					{allFieldsFilled ? (
-						<Link className="link" to="/">
-							Login
-						</Link>
-					) : (
-						"Login" // If not all fields are filled, just render "Login" text
-					)}
+                  Register
 				</button>
 			</form>
 
