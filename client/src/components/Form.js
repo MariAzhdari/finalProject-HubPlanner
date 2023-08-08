@@ -1,91 +1,9 @@
-// import React from "react";
-// import Logo1 from "./img/cyfLogo1.png";
-// import { Link } from "react-router-dom";
-// import  axios  from "axios";
-// import "./form.css";
-
-// function Form() {
-// 	async function loginHandler(e){
-// 		e.preventDefault();
-// 		const response =await axios.post("/api/register",{ email:"nik@gmail.com",password:"123j" ,role:"tr",city:"shiraz" });
-// 		console.log(response.data);
-// 		}
-//   return (
-// 		<>
-// 			<div className="navbar">
-// 				<ul className="navList">
-// 					<li className="navListItem">
-// 						<Link className="link" to="/main">
-// 							MAIN
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/calendar">
-// 							CYF CALENDAR
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/attendance">
-// 							ATTENDANCE
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/travel">
-// 							TRAVEL CHECK
-// 						</Link>
-// 					</li>
-// 				</ul>
-// 				<img className="logo-img" src={Logo1} alt="logo" />
-// 			</div>
-
-// 			<div className="login">
-// 				<span className="loginTitle">
-// 					<img className="logo1" src={Logo1} alt="logo" />
-// 				</span>
-
-// 				<form className="loginForm">
-// 					<label>Email</label>
-// 					<input
-// 						className="loginInput"
-// 						type="text"
-// 						placeholder="Enter your email..."
-// 					/>
-
-// 					<label>Password</label>
-// 					<input
-// 						className="loginInput"
-// 						type="password"
-// 						placeholder="Enter your password..."
-// 					/>
-
-// 					<label>City</label>
-// 					<select className="loginInput">
-// 						<option value="london">London</option>
-// 					</select>
-
-// 					<label>Role</label>
-// 					<select className="loginInput">
-// 						<option value="trainee">Trainee</option>
-// 						<option value="volunteer">PD-Volunteer</option>
-// 						<option value="volunteer">Tech-Volunteer</option>
-// 					</select>
-// 					<button className="loginButton" onClick={loginHandler}>Login</button>
-// 				</form>
-// 			</div>
-// 		</>
-// 	);
-// }
-
-// export default Form;
-
-
-
-
 import React, { useState } from "react";
 import Logo1 from "./img/cyfLogo1.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./form.css";
+
 
 function Form() {
 	const [name,setName] = useState("");
@@ -94,9 +12,19 @@ function Form() {
 	const [city, setCity] = useState("london"); // Default value
 	const [role, setRole] = useState("trainee"); // Default value
 
+	const allFieldsFilled = name && email && password; 
+
+
 	async function loginHandler(e) {
 		e.preventDefault();
-		const response = await axios.post("/api/register", {
+
+	if (!allFieldsFilled) {
+				alert("All fields must be filled out!");
+				return;
+			}
+
+
+		const response = await axios.post("/api/login", {
 			name,
 			email,
 			password,
@@ -104,15 +32,15 @@ function Form() {
 			city,
 		});
 		console.log(response.data);
+
 	}
 
 	return (
 		<>
 			{/*... Rest of your code ...*/}
-
+			<img className="logo-img" src={Logo1} alt="logo" />
 			<form className="loginForm">
-
-				<label>Name</label>
+				<label className="label">Name</label>
 				<input
 					className="loginInput"
 					type="text"
@@ -121,7 +49,7 @@ function Form() {
 					onChange={(e) => setName(e.target.value)}
 				/>
 
-				<label>Email</label>
+				<label className="label">Email</label>
 				<input
 					className="loginInput"
 					type="text"
@@ -130,7 +58,7 @@ function Form() {
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 
-				<label>Password</label>
+				<label className="label">Password</label>
 				<input
 					className="loginInput"
 					type="password"
@@ -139,7 +67,7 @@ function Form() {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 
-				<label>City</label>
+				<label className="label">City</label>
 				<select
 					className="loginInput"
 					value={city}
@@ -149,7 +77,7 @@ function Form() {
 					{/* Add more options if needed */}
 				</select>
 
-				<label>Role</label>
+				<label className="label">Role</label>
 				<select
 					className="loginInput"
 					value={role}
@@ -160,8 +88,14 @@ function Form() {
 					<option value="tech-volunteer">Tech-Volunteer</option>
 				</select>
 
-				<button className="loginButton" onClick={loginHandler}>
-					Login
+				<button onClick={loginHandler}  className="loginButton" type="submit">
+					{allFieldsFilled ? (
+						<Link className="link" to="/main">
+							Login
+						</Link>
+					) : (
+						"Login" // If not all fields are filled, just render "Login" text
+					)}
 				</button>
 			</form>
 
