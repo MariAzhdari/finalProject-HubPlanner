@@ -8,10 +8,26 @@ const Attendance = () => {
 		<div className="top-container">
 			<div className="navbar">
 				<ul className="navList">
-					<li className="navListItem"><Link className="link" to="/main">MAIN</Link></li>
-					<li className="navListItem"><Link className="link" to="/calendar">CYF CALENDAR</Link></li>
-					<li className="navListItem"><Link className="link" to="/attendance">ATTENDANCE</Link></li>
-					<li className="navListItem"><Link className="link" to="/travel">TRAVEL CHECK</Link></li>
+					<li className="navListItem">
+						<Link className="link" to="/main">
+							MAIN
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/calendar">
+							CYF CALENDAR
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/attendance">
+							ATTENDANCE
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
+						</Link>
+					</li>
 				</ul>
 				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
@@ -20,6 +36,7 @@ const Attendance = () => {
 					<div className="input-container">
 						<input type="text" id="name-input" placeholder="Name"></input>
 					</div>
+
 					<div className="role-select">
 						<select className="select-container">
 							<option>Role</option>
@@ -27,51 +44,62 @@ const Attendance = () => {
 							<option value="trainee">Trainee</option>
 						</select>
 					</div>
-					<div className="attendence-select">
+
+					<div className="input-container">
+						<input type="date" id="date-input" placeholder="Date"></input>
+					</div>
+
+					<div className="attendance-select">
 						<select className="select-container" id="attendanceType">
 							<option>Attendance</option>
 							<option value="in-person">In-Person</option>
-							<option value="remote">Remote</option>
+							<option value="remote">Online</option>
 						</select>
 					</div>
 				</form>
 			</div>
-			<div className="bottom-container">
-				<div>
-					<table className="custom-table">
-						<caption>Remote</caption>
-						<thead>
-							<tr>
-								<th className="border-right">Volunteers</th>
-								<th>Trainee</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+			<div className="container">
+				<div className="section">
+					<h2>In-Person</h2>
+					<div className="columns">
+						<div className="column">
+							<h3>Volunteer</h3>
+							<ul className="list">
+								<li>Name 1</li>
+								<li>Name 2</li>
+								<li>Name 3</li>
+							</ul>
+						</div>
+						<div className="column">
+							<h3>Trainee</h3>
+							<ul className="list">
+								<li>Name 1</li>
+								<li>Name 2</li>
+								<li>Name 3</li>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div>
-					<table className="custom-table">
-						<caption>In-person</caption>
-						<thead>
-							<tr>
-								<th className="border-right">Volunteers</th>
-								<th>Trainee</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+				<div className="section">
+					<h2>Online</h2>
+					<div className="columns">
+						<div className="column">
+							<h3>Volunteer</h3>
+							<ul className="list">
+								<li>Name 1</li>
+								<li>Name 2</li>
+								<li>Name 3</li>
+							</ul>
+						</div>
+						<div className="column">
+							<h3>Trainee</h3>
+							<ul className="list">
+								<li>Name 1</li>
+								<li>Name 2</li>
+								<li>Name 3</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
