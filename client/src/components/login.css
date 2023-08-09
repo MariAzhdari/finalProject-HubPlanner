@@ -26,6 +26,9 @@
   margin-bottom: 60px;
   font-size: 1.2rem;
 }
+ .cyfName{
+  margin-top: -10px;
+ }
 
 .down {
   display: flex;

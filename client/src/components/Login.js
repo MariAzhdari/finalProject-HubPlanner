@@ -45,10 +45,30 @@ function Login() {
 					<div className="downLeft">
 						<div className="down">
 							<div className="downLeft">
-								<i className="topIcon fab fa-facebook-square"></i>
-								<i className="topIcon fab fa-instagram-square"></i>
-								<i className="topIcon fab fa-pinterest-square"></i>
-								<i className="topIcon fab fa-twitter-square"></i>
+								<a
+									href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<i className="topIcon fab fa-facebook-square"></i>
+								</a>
+								<a
+									href="https://www.instagram.com/codeyourfuture_/channel/"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<i className="topIcon fab fa-instagram-square"></i>
+								</a>
+								<a
+									href="https://twitter.com/codeyourfuture?lang=en"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<i className="topIcon fab fa-twitter-square"></i>
+								</a>
+								<a href="mailto:contact@codeyourfuture.io">
+									<i className="topIcon fas fa-envelope-square"></i>
+								</a>
 							</div>
 						</div>
 					</div>
