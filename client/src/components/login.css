@@ -1,18 +1,4 @@
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
 .contentContainer {
   flex: 1 0 30%;
   display: flex;
@@ -23,7 +9,6 @@ body {
 }
 
 .contentContainer h1{
- padding-bottom: 40px;
  text-align: center;
  color:red;
 }
@@ -41,6 +26,9 @@ body {
   margin-bottom: 60px;
   font-size: 1.2rem;
 }
+ .cyfName{
+  margin-top: -10px;
+ }
 
 .down {
   display: flex;

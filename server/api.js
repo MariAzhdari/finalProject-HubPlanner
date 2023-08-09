@@ -17,16 +17,13 @@ router.post("/register",  async (req, res) => {
 	//  console.log(req.body);
 
 	try {
-		// const user = await pool.query("SELECT * FROM users WHERE email = $1", [
-		// 	email,
-		// ]);
+		const user = await pool.query("SELECT * FROM users WHERE email = $1", [
+			email,
+		]);
 
-		// if (user.rows.length > 0) {
-		// 	return res.json(user.rows[0]);
-		// }
-
-		// const salt = await bcrypt.genSalt(10);
-		// const bcyPassword = await bcrypt.hash(password, salt);
+		if (user.rows.length > 0) {
+			return res.json(user.rows[0]);
+		}
 
 		let newUser = await pool.query(
 			"INSERT INTO users (name, email, password, role, city) VALUES ($1, $2, $3, $4 ,$5) RETURNING *",
@@ -53,16 +50,17 @@ router.post("/login", async (req, res) => {
 		]);
 
 		if (user.rows.length === 0) {
-			return res.status(401).json("Invalid Credential");
+			return res.json("Invalid user");
 		}
 
+
 		if (!password === user.rows[0].password) {
-			return res.status(401).json("Invalid Credential");
+			return res.json("Invalid password");
 		}
 		console.log(user.rows[0]);
-	res.json(user.rows[0]);
+ res.json(user.rows[0]);
 	} catch (err) {
-		res.status(500).send("Server error");
+		res.send("Server error");
 	}
 });
 
