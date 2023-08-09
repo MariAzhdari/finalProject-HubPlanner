@@ -1,84 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "./login.css";
-// import Logo from "./img/CYF-logo2.png";
-
-
-
-// function Login() {
-// 	return (
-// 		<div className="container">
-// 			<div className="imageContainer">
-// 				<img src={Logo} alt="placeholder" />
-// 				<h1 className="cyfName">Code Your Future</h1>
-// 				{/* <button className="contactButton">CONTACT Us</button> */}
-// 				<div className="down">
-// 					<div className="downLeft">
-// 						<a
-// 							href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
-// 							target="_blank"
-// 							rel="noopener noreferrer"
-// 						>
-// 							<i className="topIcon fab fa-facebook-square"></i>
-// 						</a>
-
-// 						<a
-// 							href="https://www.instagram.com/codeyourfuture_/?hl=en-gb"
-// 							target="_blank"
-// 							rel="noopener noreferrer"
-// 						>
-// 							<i className="topIcon fab fa-instagram-square"></i>
-// 						</a>
-// 						<a
-// 							href="https://www.linkedin.com/company/codeyourfuture"
-// 							target="_blank"
-// 							rel="noopener noreferrer"
-// 						>
-// 							<i className="topIcon fab fa-linkedin"></i>
-// 						</a>
-
-// 						<a
-// 							href="https://twitter.com/codeyourfuture?lang=en"
-// 							target="_blank"
-// 							rel="noopener noreferrer"
-// 						>
-// 							<i className="topIcon fab fa-twitter-square"></i>
-// 						</a>
-// 					</div>
-// 				</div>
-// 			</div>
-// 			<div className="contentContainer">
-// 				<h1>CYF Hub Planner</h1>
-// 				<p>
-// 					<li>
-// 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate,
-// 						suscipit. Ipsum aliquid pariatur sit in saepe voluptates quam
-// 					</li>
-// 					<li>
-// 						amet consectetur adipisicing elit. Cupiditate, suscipit. Ipsum
-// 						aliquid pariatur sit in saepe voluptates quam repudiandae aspernatur
-// 						aperiam
-// 					</li>
-// 					<li>
-// 						sapiente debitis adipisci sed temporibus, quaerat facilis,
-// 						architecto quisquam.
-// 					</li>
-// 				</p>
-// 				<button className="loginButton">
-// 					<Link className="link" to="/form">
-// 						Register
-// 					</Link>
-// 				</button>
-// 			</div>
-// 		</div>
-// 	);
-// }
-
-// export default Login;
-
-
-
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -93,7 +12,6 @@ function Login() {
 
 
 	const allFieldsFilled = email && password;
-
 
 	async function loginHandler(e) {
 		e.preventDefault();
@@ -126,14 +44,14 @@ function Login() {
 				<div className="down">
 					<div className="downLeft">
 						<div className="down">
-					<div className="downLeft">
-						<i className="topIcon fab fa-facebook-square"></i>
-						<i className="topIcon fab fa-instagram-square"></i>
-						<i className="topIcon fab fa-pinterest-square"></i>
-						<i className="topIcon fab fa-twitter-square"></i>
+							<div className="downLeft">
+								<i className="topIcon fab fa-facebook-square"></i>
+								<i className="topIcon fab fa-instagram-square"></i>
+								<i className="topIcon fab fa-pinterest-square"></i>
+								<i className="topIcon fab fa-twitter-square"></i>
+							</div>
+						</div>
 					</div>
-					</div>
-				</div>
 				</div>
 			</div>
 			<div className="contentContainer">
@@ -164,7 +82,7 @@ function Login() {
 					<p>
 						Don't have an account? <Link to="/form">Register</Link>
 					</p>
-					{!allFieldsFilled && <p>all filled </p>}
+					{!allFieldsFilled && <p>All fields must be filled out!</p>}
 				</form>
 			</div>
 		</div>
