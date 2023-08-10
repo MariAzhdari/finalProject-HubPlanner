@@ -1,107 +1,126 @@
-.TravelButton,
-.DateButton {
-    padding: 10px;
-    background-color: #2d83d9;
-    color: brown;
-    border: none;
-    cursor: pointer;
-    font-size: 30px;
-    flex: 1;
+/* Reset and basic styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
 }
+
 /* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: white;
+    padding: 20px 50px;
+    background-color: #e11425;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .navList {
     display: flex;
-    justify-content: space-evenly;
-    /* margin: 0; */
-    margin-top: 40px;
-    padding: 0;
+    justify-content: space-between;
     list-style: none;
-    margin-left: 40px;
-
+    margin: 0;
+    padding: 0;
 }
 
 .navListItem {
-    margin-right: 20px;
-    font-size: 18px;
-    font-weight: 600;
+    margin: 0 15px;
     cursor: pointer;
-    padding: 20px;
-
 }
 
-.navListItem:hover {
-    color: brown;
-
+.navListItem a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+    border-radius: 8px;
 }
 
+.navListItem a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 .logo-img {
     max-width: 100px;
     max-height: 100px;
-    margin-right: 40px;
-    margin-top: 30px;
-    /* width: 150px;
-  height: 150px; */
 }
 
-/* Style for the buttons */
-.Travelbutton, .Datebutton {
-    padding: 10px;
-        background-color: #c8c9ca;
-        color: brown;
-        border: none;
-        cursor: pointer;
-        font-size: 40px;
-        flex: 1;
-        margin: 0 100px;
-        border-radius: 20px;
-}
-
-
-/* Main container styles */
-.list-container {
-    padding: 10px;
-    background-color: #c8c9ca;
-        border: 1px solid #ccc;
-       
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        align-items: left;
-        font-size: 25px;
-        width: 700px;
-            height: 200px;
-            border-radius: 20px;
-            text-align: center;
-            padding: 20px;
-            margin-left: 100px;
-            margin-top: 40px;
-       
-           
-        
-        
-}
-.list {
-    margin: 0px;
-    padding:0px;
-    display: inline-block;
-}
+/* Main section */
 .Right {
-    padding: 10px;
-        border: 1px solid #ccc;
-        flex: 1;
-        display: flex;
-        justify-content: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.Datebutton, .Travelbutton {
+    padding: 15px 25px;
+    background-color: #c8c9ca;
+    color: #2d2d2d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+
+.Datebutton:hover, .Travelbutton:hover {
+    background-color: #9ca9b3;
+    transform: translateY(-5px);
+}
+
+.list-container {
+    margin-top: 50px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 700px;
+    margin: 50px auto;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list li {
+    font-size: 20px;
+    margin: 10px 0;
+    transition: color 0.3s;
+}
+
+.list li:hover {
+    color: #2d83d9;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
         text-align: center;
-        align-items: left;
-        font-size: 25px;
-        margin: 0 5px;
+        padding: 20px;
+    }
+
+    .navList {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .navListItem {
+        margin: 10px 0;
+    }
+
+    .Right {
+        padding: 0 20px;
+    }
+
+    .list-container {
+        padding: 20px;
+    }
 }
