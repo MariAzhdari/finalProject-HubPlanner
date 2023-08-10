@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState , useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/cyfLogo1.png";
 import "./travelCheck.css";
@@ -22,6 +22,22 @@ const fetchDisruptions = async () => {
 		console.error("Error fetching disruptions:", error);
 	}
 };
+
+
+
+ useEffect(() => {
+		const fetchDisruptions = async () => {
+			try {
+				
+				setDisruptions(response.data);
+			} catch (error) {
+				
+			}
+		};
+
+		fetchDisruptions();
+ }, [selectedDate]);
+
 
 
 
