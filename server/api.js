@@ -65,20 +65,20 @@ router.post("/login", async (req, res) => {
 // travel api disruptions ************************************** with date()
 //*************************************************************** */
 
-router.get("/api/disruptions/:date", async (req, res) => {
- const date = req.params.date;
-// Construct the URL for the external API
- const apiUrl = `https://api.digital.tfl.gov.uk/Line/Mode/tube,dlr/Disruption/Disruption/${date}`;
- try {
-     const response = await axios.get(apiUrl);
-     res.json(response.data);
- } catch (error) {
-     console.error("Error fetching disruptions from external API:", error);
-     res.status(500).json({
-         error: "Failed to fetch data from the external API.",
-     });
- }
-});
+// router.get("/api/disruptions/:date", async (req, res) => {
+//  const date = req.params.date;
+// // Construct the URL for the external API
+//  const apiUrl = `https://api.digital.tfl.gov.uk/Line/Mode/tube,dlr/Disruption/Disruption/${date}`;
+//  try {
+//      const response = await axios.get(apiUrl);
+//      res.json(response.data);
+//  } catch (error) {
+//      console.error("Error fetching disruptions from external API:", error);
+//      res.status(500).json({
+//          error: "Failed to fetch data from the external API.",
+//      });
+//  }
+// });
 
 
 //I deleted date in this part for travel api
