@@ -23,8 +23,6 @@ const fetchDisruptions = async () => {
 	}
 };
 
-
-
  useEffect(() => {
 		const fetchDisruptions = async () => {
 			try {
