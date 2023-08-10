@@ -19,7 +19,7 @@ const fetchDisruptions = async () => {
 		);
 		setDisruptions(response.data);
 	} catch (error) {
-		console.error("", error);
+		console.error("Error fetching disruptions:", error);
 	}
 };
 
