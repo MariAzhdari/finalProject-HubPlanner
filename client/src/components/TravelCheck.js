@@ -4,11 +4,27 @@ import Logo from "./img/cyfLogo1.png";
 import "./travelCheck.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import axios from "axios";
+import axios from "axios";
 
 const TravelCheck = () => {
  const [disruptions, setDisruptions] = useState([]);
  const [selectedDate, setSelectedDate] = useState(new Date());
+
+const fetchDisruptions = async () => {
+	const formattedDate = selectedDate.toISOString().split("T")[0];
+
+	try {
+		const response = await axios.get(
+			`http://localhost:3100/api/disruptions/${formattedDate}`
+		);
+		setDisruptions(response.data);
+	} catch (error) {
+		console.error("", error);
+	}
+};
+
+
+
     return (
 			<div>
 				<div className="navbar">
