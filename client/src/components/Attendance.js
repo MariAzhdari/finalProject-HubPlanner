@@ -206,3 +206,34 @@ const updateDisplayedData = async () => {
       console.error("Error submitting attendance:", error);
     }
   };
+
+   return (
+    <div className="top-container">
+      <div className="navbar">
+        <ul className="navList">
+          <li className="navListItem">
+            <Link className="link" to="/main">
+              MAIN
+            </Link>
+          </li>
+
+          <li className="navListItem">
+            <Link className="link" to="/calendar">
+              CYF CALENDAR
+            </Link>
+          </li>
+
+          <li className="navListItem">
+            <Link className="link" to="/attendance">
+              ATTENDANCE
+            </Link>
+          </li>
+
+          <li className="navListItem">
+            <Link className="link" to="/travel">
+              TRAVEL CHECK
+            </Link>
+          </li>
+        </ul>
+        <img className="logo-img" src={Logo} alt="logo" />
+      </div>
