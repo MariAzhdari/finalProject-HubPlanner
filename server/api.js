@@ -66,6 +66,51 @@ router.post("/login", async (req, res) => {
 
 
 
+
+//******Attendance page******//
+
+// import express from "express";
+// import cors from "cors";
+// // import { Pool } from "pg";
+// import pkg from "pg";
+// const { Pool } = pkg;
+
+// const app = express();
+// const PORT = process.env.PORT || 5000;
+
+// app.use(cors());
+// app.use(express.json());
+
+// import dotenv from "dotenv";
+// dotenv.config();
+
+// const dbPool = new Pool({
+// 	connectionString: process.env.DB_URL,
+// 	ssl: {
+// 		rejectUnauthorized: false,
+// 	},
+// });
+
+
+// Fetch user data
+router.get("/fetch-user-data", async (req, res) => {
+	try {
+
+		const userId = getUserIdFromRequest(req); // Define a function to extract userId from the request or authentication context
+		const user = await dbPool.query(
+			"SELECT name, role FROM users WHERE id = $1",
+			[userId]
+		);
+		res.json(user.rows[0]);
+	} catch (error) {
+		console.error("Error fetching user data:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
+
+
+
 export default router;
 
 
