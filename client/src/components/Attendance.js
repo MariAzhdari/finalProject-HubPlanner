@@ -127,3 +127,49 @@ const Attendance = () => {
   const [inPersonTrainees, setInPersonTrainees] = useState([]);
   const [onlineVolunteers, setOnlineVolunteers] = useState([]);
   const [onlineTrainees, setOnlineTrainees] = useState([]);
+
+   useEffect(() => {
+    fetchUserData();
+    fetchAttendanceData();
+  }, []);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("/fetch-user-data", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setUserData(data);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  const fetchAttendanceData = async () => {
+    try {
+      const response = await fetch("/fetch-attendance-data", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setInPersonVolunteers(data.inPersonVolunteers);
+        setInPersonTrainees(data.inPersonTrainees);
+        setOnlineVolunteers(data.onlineVolunteers);
+        setOnlineTrainees(data.onlineTrainees);
+      }
+    } catch (error) {
+      console.error("Error fetching attendance data:", error);
+    }
+  };
+  
+
