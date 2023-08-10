@@ -237,3 +237,43 @@ const updateDisplayedData = async () => {
         </ul>
         <img className="logo-img" src={Logo} alt="logo" />
       </div>
+	  <div className="middle-container">
+        <form className="middle-container" onSubmit={handleSubmit}>
+          <div className="input-container">
+            <input
+              type="text"
+              id="name-input"
+              placeholder="Name"
+              value={userData.name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="input-container">
+            <input
+              type="text"
+              id="role-input"
+              placeholder="Role"
+              value={userData.role}
+              onChange={(e) => setRole(e.target.value)}
+            />
+          </div>
+
+          <div className="input-container">
+            <input type="date" id="date-input" placeholder="Date"></input>
+          </div>
+
+          <div className="attendance-select">
+            <select className="select-container" id="attendanceType">
+              <option>Attendance</option>
+              <option value="in-person">In-Person</option>
+              <option value="remote">Online</option>
+              <option value="not-attend">Not-Attend</option>
+            </select>
+          </div>
+
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </form>
+      </div>
