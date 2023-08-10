@@ -181,4 +181,28 @@ const updateDisplayedData = async () => {
     }
   };
 
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/http://localhost:5000/submit-attendance", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userData.name,
+          role: userData.role,
+          date,
+          attendanceType,
+        }),
+      });
+
+      if (response.ok) {
+        // Refresh or update the displayed data after successful submission:
+        await updateDisplayedData();
+      }
+    } catch (error) {
+      console.error("Error submitting attendance:", error);
+    }
+  };
