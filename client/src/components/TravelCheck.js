@@ -40,9 +40,6 @@ const fetchDisruptions = async () => {
 		fetchDisruptions();
  }, [selectedDate]);
 
-
-
-
     return (
 			<div>
 				<div className="navbar">
@@ -89,9 +86,7 @@ const fetchDisruptions = async () => {
 				<div className="list-container">
 					<div className="list">
 						<ul>
-							{disruptions.map((disruption, index) => (
-								<li key={index}>{disruption.description}</li>
-							))}
+							
 						</ul>
 					</div>
 				</div>
