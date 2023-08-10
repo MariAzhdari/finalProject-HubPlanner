@@ -7,7 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 // import axios from "axios";
 
 const TravelCheck = () => {
-
+ const [disruptions, setDisruptions] = useState([]);
+ const [selectedDate, setSelectedDate] = useState(new Date());
     return (
 			<div>
 				<div className="navbar">
