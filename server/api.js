@@ -66,6 +66,33 @@ router.post("/login", async (req, res) => {
 
 
 
+
+//******Attendance page******//
+
+import express from "express";
+import cors from "cors";
+// import { Pool } from "pg";
+import pkg from "pg";
+const { Pool } = pkg;
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+import dotenv from "dotenv";
+dotenv.config();
+
+const dbPool = new Pool({
+	connectionString: process.env.DB_URL,
+	ssl: {
+		rejectUnauthorized: false,
+	},
+});
+
+
+
 export default router;
 
 
