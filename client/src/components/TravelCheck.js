@@ -28,10 +28,12 @@ const fetchDisruptions = async () => {
  useEffect(() => {
 		const fetchDisruptions = async () => {
 			try {
-				
+				const response = await axios.get(
+					"https://api.digital.tfl.gov.uk/Line/Mode/GET%20/Line/Mode/tube%2Cdlr/Disruption/Disruption"
+				);
 				setDisruptions(response.data);
 			} catch (error) {
-				
+				console.error("Error fetching disruptions:", error);
 			}
 		};
 
