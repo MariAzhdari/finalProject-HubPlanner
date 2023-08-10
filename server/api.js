@@ -112,7 +112,7 @@ router.get("/fetch-user-data", async (req, res) => {
 router.get("/fetch-attendance-data", async (_, res) => {
   try {
     const attendanceData = await dbPool.query(
-      "SELECT name, role, attendance_type FROM Attendance INNER JOIN users2 ON Attendance.userID = users2.id"
+      "SELECT name, role, attendance_type FROM Attendance INNER JOIN users ON Attendance.userID = users2.id"
     );
 
     const inPersonVolunteers = attendanceData.rows.filter(
@@ -142,6 +142,41 @@ router.get("/fetch-attendance-data", async (_, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+// Submit attendance data
+router.post("/submit-attendance", async (req, res) => {
+  const { name, role, date, attendanceType } = req.body;
+
+  try {
+    const userId = getUserIdFromRequest(req); // Define a function to extract userId from the request or authentication context
+    const newAttendance = await dbPool.query(
+      "INSERT INTO Attendance (userID, name, role, date, attendance_type) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [userId, name, role, date, attendanceType]
+    );
+
+    res.status(201).json(newAttendance.rows[0]);
+  } catch (error) {
+    console.error("Error submitting attendance:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Start the server
+router.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// Define a function to extract userId from the request or authentication context
+function getUserIdFromRequest(req) {
+  // Replace this with your actual code to get userId from authentication
+  // For example, if you have user authentication middleware, you might do something like:
+  // return req.user.id;
+  // For now, this example returns a placeholder value "123".
+   if (req.user && req.user.id) {
+    return req.user.id;
+}
+};
+
 
 
 export default router;
