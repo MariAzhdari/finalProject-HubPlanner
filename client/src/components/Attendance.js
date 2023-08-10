@@ -172,4 +172,13 @@ const Attendance = () => {
     }
   };
   
+const updateDisplayedData = async () => {
+    try {
+      // Fetch updated attendance data and set the state variables
+      await fetchAttendanceData();
+    } catch (error) {
+      console.error("Error updating displayed data:", error);
+    }
+  };
 
+  
