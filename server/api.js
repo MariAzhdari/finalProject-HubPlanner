@@ -69,7 +69,15 @@ router.post("/login", async (req, res) => {
 
 //******Attendance page******//
 
-
+router.get("/fetch-attendance-data", async (_, res) => {
+	try {
+		const attendanceData = await pool.query("SELECT * FROM Attendance; ");
+		res.json(attendanceData.rows);
+	} catch (error) {
+		console.error("Error fetching attendance data:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
 
 // Fetch user data
 router.get("/fetch-user-data", async (req, res) => {
