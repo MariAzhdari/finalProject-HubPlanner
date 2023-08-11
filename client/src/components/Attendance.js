@@ -133,4 +133,13 @@ const Attendance = () => {
 	useEffect(() => {
 				fetchAttendanceData();
 			}, []);
+			
+			const fetchAttendanceData = async () => {
+        try {
+            const response = await fetch("api/fetch-attendance-data", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 }
