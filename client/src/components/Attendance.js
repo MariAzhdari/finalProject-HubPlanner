@@ -221,12 +221,10 @@ const Attendance = () => {
 						<div className="middle-container">
 							<form className="middle-container" onSubmit={handleSubmit}>
 								<div className="input-container">
-									{/* <label>{name}</label> */}
 									<input type="text" value={name} />
 								</div>
 								<div className="input-container">
-									{/* <label>{role}</label> */}
-									<input type="text" value={role} />
+                                    <input type="text" value={role} />
 								</div>
 								<div className="input-container">
 									<input
