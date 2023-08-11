@@ -183,69 +183,175 @@
 
 
 //******************************************************** */
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "./img/cyfLogo1.png";
-import "./travelCheck.css";
-import Axios from "axios";
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import Logo from "./img/cyfLogo1.png";
+// import "./travelCheck.css";
+// import Axios from "axios";
 
-const TravelCheck=()=>{
-	const [disruptions, setDisruptions] = useState("");
+// const TravelCheck=()=>{
+// 	const [disruptions, setDisruptions] = useState("");
 
-	const getDisruption = () => {
-		Axios.get("https://api.tfl.gov.uk/Line/Meta/ServiceTypes").then(
-			(response) => {
-				console.log(response);
-				setDisruptions(response.data.setup + "..." + response.data);
+// 	const getDisruption = () => {
+// 		Axios.get("https://api.tfl.gov.uk/Line/Meta/ServiceTypes").then(
+// 			(response) => {
+// 				console.log(response);
+// 				setDisruptions(response.data.setup + "..." + response.data);
+// 			}
+// 		);
+// 	};
+
+// 		return (
+// 			<div>
+// 				<div className="navbar">
+// 					<ul className="navList">
+// 						<li className="navListItem">
+// 							<Link className="link" to="/main">
+// 								MAIN
+// 							</Link>
+// 						</li>
+// 						<li className="navListItem">
+// 							<Link className="link" to="/calendar">
+// 								CYF CALENDAR
+// 							</Link>
+// 						</li>
+// 						<li className="navListItem">
+// 							<Link className="link" to="/travel">
+// 								TRAVEL CHECK
+// 							</Link>
+// 						</li>
+// 						<li className="navListItem">
+// 							<Link className="link" to="/attendance">
+// 								ATTENDANCE
+// 							</Link>
+// 						</li>
+// 					</ul>
+// 					<img className="logo-img" src={Logo} alt="logo" />
+// 				</div>
+
+// 				<div className="Right">
+// 					<div>
+// 						<button className="Travelbutton" onClick={getDisruption}>
+// 							Check Upcoming Disruptions
+// 						</button>
+// 					</div>
+// 				</div>
+
+// 				<div className="list-container">
+// 					<div className="list">
+// 						<ul>
+// 							{disruptions}
+// 						</ul>
+// 					</div>
+// 				</div>
+// 			</div>
+// 		);
+// };
+// export default TravelCheck;
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { Link } from "react-router-dom";
+// import Logo from "./img/cyfLogo1.png";
+// import "./travelCheck.css";
+// import axios from "axios";
+
+// const TravelCheck = () => {
+// 	const [disruptions, setDisruptions] = useState([]);
+// 	const [modes, setModes] = useState([]);
+
+// 	useEffect(() => {
+// 		const fetchModes = async () => {
+// 			try {
+// 				const response = await axios.get(
+// 					"https://api.tfl.gov.uk/Line/Meta/Modes"
+// 				);
+// 				setModes(response.data);
+// 			} catch (error) {
+// 				console.error("Error fetching modes:", error);
+// 			}
+// 		};
+
+// 		fetchModes();
+// 	}, []);
+
+// 	return (
+// 		<div>
+// 			{/* ... (Your other code for Navbar and Disruptions) ... */}
+
+// 			{/* Displaying Modes */}
+// 			<div className="modes-container">
+// 				<ul>
+// 					{modes.map((mode, index) => (
+// 						<li key={index}>
+// 							Mode Name: {mode.modeName} | Is TFL Service:{" "}
+// 							{mode.isTflService ? "Yes" : "No"} | Is Fare Paying:{" "}
+// 							{mode.isFarePaying ? "Yes" : "No"} | Is Scheduled Service:{" "}
+// 							{mode.isScheduledService ? "Yes" : "No"}
+// 						</li>
+// 					))}
+// 				</ul>
+// 			</div>
+// 		</div>
+// 	);
+// };
+
+// export default TravelCheck;
+
+
+
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+const LineStatus = () => {
+	const [lineStatuses, setLineStatuses] = useState([]);
+
+	useEffect(() => {
+		const fetchLineStatus = async () => {
+			try {
+				const modes = "tube,dlr"; // You can adjust this as needed
+				const detail = true; // Getting detailed disruptions
+				const url = `https://api.tfl.gov.uk/Line/Mode/${modes}/Status?detail=${detail}`;
+				const response = await axios.get(url);
+				setLineStatuses(response.data);
+			} catch (error) {
+				console.error("Error fetching line statuses:", error);
 			}
-		);
-	};
+		};
 
-		return (
-			<div>
-				<div className="navbar">
-					<ul className="navList">
-						<li className="navListItem">
-							<Link className="link" to="/main">
-								MAIN
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/calendar">
-								CYF CALENDAR
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/travel">
-								TRAVEL CHECK
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/attendance">
-								ATTENDANCE
-							</Link>
-						</li>
-					</ul>
-					<img className="logo-img" src={Logo} alt="logo" />
-				</div>
+		fetchLineStatus();
+	}, []);
 
-				<div className="Right">
-					<div>
-						<button className="Travelbutton" onClick={getDisruption}>
-							Check Upcoming Disruptions
-						</button>
-					</div>
-				</div>
 
-				<div className="list-container">
-					<div className="list">
-						<ul>
-							{disruptions}
-						</ul>
-					</div>
-				</div>
-			</div>
-		);
+
+
+	return (
+		<div>
+			<h1>Line Statuses</h1>
+			<ul>
+				{lineStatuses.map((status, index) => (
+					<li key={index}>
+						{/* Assuming there's a name and statusDescription in the response. Adjust if the API structure is different. */}
+						Line: {status.name} | Status: {status.statusDescription}
+					</li>
+				))}
+			</ul>
+		</div>
+	);
 };
-export default TravelCheck;
+
+export default LineStatus;
+
+
+
+
+
+
 
