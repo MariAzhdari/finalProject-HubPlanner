@@ -131,6 +131,7 @@ const Attendance = () => {
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
 
+
 	useEffect(() => {
 				fetchAttendanceData();
 			}, []);
