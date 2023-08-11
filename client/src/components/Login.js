@@ -76,7 +76,6 @@ function Login() {
 			</div>
 			<div className="contentContainer">
 				<h1>CYF Hub Planner</h1>
-				<p>{/* ... some texts ... */}</p>
 				<form className="loginForm">
 					<label className="label">Email</label>
 					<input
@@ -102,7 +101,7 @@ function Login() {
 					<p>
 						Don't have an account? <Link to="/form">Register</Link>
 					</p>
-					{!allFieldsFilled && <p>All fields must be filled out!</p>}
+					{!allFieldsFilled}
 				</form>
 			</div>
 		</div>
