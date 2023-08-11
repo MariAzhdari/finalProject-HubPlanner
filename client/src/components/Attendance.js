@@ -116,6 +116,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./attendance.css";
 import Logo from "./img/cyfLogo1.png";
+import moment from "moment";
 
 const Attendance = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -129,6 +130,7 @@ const Attendance = () => {
     const [inPersonTrainees, setInPersonTrainees] = useState();
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
+
 
 	useEffect(() => {
 				fetchAttendanceData();
@@ -190,103 +192,137 @@ const Attendance = () => {
 						console.error("Error submitting attendance:", error);
 					}
 				};
-				 return (
-        <div className="top-container">
-            <div className="navbar">
-                <ul className="navList">
-                    <li className="navListItem">
-                        <Link className="link" to="/main">
-                            MAIN
-                        </Link>
-                    </li>
-                    <li className="navListItem">
-                        <Link className="link" to="/calendar">
-                            CYF CALENDAR
-                        </Link>
-                    </li>
-                    <li className="navListItem">
-                        <Link className="link" to="/attendance">
-                            ATTENDANCE
-                        </Link>
-                    </li>
-                    <li className="navListItem">
-                        <Link className="link" to="/travel">
-                            TRAVEL CHECK
-                        </Link>
-                    </li>
-                </ul>
-                <img className="logo-img" src={Logo} alt="logo" />
-            </div>
-            <div className="middle-container">
-                <form className="middle-container" onSubmit={handleSubmit}>
-                    <div className="input-container">
-                        <label>{name}</label>
-                    </div>
-                    <div className="input-container">
-                    <label>{role}</label>
-                    </div>
-                    <div className="input-container">
-                        <input type="date" id="date-input" placeholder="Date" onChange={(e) => setDate(e.target.value)} value={date}></input>
-                    </div>
-                    <div className="attendance-select">
-                        <select className="select-container" id="attendanceType" onChange={(e) => setAttendanceType(e.target.value)}>
-                            <option>Attendance</option>
-                            <option value="in-person">In-Person</option>
-                            <option value="remote">Online</option>
-                            <option value="not-attend">Not-Attend</option>
-                        </select>
-                    </div>
-                    <button type="submit" className="submit-btn">
-                        Submit
-                    </button>
-                </form>
-            </div>
-            <div className="container">
-                <div className="section">
-                    <h2>In-Person</h2>
-                    <div className="columns">
-                        <div className="column">
-                            <h3>Volunteer</h3>
-                            <ul className="list">
-                                {inPersonVolunteers?.map((user) => (
-                                    <li key={user.name}>{user.name}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="column">
-                            <h3>Trainee</h3>
-                            <ul className="list">
-                                {inPersonTrainees?.map((user) => (
-                                    <li key={user.name}>{user.name}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-				<div className="section">
-                    <h2>Online</h2>
-                    <div className="columns">
-                        <div className="column">
-                            <h3>Volunteer</h3>
-                            <ul className="list">
-                                {onlineVolunteers?.map((user) => (
-                                    <li key={user.name}>{user.name}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="column">
-                            <h3>Trainee</h3>
-                            <ul className="list">
-                                {onlineTrainees?.map((user) => (
-                                    <li key={user.name}>{user.name}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+				return (
+					<div className="top-container">
+						<div className="navbar">
+							<ul className="navList">
+								<li className="navListItem">
+									<Link className="link" to="/main">
+										MAIN
+									</Link>
+								</li>
+								<li className="navListItem">
+									<Link className="link" to="/calendar">
+										CYF CALENDAR
+									</Link>
+								</li>
+								<li className="navListItem">
+									<Link className="link" to="/attendance">
+										ATTENDANCE
+									</Link>
+								</li>
+								<li className="navListItem">
+									<Link className="link" to="/travel">
+										TRAVEL CHECK
+									</Link>
+								</li>
+							</ul>
+							<img className="logo-img" src={Logo} alt="logo" />
+						</div>
+						<div className="middle-container">
+							<form className="middle-container" onSubmit={handleSubmit}>
+								<div className="input-container">
+									<input type="text" value={name} />
+								</div>
+								<div className="input-container">
+                                    <input type="text" value={role} />
+								</div>
+								<div className="input-container">
+									<input
+										type="date"
+										id="date-input"
+										placeholder="Date"
+										onChange={(e) => setDate(e.target.value)}
+										value={date}
+									></input>
+								</div>
+								<div className="attendance-select">
+									<select
+										className="select-container"
+										id="attendanceType"
+										onChange={(e) => setAttendanceType(e.target.value)}
+									>
+										<option>Attendance</option>
+										<option value="in-person">In-Person</option>
+										<option value="remote">Online</option>
+										<option value="not-attend">Not-Attend</option>
+									</select>
+								</div>
+								<button type="submit" className="submit-btn">
+									Submit
+								</button>
+							</form>
+						</div>
+						<div className="container">
+							<div className="section">
+								<h2>In-Person</h2>
+								<div className="columns">
+									<div className="column">
+										<h3>Volunteer</h3>
+										<ul className="list">
+											{inPersonVolunteers?.map((user) => (
+												<li key={user.name}>
+													{user.name}(
+													<span>
+														{moment(user.date).format("Do MMMM YYYY")}
+													</span>
+													)
+												</li>
+											))}
+										</ul>
+									</div>
+									<div className="column">
+										<h3>Trainee</h3>
+										<ul className="list">
+											{inPersonTrainees?.map((user) => (
+												<li key={user.name}>
+													{user.name}(
+													<span>
+														{moment(user.date).format("Do MMMM YYYY")}
+													</span>
+													)
+												</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div className="section">
+								<h2>Online</h2>
+								<div className="columns">
+									<div className="column">
+										<h3>Volunteer</h3>
+										<ul className="list">
+											{onlineVolunteers?.map((user) => (
+												<li key={user.name}>
+													{user.name}(
+													<span>
+														{moment(user.date).format("Do MMMM YYYY")}
+													</span>
+													)
+												</li>
+											))}
+										</ul>
+									</div>
+									<div className="column">
+										<h3>Trainee</h3>
+										<ul className="list">
+											{onlineTrainees?.map((user) => (
+												<li key={user.name}>
+													{user.name}(
+													<span>
+														{moment(user.date).format("Do MMMM YYYY")}
+													</span>
+													)
+												</li>
+											))}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				);
 };
 export default Attendance;
 
@@ -302,4 +338,3 @@ export default Attendance;
 
 
 
-}
