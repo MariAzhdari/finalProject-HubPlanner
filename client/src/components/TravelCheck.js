@@ -237,11 +237,12 @@ const TravelCheck = () => {
 			</button>
 			{showLineStatuses && (
 				<div>
-					<h1>Line Statuses</h1>
+					<h1>Lines</h1>
 					<ul>
 						{lineStatuses.map((status, index) => (
 							<li key={index}>
-								Line: {status.name} | Status: {status.statusDescription}
+								Line: {status.name}
+								{/* Status: {status.statusDescription} */}
 							</li>
 						))}
 					</ul>
