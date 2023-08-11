@@ -263,6 +263,42 @@ const Attendance = () => {
                         </div>
                     </div>
                 </div>
+				<div className="section">
+                    <h2>Online</h2>
+                    <div className="columns">
+                        <div className="column">
+                            <h3>Volunteer</h3>
+                            <ul className="list">
+                                {onlineVolunteers?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="column">
+                            <h3>Trainee</h3>
+                            <ul className="list">
+                                {onlineTrainees?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+export default Attendance;
+
+
+
+
+
+
+
+
+
+
 
 
 
