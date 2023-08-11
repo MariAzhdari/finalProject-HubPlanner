@@ -49,8 +49,92 @@
     flex-direction: column;
     margin-top: 30px;
 }
+/* Button Styles */
+button {
+    padding: 15px 25px;
+    background-color: #e11425;
+    color: #ffffff;
+    border: 2px solid #e11425;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block; /* Makes the button a block element */
+    margin: 20px auto; /* Centers the button and adds some margin */
+    text-transform: uppercase; /* Makes the button text uppercase */
+    max-width: 250px;
+}
 
+button:hover {
+    background-color: #ffffff;
+    color: #e11425;
+}
 
+/* Disruptions container */
+.disruptions-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.disruption-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.disruption-item {
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #e11425;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
+}
+
+.disruption-item:hover {
+    background-color: #e6e6e6;
+}
+
+h1, h2 {
+    border-bottom: 2px solid #e11425;
+    padding-bottom: 10px;
+    font-size: 24px;
+    text-align: center; /* Center the headers */
+}
+
+/* Line statuses styles */
+.line-status-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.line-status-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.line-status-item {
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #e11425;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
+}
+
+.line-status-item:hover {
+    background-color: #e6e6e6;
+}
 
 
 .Datebutton, .Travelbutton {
