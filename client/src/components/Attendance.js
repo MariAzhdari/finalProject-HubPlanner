@@ -133,13 +133,40 @@ const Attendance = () => {
 	useEffect(() => {
 				fetchAttendanceData();
 			}, []);
-			
+
 			const fetchAttendanceData = async () => {
-        try {
-            const response = await fetch("api/fetch-attendance-data", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+				try {
+					const response = await fetch("api/fetch-attendance-data", {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+					const data = await response.json();
+					console.log(data);
+					const inpersonVol = data.filter(
+						(item) =>
+							item.role.includes("volunteer") &&
+							item.attendance_type === "in-person"
+					);
+					setInPersonVolunteers(inpersonVol);
+					const onlineVol = data.filter(
+						(item) =>
+							item.role.includes("volunteer") &&
+							item.attendance_type === "remote"
+					);
+					setOnlineVolunteers(onlineVol);
+					const inpersonTrain = data.filter(
+						(item) => item.attendance_type === "in-person"
+					);
+					setInPersonTrainees(inpersonTrain);
+					const onlineTrain = data.filter(
+						(item) => item.attendance_type === "remote"
+					);
+					setOnlineTrainees(onlineTrain);
+				} catch (error) {
+					console.error("Error fetching attendance data:", error);
+				}
+			};
+
 }
