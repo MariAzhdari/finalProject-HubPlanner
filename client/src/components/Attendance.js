@@ -169,4 +169,27 @@ const Attendance = () => {
 				}
 			};
 
+			const handleSubmit = async (e) => {
+					e.preventDefault();
+					try {
+						const response = await fetch("api/submit-attendance", {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({
+								userID,
+								name,
+								role,
+								date,
+								attendanceType,
+							}),
+						});
+						fetchAttendanceData();
+					} catch (error) {
+						console.error("Error submitting attendance:", error);
+					}
+				};
+
+
 }
