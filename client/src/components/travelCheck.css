@@ -115,21 +115,42 @@ h1, h2 {
     margin: 20px auto;
     width: 80%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center children horizontally */
 }
 
 .line-status-list {
     list-style-type: none; /* Removes default bullet points */
     padding: 0;
     margin: 0;
+    width: 100%;  /* Take full width of its container */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center list items horizontally */
 }
 
 .line-status-item {
     font-size: 18px;
     padding: 10px;
     margin: 10px 0;
-    border-left: 5px solid #e11425;
+    width: 100%; /* Take full width of its container */
+    position: relative;
     background-color: #f8f8f8;
     transition: background-color 0.3s;
+    text-align: left;
+}
+
+.line-status-item::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #e11425;
+    border-radius: 50%;  /* Makes it circular */
+    position: absolute;
+    left: 10px;  /* Distance from the left of the list item */
+    top: 50%;    /* Center vertically in the list item */
+    transform: translateY(-50%); /* Fine-tune vertical positioning */
 }
 
 .line-status-item:hover {
