@@ -1,10 +1,3 @@
-/* Reset and basic styling */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f4f6;
-}
 
 /* Navbar styles */
 .navbar {
@@ -12,7 +5,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #e11425;
+    background-color: #ef0437;
     color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -40,7 +33,7 @@ body {
 }
 
 .navListItem a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(47, 20, 203, 0.1);
 }
 
 .logo-img {
@@ -56,6 +49,114 @@ body {
     flex-direction: column;
     margin-top: 30px;
 }
+/* Button Styles */
+button {
+    padding: 15px 25px;
+    background-color: #e11425;
+    color: #ffffff;
+    border: 2px solid #e11425;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: block; /* Makes the button a block element */
+    margin: 20px auto; /* Centers the button and adds some margin */
+    text-transform: uppercase; /* Makes the button text uppercase */
+    max-width: 250px;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #e11425;
+}
+
+/* Disruptions container */
+.disruptions-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.disruption-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.disruption-item {
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px 0;
+    border-left: 5px solid #e11425;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
+}
+
+.disruption-item:hover {
+    background-color: #e6e6e6;
+}
+
+h1, h2 {
+    border-bottom: 2px solid #e11425;
+    padding-bottom: 10px;
+    font-size: 24px;
+    text-align: center; /* Center the headers */
+}
+
+/* Line statuses styles */
+.line-status-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Center children horizontally */
+}
+
+.line-status-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0;
+    width: 100%;  /* Take full width of its container */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center list items horizontally */
+}
+
+.line-status-item {
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%; /* Take full width of its container */
+    position: relative;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s;
+    text-align: left;
+}
+
+.line-status-item::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #e11425;
+    border-radius: 50%;  /* Makes it circular */
+    position: absolute;
+    left: 10px;  /* Distance from the left of the list item */
+    top: 50%;    /* Center vertically in the list item */
+    transform: translateY(-50%); /* Fine-tune vertical positioning */
+}
+
+.line-status-item:hover {
+    background-color: #e6e6e6;
+}
+
 
 .Datebutton, .Travelbutton {
     padding: 15px 25px;
@@ -96,7 +197,7 @@ body {
 }
 
 .list li:hover {
-    color: #2d83d9;
+    color: #df2030;
 }
 
 /* Responsive design for smaller screens */
@@ -123,4 +224,4 @@ body {
     .list-container {
         padding: 20px;
     }
-}
+} 

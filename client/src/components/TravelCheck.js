@@ -1,105 +1,139 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/cyfLogo1.png";
 import "./travelCheck.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 const TravelCheck = () => {
- const [disruptions, setDisruptions] = useState([]);
- const [selectedDate, setSelectedDate] = useState(new Date());
+	// const [modes, setModes] = useState([]);
+	const [lineStatuses, setLineStatuses] = useState([]);
+	const [disruptions, setDisruptions] = useState([]);
+	const [showLineStatuses, setShowLineStatuses] = useState(false);
+	const [showDisruptions, setShowDisruptions] = useState(false);
 
-const fetchDisruptions = async () => {
-	const formattedDate = selectedDate.toISOString().split("T")[0];
+	// const fetchModes = async () => {
+	// 	try {
+	// 		const response = await axios.get(
+	// 			"https://api.tfl.gov.uk/Line/Meta/Modes"
+	// 		);
+	// 		setModes(response.data);
+	// 	} catch (error) {
+	// 		console.error("Error fetching modes:", error);
+	// 	}
+	// };
 
-	try {
-		const response = await axios.get(
-			`http://localhost:3100/api/disruptions/${formattedDate}`
-		);
-		setDisruptions(response.data);
-	} catch (error) {
-		console.error("Error fetching disruptions:", error);
-	}
-};
+	const fetchLineStatus = async () => {
+		const selectedModes = "tube,dlr";
+		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Status`;
+		try {
+			const response = await axios.get(url);
+			setLineStatuses(response.data);
+		} catch (error) {
+			console.error("Error fetching line statuses:", error);
+		}
+	};
 
- useEffect(() => {
-		const fetchDisruptions = async () => {
-			try {
-				const response = await axios.get(
-					"https://api.digital.tfl.gov.uk/Line/Mode/GET%20/Line/Mode/tube%2Cdlr/Disruption/Disruption"
-				);
-				setDisruptions(response.data);
-			} catch (error) {
-				console.error("Error fetching disruptions:", error);
-			}
-		};
+	const fetchDisruptions = async () => {
+		const selectedModes = "tube,dlr";
+		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Disruption`;
+		try {
+			const response = await axios.get(url);
+			setDisruptions(response.data);
+		} catch (error) {
+			console.error("Error fetching disruptions:", error);
+		}
+	};
 
-		fetchDisruptions();
- }, [selectedDate]);
-
-    return (
-			<div>
-				<div className="navbar">
-					<ul className="navList">
-						<li className="navListItem">
-							<Link className="link" to="/main">
-								MAIN
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/calendar">
-								CYF CALENDAR
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/travel">
-								TRAVEL CHECK
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/attendance">
-								ATTENDANCE
-							</Link>
-						</li>
-					</ul>
-					<img className="logo-img" src={Logo} alt="logo" />
-				</div>
-
-				<div className="Right">
-					<div>
-						<DatePicker
-							selected={selectedDate}
-							onChange={(date) => setSelectedDate(date)}
-							className="Datebutton"
-						/>
-					</div>
-					<div>
-						<button className="Travelbutton" onClick={fetchDisruptions}>
-							Check Travel Disruption
-						</button>
-					</div>
-				</div>
-
-				<div className="list-container">
-					<div className="list">
-						<ul>
-							{disruptions.map((disruption, index) => (
-								<li key={index}>{disruption.description}</li>
-							))}
-						</ul>
-					</div>
-				</div>
+	return (
+		<>
+			<div className="navbar">
+				<ul className="navList">
+					<li className="navListItem">
+						<Link className="link" to="/main">
+							MAIN
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/calendar">
+							CYF CALENDAR
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/attendance">
+							ATTENDANCE
+						</Link>
+					</li>
+				</ul>
+				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
-		);
+
+			{/* <button onClick={fetchModes}>Fetch Modes</button>
+			<div className="modes-container">
+				<ul>
+					{modes.map((mode, index) => (
+						<li key={index}>
+							Mode Name: {mode.modeName} | Is TFL Service:
+							{mode.isTflService ? "Yes" : "No"} | Is Fare Paying:
+							{mode.isFarePaying ? "Yes" : "No"} | Is Scheduled Service:
+							{mode.isScheduledService ? "Yes" : "No"}
+						</li>
+					))}
+				</ul>
+			</div> */}
+
+			<button
+				onClick={() => {
+					fetchDisruptions();
+					setShowDisruptions(!showDisruptions);
+				}}
+			>
+				Toggle Disruptions
+			</button>
+			{showDisruptions && (
+				<div className="disruptions-container">
+					<h2>Disruptions</h2>
+					<ul className="disruption-list">
+						{disruptions.map((disruption, index) => (
+							<li key={index} className="disruption-item">
+								{disruption.description}
+								<br />
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+
+			<button
+				onClick={() => {
+					fetchLineStatus();
+					setShowLineStatuses(!showLineStatuses);
+				}}
+			>
+				London Lines
+			</button>
+			{showLineStatuses && (
+				<div>
+					<h1>Lines</h1>
+					<ul>
+						{lineStatuses.map((status, index) => (
+							<li key={index}>
+								Line: {status.name}
+								{/* Status: {status.statusDescription} */}
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
+		</>
+	);
 };
 
 export default TravelCheck;
-
-
-
-
-
 
 
 
