@@ -116,3 +116,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./attendance.css";
 import Logo from "./img/cyfLogo1.png";
+
+const Attendance = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
+    const [name, setName] = useState(user.name);
+    const [role, setRole] = useState(user.role);
+    const [userID,setUserID] = useState(user.id);
+    const [date, setDate] = useState("");
+    const [attendanceType, setAttendanceType] = useState("");
+    const [inPersonVolunteers, setInPersonVolunteers] = useState();
+    const [inPersonTrainees, setInPersonTrainees] = useState();
+    const [onlineVolunteers, setOnlineVolunteers] = useState();
+    const [onlineTrainees, setOnlineTrainees] = useState();
+}
