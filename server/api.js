@@ -103,28 +103,34 @@ router.get("/api/disruptions/:date", async (req, res) => {
 
 //******Attendance page******//
 
-// import express from "express";
-// import cors from "cors";
-// // import { Pool } from "pg";
-// import pkg from "pg";
-// const { Pool } = pkg;
+router.get("/fetch-attendance-data", async (_, res) => {
+	try {
+		const attendanceData = await pool.query("SELECT * FROM Attendance; ");
+		res.json(attendanceData.rows);
+	} catch (error) {
+		console.error("Error fetching attendance data:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
 
-// const app = express();
-// const PORT = process.env.PORT || 5000;
 
-// app.use(cors());
-// app.use(express.json());
+// Submit attendance data
+router.post("/submit-attendance", async (req, res) => {
+  const { userID ,name, role, date, attendanceType } = req.body;
 
-// import dotenv from "dotenv";
-// dotenv.config();
+  try {
 
-// const dbPool = new Pool({
-// 	connectionString: process.env.DB_URL,
-// 	ssl: {
-// 		rejectUnauthorized: false,
-// 	},
-// });
+    const newAttendance = await pool.query(
+      "INSERT INTO Attendance (userid, name, role, date, attendance_type) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [userID, name, role, date, attendanceType]
+    );
 
+    res.status(201).json(newAttendance.rows[0]);
+  } catch (error) {
+    console.error("Error submitting attendance:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // Fetch user data
 router.get("/fetch-user-data", async (req, res) => {
@@ -209,7 +215,7 @@ function getUserIdFromRequest(req) {
    if (req.user && req.user.id) {
     return req.user.id;
 }
-};
+}
 
 
 
