@@ -1,10 +1,3 @@
-/* Reset and basic styling */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f4f6;
-}
 
 /* Navbar styles */
 .navbar {
@@ -12,7 +5,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #e11425;
+    background-color: #ef0437;
     color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -40,7 +33,7 @@ body {
 }
 
 .navListItem a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(47, 20, 203, 0.1);
 }
 
 .logo-img {
@@ -96,7 +89,7 @@ body {
 }
 
 .list li:hover {
-    color: #2d83d9;
+    color: #df2030;
 }
 
 /* Responsive design for smaller screens */
@@ -123,4 +116,4 @@ body {
     .list-container {
         padding: 20px;
     }
-}
+} 
