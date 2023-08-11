@@ -169,4 +169,137 @@ const Attendance = () => {
 				}
 			};
 
+			const handleSubmit = async (e) => {
+					e.preventDefault();
+					try {
+						const response = await fetch("api/submit-attendance", {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({
+								userID,
+								name,
+								role,
+								date,
+								attendanceType,
+							}),
+						});
+						fetchAttendanceData();
+					} catch (error) {
+						console.error("Error submitting attendance:", error);
+					}
+				};
+				 return (
+        <div className="top-container">
+            <div className="navbar">
+                <ul className="navList">
+                    <li className="navListItem">
+                        <Link className="link" to="/main">
+                            MAIN
+                        </Link>
+                    </li>
+                    <li className="navListItem">
+                        <Link className="link" to="/calendar">
+                            CYF CALENDAR
+                        </Link>
+                    </li>
+                    <li className="navListItem">
+                        <Link className="link" to="/attendance">
+                            ATTENDANCE
+                        </Link>
+                    </li>
+                    <li className="navListItem">
+                        <Link className="link" to="/travel">
+                            TRAVEL CHECK
+                        </Link>
+                    </li>
+                </ul>
+                <img className="logo-img" src={Logo} alt="logo" />
+            </div>
+            <div className="middle-container">
+                <form className="middle-container" onSubmit={handleSubmit}>
+                    <div className="input-container">
+                        <label>{name}</label>
+                    </div>
+                    <div className="input-container">
+                    <label>{role}</label>
+                    </div>
+                    <div className="input-container">
+                        <input type="date" id="date-input" placeholder="Date" onChange={(e) => setDate(e.target.value)} value={date}></input>
+                    </div>
+                    <div className="attendance-select">
+                        <select className="select-container" id="attendanceType" onChange={(e) => setAttendanceType(e.target.value)}>
+                            <option>Attendance</option>
+                            <option value="in-person">In-Person</option>
+                            <option value="remote">Online</option>
+                            <option value="not-attend">Not-Attend</option>
+                        </select>
+                    </div>
+                    <button type="submit" className="submit-btn">
+                        Submit
+                    </button>
+                </form>
+            </div>
+            <div className="container">
+                <div className="section">
+                    <h2>In-Person</h2>
+                    <div className="columns">
+                        <div className="column">
+                            <h3>Volunteer</h3>
+                            <ul className="list">
+                                {inPersonVolunteers?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="column">
+                            <h3>Trainee</h3>
+                            <ul className="list">
+                                {inPersonTrainees?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+				<div className="section">
+                    <h2>Online</h2>
+                    <div className="columns">
+                        <div className="column">
+                            <h3>Volunteer</h3>
+                            <ul className="list">
+                                {onlineVolunteers?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="column">
+                            <h3>Trainee</h3>
+                            <ul className="list">
+                                {onlineTrainees?.map((user) => (
+                                    <li key={user.name}>{user.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+export default Attendance;
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
