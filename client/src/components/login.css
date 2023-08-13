@@ -42,8 +42,7 @@
 }
  
 
-/* password */
-
+/* Styles for the password input and its eye icon */
 .passwordWrapper {
     position: relative;
     display: flex;
@@ -52,20 +51,29 @@
     padding: 8px;
 }
 
-.transparentInput {
+.loginInput.transparentInput {
     background-color: transparent;
     border: none;
-    flex-grow: 1;  /* Makes sure input takes the entire width minus the icon */
+    flex-grow: 1;
     outline: none;
 }
 
-.transparentInput:focus {
+.loginInput.transparentInput:focus {
     box-shadow: none;
 }
 
-.transparentInput:focus + i {
-    color: #007BFF; /* or any color to indicate focus */
+.loginInput.transparentInput:focus + .passwordToggleIcon {
+    color: #007BFF;
 }
+
+.passwordToggleIcon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 
 @media (max-width: 600px) {
   .contentContainer {

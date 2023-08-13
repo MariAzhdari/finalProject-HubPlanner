@@ -95,19 +95,13 @@ function Login() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
-						
 						<i
-							className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}
+							className={
+								showPassword
+									? "fas fa-eye-slash passwordToggleIcon"
+									: "fas fa-eye passwordToggleIcon"}
 							onClick={() => setShowPassword(!showPassword)}
-							style={{
-								cursor: "pointer",
-								position: "absolute",
-								right: "10px",
-								top: "50%",
-								transform: "translateY(-50%)",
-							}}
 						></i>
-						
 					</div>
 
 					<button onClick={loginHandler} className="loginButton" type="submit">
