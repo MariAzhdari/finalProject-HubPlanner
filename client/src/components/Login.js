@@ -78,16 +78,17 @@ function Login() {
 			<div className="contentContainer">
 				<h1>CYF Hub Planner</h1>
 				<form className="loginForm">
-					<label className="label">Email</label>
-					<input
-						className="loginInput"
-						type="text"
-						placeholder="Enter your email..."
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
+					<div className="inputWrapper">
+						<input
+							className="loginInput transparentInput"
+							type="text"
+							placeholder="Enter your email..."
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
 
-					<div className="passwordWrapper">
+					<div className="inputWrapper">
 						<input
 							className="loginInput transparentInput"
 							type={showPassword ? "text" : "password"}
@@ -99,7 +100,8 @@ function Login() {
 							className={
 								showPassword
 									? "fas fa-eye-slash passwordToggleIcon"
-									: "fas fa-eye passwordToggleIcon"}
+									: "fas fa-eye passwordToggleIcon"
+							}
 							onClick={() => setShowPassword(!showPassword)}
 						></i>
 					</div>
