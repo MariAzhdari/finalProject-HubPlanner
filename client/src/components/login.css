@@ -40,6 +40,32 @@
   display: flex; 
   gap: 10px; 
 }
+ 
+
+/* password */
+
+.passwordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.transparentInput {
+    background-color: transparent;
+    border: none;
+    flex-grow: 1;  /* Makes sure input takes the entire width minus the icon */
+    outline: none;
+}
+
+.transparentInput:focus {
+    box-shadow: none;
+}
+
+.transparentInput:focus + i {
+    color: #007BFF; /* or any color to indicate focus */
+}
 
 @media (max-width: 600px) {
   .contentContainer {

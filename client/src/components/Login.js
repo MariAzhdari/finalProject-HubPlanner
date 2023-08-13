@@ -7,9 +7,10 @@ import Logo from "./img/CYF-logo2.png";
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// New state for show/hide password
+	const [showPassword, setShowPassword] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem("user") || null);
-    const navigate = useNavigate();
-
+	const navigate = useNavigate();
 
 	const allFieldsFilled = email && password;
 
@@ -26,12 +27,12 @@ function Login() {
 			password,
 		});
 
-   setUser(response.data);
-   console.log(response.data);
+		setUser(response.data);
+		console.log(response.data);
 		localStorage.setItem("user", JSON.stringify(response.data));
 		if (response.data.email) {
 			navigate("/main");
-		}else{
+		} else {
 			alert(response.data);
 		}
 	}
@@ -86,14 +87,16 @@ function Login() {
 						onChange={(e) => setEmail(e.target.value)}
 					/>
 
-					<label className="label">Password</label>
-					<input
-						className="loginInput"
-						type="password"
-						placeholder="Enter your password..."
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
+					<div className="passwordWrapper">
+						<input
+							className="loginInput transparentInput"
+							type={showPassword ? "text" : "password"}
+							placeholder="Enter your password..."
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+				
+					</div>
 
 					<button onClick={loginHandler} className="loginButton" type="submit">
 						Login
