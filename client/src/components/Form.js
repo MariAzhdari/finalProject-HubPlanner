@@ -47,7 +47,7 @@ function Form() {
 			{/*... Rest of your code ...*/}
 			<img className="logo-img" src={Logo1} alt="logo" />
 			<form className="loginForm">
-				<label className="label">Name</label>
+				<label className="label"> Full Name</label>
 				<input
 					className="loginInput"
 					type="text"
