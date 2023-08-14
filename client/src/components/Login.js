@@ -7,9 +7,10 @@ import Logo from "./img/CYF-logo2.png";
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	// New state for show/hide password
+	const [showPassword, setShowPassword] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem("user") || null);
-    const navigate = useNavigate();
-
+	const navigate = useNavigate();
 
 	const allFieldsFilled = email && password;
 
@@ -26,12 +27,12 @@ function Login() {
 			password,
 		});
 
-   setUser(response.data);
-   console.log(response.data);
+		setUser(response.data);
+		console.log(response.data);
 		localStorage.setItem("user", JSON.stringify(response.data));
 		if (response.data.email) {
 			navigate("/main");
-		}else{
+		} else {
 			alert(response.data);
 		}
 	}
@@ -77,23 +78,33 @@ function Login() {
 			<div className="contentContainer">
 				<h1>CYF Hub Planner</h1>
 				<form className="loginForm">
-					<label className="label">Email</label>
-					<input
-						className="loginInput"
-						type="text"
-						placeholder="Enter your email..."
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
+					<div className="inputWrapper">
+						<input
+							className="loginInput transparentInput"
+							type="text"
+							placeholder="Enter your email..."
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
 
-					<label className="label">Password</label>
-					<input
-						className="loginInput"
-						type="password"
-						placeholder="Enter your password..."
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
+					<div className="inputWrapper">
+						<input
+							className="loginInput transparentInput"
+							type={showPassword ? "text" : "password"}
+							placeholder="Enter your password..."
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+						<i
+							className={
+								showPassword
+									? "fas fa-eye-slash passwordToggleIcon"
+									: "fas fa-eye passwordToggleIcon"
+							}
+							onClick={() => setShowPassword(!showPassword)}
+						></i>
+					</div>
 
 					<button onClick={loginHandler} className="loginButton" type="submit">
 						Login
