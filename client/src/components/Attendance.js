@@ -194,28 +194,83 @@ const Attendance = () => {
 					console.error("Error fetching attendance data:", error);
 				}
 			};
+            //old handlesubmit://
+			// const handleSubmit = async (e) => {
+			// 		e.preventDefault();
+			// 		try {
+			// 			const response = await fetch("api/submit-attendance", {
+			// 				method: "POST",
+			// 				headers: {
+			// 					"Content-Type": "application/json",
+			// 				},
+			// 				body: JSON.stringify({
+			// 					userID,
+			// 					name,
+			// 					role,
+			// 					date,
+			// 					attendanceType,
+			// 				}),
+			// 			});
+			// 			fetchAttendanceData();
+			// 		} catch (error) {
+			// 			console.error("Error submitting attendance:", error);
+			// 		}
+			// 	};
 
+			//new handleSubmit://
 			const handleSubmit = async (e) => {
-					e.preventDefault();
-					try {
-						const response = await fetch("api/submit-attendance", {
+				e.preventDefault();
+
+				try {
+					// Check if the user has already submitted attendance
+					const existingAttendance = await fetch("api/check-attendance", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							userID,
+							date,
+						}),
+					});
+
+					if (existingAttendance.ok) {
+						// Delete the user's previous submission
+						await fetch("api/delete-attendance", {
 							method: "POST",
 							headers: {
 								"Content-Type": "application/json",
 							},
 							body: JSON.stringify({
 								userID,
-								name,
-								role,
 								date,
-								attendanceType,
 							}),
 						});
-						fetchAttendanceData();
-					} catch (error) {
-						console.error("Error submitting attendance:", error);
 					}
-				};
+
+					// Submit the new attendance
+					const response = await fetch("api/submit-attendance", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							userID,
+							name,
+							role,
+							date,
+							attendanceType,
+						}),
+					});
+
+					if (response.ok) {
+						fetchAttendanceData(); // Refresh the attendance data
+					}
+				} catch (error) {
+					console.error("Error submitting attendance:", error);
+				}
+			};
+
 				return (
 					<div className="top-container">
 						<div className="navbar">
