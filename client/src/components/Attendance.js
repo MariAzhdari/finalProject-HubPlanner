@@ -166,6 +166,30 @@ const Attendance = () => {
 					// 	(item) => item.attendance_type === "remote"
 					// );
 					// setOnlineTrainees(onlineTrain);
+					// Separate volunteers and trainees based on attendance type
+					const volunteers = data.filter((item) =>
+						item.role.includes("volunteer")
+					);
+					const trainees = data.filter((item) => item.role.includes("trainee"));
+
+					// Further separate volunteers and trainees based on attendance type
+					const inPersonVolunteers = volunteers.filter(
+						(item) => item.attendance_type === "in-person"
+					);
+					const onlineVolunteers = volunteers.filter(
+						(item) => item.attendance_type === "remote"
+					);
+					const inPersonTrainees = trainees.filter(
+						(item) => item.attendance_type === "in-person"
+					);
+					const onlineTrainees = trainees.filter(
+						(item) => item.attendance_type === "remote"
+					);
+
+					setInPersonVolunteers(inPersonVolunteers);
+					setOnlineVolunteers(onlineVolunteers);
+					setInPersonTrainees(inPersonTrainees);
+					setOnlineTrainees(onlineTrainees);
 				} catch (error) {
 					console.error("Error fetching attendance data:", error);
 				}
