@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/CYF-logo2.png";
 import Logo1 from "./img/cyfLogo1.png";
 import "./main.css";
 
 const Main = () => {
+const user = JSON.parse(localStorage.getItem("user"));
+const [name] = useState(user.name);
+
 	return (
 		<div>
 			<div className="navbar">
@@ -30,6 +33,7 @@ const Main = () => {
 						</Link>
 					</li>
 				</ul>
+
 				<img className="logo-img" src={Logo1} alt="logo" />
 			</div>
 			<div className="container">
@@ -38,34 +42,35 @@ const Main = () => {
 					<p>Your Attendance, Your Journey, One Click Away!</p>
 				</div>
 				<div className="down">
-							<div className="down">
-								<div className="downLeft">
-									<a
-										href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<i className="topIcon fab fa-facebook-square"></i>
-									</a>
-									<a
-										href="https://www.instagram.com/codeyourfuture_/channel/"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<i className="topIcon fab fa-instagram-square"></i>
-									</a>
-									<a
-										href="https://twitter.com/codeyourfuture?lang=en"
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										<i className="topIcon fab fa-twitter-square"></i>
-									</a>
-									<a href="mailto:contact@codeyourfuture.io">
-										<i className="topIcon fas fa-envelope-square"></i>
-									</a>
-								</div>
+					<div className="down">
+						<div className="downLeft">
+							<a
+								href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<i className="topIcon fab fa-facebook-square"></i>
+							</a>
+							<a
+								href="https://www.instagram.com/codeyourfuture_/channel/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<i className="topIcon fab fa-instagram-square"></i>
+							</a>
+							<a
+								href="https://twitter.com/codeyourfuture?lang=en"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<i className="topIcon fab fa-twitter-square"></i>
+							</a>
+							<a href="mailto:contact@codeyourfuture.io">
+								<i className="topIcon fas fa-envelope-square"></i>
+							</a>
+						</div>
 					</div>
+					<h1 className="welcome"> welcome {name}</h1>
 					<img className="logo-img2" src={Logo} alt="logo" />
 				</div>
 			</div>

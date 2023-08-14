@@ -5,7 +5,6 @@
   margin-top: 40px;
   padding: 0;
   list-style: none;
-  
 }
 
 .navListItem {
@@ -31,8 +30,6 @@
   z-index: 999;
   font-family: "Josefin Sans", sans-serif;
   justify-content:space-between;
-  
-  
 }
 .downLeft {
   flex: 3;
@@ -40,6 +37,8 @@
   margin-bottom: 10px;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 120%;
+
   
 }
 
@@ -63,6 +62,7 @@
 .logo-img2 {
   width: 500px;
   height: 400px;
+  margin-top: 500px;
 }
 .up h1 {
   color:brown;
@@ -83,4 +83,9 @@
 .link {
   text-decoration: none;
   color: black;
+}
+.welcome{
+border: none;
+font-size: 2rem;
+
 }
