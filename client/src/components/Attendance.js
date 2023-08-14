@@ -339,7 +339,7 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Volunteer({inPersonVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{inPersonVolunteers?.map((user) => (
+											{inPersonVolunteers?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
 												<li key={user.name}>
 													{user.name}(
 													<span>
@@ -353,7 +353,7 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Trainee({inPersonTrainees?.length || 0})</h3>
 										<ul className="list">
-											{inPersonTrainees?.map((user) => (
+											{inPersonTrainees?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
 												<li key={user.name}>
 													{user.name}(
 													<span>
@@ -372,7 +372,7 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Volunteer({onlineVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{onlineVolunteers?.map((user) => (
+											{onlineVolunteers?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
 												<li key={user.name}>
 													{user.name}(
 													<span>
@@ -386,7 +386,7 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Trainee({onlineTrainees?.length || 0})</h3>
 										<ul className="list">
-											{onlineTrainees?.map((user) => (
+											{onlineTrainees?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
 												<li key={user.name}>
 													{user.name}(
 													<span>
