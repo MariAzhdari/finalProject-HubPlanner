@@ -146,26 +146,26 @@ const Attendance = () => {
 					});
 					const data = await response.json();
 					console.log(data);
-					const inpersonVol = data.filter(
-						(item) =>
-							item.role.includes("volunteer") &&
-							item.attendance_type === "in-person"
-					);
-					setInPersonVolunteers(inpersonVol);
-					const onlineVol = data.filter(
-						(item) =>
-							item.role.includes("volunteer") &&
-							item.attendance_type === "remote"
-					);
-					setOnlineVolunteers(onlineVol);
-					const inpersonTrain = data.filter(
-						(item) => item.attendance_type === "in-person"
-					);
-					setInPersonTrainees(inpersonTrain);
-					const onlineTrain = data.filter(
-						(item) => item.attendance_type === "remote"
-					);
-					setOnlineTrainees(onlineTrain);
+					// const inpersonVol = data.filter(
+					// 	(item) =>
+					// 		item.role.includes("volunteer") &&
+					// 		item.attendance_type === "in-person"
+					// );
+					// setInPersonVolunteers(inpersonVol);
+					// const onlineVol = data.filter(
+					// 	(item) =>
+					// 		item.role.includes("volunteer") &&
+					// 		item.attendance_type === "remote"
+					// );
+					// setOnlineVolunteers(onlineVol);
+					// const inpersonTrain = data.filter(
+					// 	(item) => item.attendance_type === "in-person"
+					// );
+					// setInPersonTrainees(inpersonTrain);
+					// const onlineTrain = data.filter(
+					// 	(item) => item.attendance_type === "remote"
+					// );
+					// setOnlineTrainees(onlineTrain);
 				} catch (error) {
 					console.error("Error fetching attendance data:", error);
 				}
@@ -225,7 +225,7 @@ const Attendance = () => {
 									<input type="text" value={name} />
 								</div>
 								<div className="input-container">
-                                    <input type="text" value={role} />
+									<input type="text" value={role} />
 								</div>
 								<div className="input-container">
 									<input
@@ -258,7 +258,7 @@ const Attendance = () => {
 								<h2>In-Person</h2>
 								<div className="columns">
 									<div className="column">
-										<h3>Volunteer</h3>
+										<h3>Volunteer({inPersonVolunteers?.length || 0})</h3>
 										<ul className="list">
 											{inPersonVolunteers?.map((user) => (
 												<li key={user.name}>
@@ -272,7 +272,7 @@ const Attendance = () => {
 										</ul>
 									</div>
 									<div className="column">
-										<h3>Trainee</h3>
+										<h3>Trainee({inPersonTrainees?.length || 0})</h3>
 										<ul className="list">
 											{inPersonTrainees?.map((user) => (
 												<li key={user.name}>
@@ -291,7 +291,7 @@ const Attendance = () => {
 								<h2>Online</h2>
 								<div className="columns">
 									<div className="column">
-										<h3>Volunteer</h3>
+										<h3>Volunteer({onlineVolunteers?.length || 0})</h3>
 										<ul className="list">
 											{onlineVolunteers?.map((user) => (
 												<li key={user.name}>
@@ -305,7 +305,7 @@ const Attendance = () => {
 										</ul>
 									</div>
 									<div className="column">
-										<h3>Trainee</h3>
+										<h3>Trainee({onlineTrainees?.length || 0})</h3>
 										<ul className="list">
 											{onlineTrainees?.map((user) => (
 												<li key={user.name}>
