@@ -32,7 +32,6 @@ const TravelCheck = () => {
 			console.error("Error fetching line statuses:", error);
 		}
 	};
-
 	const fetchDisruptions = async () => {
 		const selectedModes = "tube,dlr";
 		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Disruption`;
@@ -43,7 +42,6 @@ const TravelCheck = () => {
 			console.error("Error fetching disruptions:", error);
 		}
 	};
-
 	return (
 		<>
 			<div className="navbar">
