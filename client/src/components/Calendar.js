@@ -74,8 +74,8 @@ const Calendar = () => {
 							<div className="leftItem">
 								{sessionData.map((session) => (
 									<div key={session.id} className="">
-										{new Date(session.session_date).toLocaleDateString()}
-										<div>10:00-5:00</div>
+										<div className="sessionDate">{new Date(session.session_date).toLocaleDateString()}</div>
+										<div className="timeOfSession">10:00-17:00</div>
 									</div>
 								))}
 							</div>
