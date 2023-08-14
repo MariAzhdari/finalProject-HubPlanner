@@ -324,7 +324,7 @@ const Attendance = () => {
 										<option>Attendance</option>
 										<option value="in-person">In-Person</option>
 										<option value="remote">Online</option>
-										<option value="not-attend">Not-Attend</option>
+										{/* <option value="not-attend">Not-Attend</option> */}
 									</select>
 								</div>
 								<button type="submit" className="submit-btn">
