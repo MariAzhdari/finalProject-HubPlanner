@@ -1,58 +1,51 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "./img/cyfLogo1.png";
 import "./calendar.css";
 
 const Calendar = () => {
-const [showSessionTable, setShowSessionTable] = useState(true);
-  const [sessionData, setSessionData] = useState([]);
-  const [isAgendaView, setIsAgendaView] = useState(false);
+	const [sessionData, setSessionData] = useState([]);
+	const [showSyllabus, setShowSyllabus] = useState(false); // State to control displaying syllabus
+	const [loading, setLoading] = useState(false);
+	const [showAgenda, setShowAgenda] = useState(false);
 
-  const handleSyllabusClick = () => {
-    setShowSessionTable(true);
-    setIsAgendaView(false);
-    fetchSessions();
-  };
+	const fetchSessions = async () => {
+		try {
+			const response = await fetch("api/fetch-calendar-data");
+			const data = await response.json();
+			setSessionData(data);
+			console.log(data);
 
-  const handleAgendaClick = () => {
-    setShowSessionTable(true);
-    setIsAgendaView(true);
-    updateSessionTimesToCurrentTime();
-  };
+		} catch (error) {
+			console.error("Error fetching session data:", error);
+		}
+	};
+	const handleSyllabusButtonClick = () => {
+			setLoading(true);
+			fetchSessions()
+				.then(() => {
+					setShowSyllabus(true);
+					setShowAgenda(false);
+				})
+				.finally(() => {
+					setLoading(false);
+				});
+		};
+	const handleAgendaButtonClick = () => {
+			setLoading(true);
+			fetchSessions()
+				.then(() => {
+					setShowAgenda(true);
+					setShowSyllabus(false);
+				})
+				.finally(() => {
+					setLoading(false);
+				});
+		};
+	useEffect(() => {
+		fetchSessions();
+	}, []); // Fetch session data when component mounts
 
-  const updateSessionTimesToCurrentTime = () => {
-    // Update session times to the current time for Agenda view
-    const updatedSessionData = sessionData.map((session) => ({
-      ...session,
-      session_date: new Date().toISOString(), // Update to current time
-    }));
-    setSessionData(updatedSessionData);
-  };
-//   const {session}=useParams();
-// //   const []
-// useEffect (()=> {
-// 	const url = `server/calander/&{session}`;
-// 	const fetchData = () => {
-// 		fetch(url)
-// 		.then((res)=>res.json())
-// 		.then((data)=>	)
-// 	}
-// });
- const url = `/server/calendar/${session}`;
-  const fetchSessions = async () => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      setSessionData(data);
-    } catch (error) {
-      console.error("Error fetching session data:", error);
-    }
-  };
-
-  useEffect(() => {
-
-    fetchSessions();
-  }, []); // Fetch session data when component mounts
 	return (
 		<div>
 			<div className="navbar">
@@ -84,37 +77,46 @@ const [showSessionTable, setShowSessionTable] = useState(true);
 			<div className="main">
 				<div className="left">
 					<div className="leftContent">
-				{/* <div className="leftItem" id="week">
-							Week 20
-						</div>
-						<div className="leftItem">React</div>
-						<div className="leftItem">Saturday 23 July 2023</div>
-						<div className="leftItem">10:00 - 17:00</div>  */}
-						{showSessionTable && (
-							<div className="leftItem">
-								{sessionData.map((session) => (
-									<div key={session.id} className="sessionDiv">
-										<div className="leftItem">Session ID: {session.id}</div>
-										<div className="leftItem">Session Name: {session.name}</div>
-										{isAgendaView ? (
-											<div className="leftItem">
-												Session Date: {new Date().toLocaleString()}
+						{loading ? (
+							<p>Loading...</p>
+						) : (
+							<div>
+								{showSyllabus && (
+									<div>
+										<h2>Syllabus</h2>
+										{sessionData.map((session) => (
+											<div key={session.id} className="sessionItem">
+												<p className="weekNumber">{`Week ${session.weeknumber}`}</p>
+												<p className="sessionName">{session.name}</p>
 											</div>
-										) : (
-											<div className="leftItem">Week: {session.WeekNumber}</div>
-										)}
+										))}
 									</div>
-								))}
+								)}
+
+								{showAgenda && (
+									<div>
+										<h2>Agenda</h2>
+										{sessionData.map((session) => (
+											<div key={session.id} className="sessionItem">
+												{new Date(session.session_date).toLocaleDateString()}
+												<p>10:00-5:00</p>
+											</div>
+										))}
+									</div>
+								)}
 							</div>
 						)}
 					</div>
 				</div>
 				<div className="right">
 					<div className="rightContent">
-						<button className="agendaButton" onClick={handleAgendaClick}>
+						<button className="agendaButton" onClick={handleAgendaButtonClick}>
 							Agenda
 						</button>
-						<button className="syllabusButton" onClick={handleSyllabusClick}>
+						<button
+							className="syllabusButton"
+							onClick={handleSyllabusButtonClick}
+						>
 							Syllabus
 						</button>
 					</div>
