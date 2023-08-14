@@ -110,7 +110,7 @@ function Login() {
 						Login
 					</button>
 					<p>
-						Don't have an account? <Link to="/form">Register</Link>
+						Do not have an account? <Link to="/form">Register</Link>
 					</p>
 					{!allFieldsFilled}
 				</form>
