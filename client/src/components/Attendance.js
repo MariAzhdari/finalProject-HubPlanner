@@ -217,6 +217,33 @@ const Attendance = () => {
 			// 		}
 			// 	};
 
+
+			//viewAttendeesByDate://
+    const [selectedDate, setSelectedDate] = useState("");
+		const [attendeesBySelectedDate, setAttendeesBySelectedDate] = useState([]);
+
+		const handleViewAttendeesByDate = async () => {
+			if (selectedDate) {
+				try {
+					const response = await fetch(
+						`api/fetch-attendees-by-date?date=${selectedDate}`,
+						{
+							method: "GET",
+							headers: {
+								"Content-Type": "application/json",
+							},
+						}
+					);
+					const data = await response.json();
+					setAttendeesBySelectedDate(data);
+				} catch (error) {
+					console.error("Error fetching attendees by date:", error);
+				}
+			}
+		};
+		//end of viewAttendeesByDate//
+
+
 			//new handleSubmit://
 			const handleSubmit = async (e) => {
 				e.preventDefault();
@@ -270,6 +297,7 @@ const Attendance = () => {
 					console.error("Error submitting attendance:", error);
 				}
 			};
+
 
 				return (
 					<div className="top-container">
@@ -339,29 +367,33 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Volunteer({inPersonVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{inPersonVolunteers?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{inPersonVolunteers
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 									<div className="column">
 										<h3>Trainee({inPersonTrainees?.length || 0})</h3>
 										<ul className="list">
-											{inPersonTrainees?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{inPersonTrainees
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 								</div>
@@ -372,34 +404,68 @@ const Attendance = () => {
 									<div className="column">
 										<h3>Volunteer({onlineVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{onlineVolunteers?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{onlineVolunteers
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 									<div className="column">
 										<h3>Trainee({onlineTrainees?.length || 0})</h3>
 										<ul className="list">
-											{onlineTrainees?.sort((a, b) => b.date.localeCompare(a.date)).map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{onlineTrainees
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
+						//datepicker for viewAttendeesByDate://
+						<div className="datepicker-container">
+							<label htmlFor="datepicker">View Attendees by Date:</label>
+							<input
+								type="date"
+								id="datepicker"
+								onChange={(e) => setSelectedDate(e.target.value)}
+								value={selectedDate}
+							/>
+							<button
+								type="button"
+								className="view-btn"
+								onClick={handleViewAttendeesByDate}
+							>
+								View
+							</button>
+						</div>
+						{/* Display attendees for the selected date */}
+						{attendeesBySelectedDate.length > 0 && (
+							<div className="section">
+								<h2>
+									Attendees for {moment(selectedDate).format("Do MMMM YYYY")}
+								</h2>
+								<ul className="list">
+									{attendeesBySelectedDate.map((user) => (
+										<li key={user.name}>{user.name}</li>
+									))}
+								</ul>
+							</div>
+						)}
 					</div>
 				);
 };
