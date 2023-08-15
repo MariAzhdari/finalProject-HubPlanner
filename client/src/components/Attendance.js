@@ -220,13 +220,13 @@ const Attendance = () => {
 
 			//viewAttendeesByDate://
     const [selectedDate, setSelectedDate] = useState("");
-		const [attendeesBySelectedDate, setAttendeesBySelectedDate] = useState([]);
+	const [attendeesBySelectedDate, setAttendeesBySelectedDate] = useState([]);
 
 		const handleViewAttendeesByDate = async () => {
 			if (selectedDate) {
 				try {
 					const response = await fetch(
-						`api/fetch-attendees-by-date?date=${selectedDate}`,
+						`/fetch-attendees-by-date?date=${selectedDate}`,
 						{
 							method: "GET",
 							headers: {
@@ -241,7 +241,7 @@ const Attendance = () => {
 				}
 			}
 		};
-		//end of viewAttendeesByDate//
+		// end of viewAttendeesByDate:
 
 
 			//new handleSubmit://
@@ -436,7 +436,7 @@ const Attendance = () => {
 								</div>
 							</div>
 						</div>
-						//datepicker for viewAttendeesByDate://
+						{/* datepicker for viewAttendeesByDate: */}
 						<div className="datepicker-container">
 							<label htmlFor="datepicker">View Attendees by Date:</label>
 							<input

@@ -213,6 +213,22 @@ router.post("/submit-attendance", async (req, res) => {
   }
 });
 
+// Fetch attendees by selected date
+router.get("/fetch-attendees-by-date", async (req, res) => {
+    const selectedDate = req.query.date;
+
+    try {
+        const attendanceData = await pool.query(
+            "SELECT * FROM Attendance WHERE date = $1",
+            [selectedDate]
+        );
+        res.json(attendanceData.rows);
+    } catch (error) {
+        console.error("Error fetching attendees by date:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 
 //////old/////
 // // Fetch user data
