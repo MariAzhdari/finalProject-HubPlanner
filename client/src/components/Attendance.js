@@ -130,6 +130,7 @@ const Attendance = () => {
     const [inPersonTrainees, setInPersonTrainees] = useState();
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
+	// const [data, setData] = useState([]);
 
 
 	useEffect(() => {
@@ -145,6 +146,8 @@ const Attendance = () => {
 						},
 					});
 					const data = await response.json();
+					// const dataResponse = await response.json();
+					// setData(dataResponse);
 					console.log(data);
 					// const inpersonVol = data.filter(
 					// 	(item) =>
@@ -167,10 +170,10 @@ const Attendance = () => {
 					// );
 					// setOnlineTrainees(onlineTrain);
 					// Separate volunteers and trainees based on attendance type
-					const volunteers = data.filter((item) =>
+					const volunteers = data?.filter((item) =>
 						item.role.includes("volunteer")
 					);
-					const trainees = data.filter((item) => item.role.includes("trainee"));
+					const trainees = data?.filter((item) => item.role.includes("trainee"));
 
 					// Further separate volunteers and trainees based on attendance type
 					const inPersonVolunteers = volunteers.filter(
