@@ -222,18 +222,37 @@ const Attendance = () => {
     const [selectedDate, setSelectedDate] = useState("");
 	const [attendeesBySelectedDate, setAttendeesBySelectedDate] = useState([]);
 
+		// const handleViewAttendeesByDate = async () => {
+		// 	if (selectedDate) {
+		// 		try {
+		// 			const response = await fetch(
+		// 				`/fetch-attendees-by-date?date=${selectedDate}`,
+		// 				{
+		// 					method: "GET",
+		// 					headers: {
+		// 						"Content-Type": "application/json",
+		// 					},
+		// 				}
+		// 			);
+		// 			const data = await response.json();
+		// 			setAttendeesBySelectedDate(data);
+		// 		} catch (error) {
+		// 			console.error("Error fetching attendees by date:", error);
+		// 		}
+		// 	}
+		// };
+
+
 		const handleViewAttendeesByDate = async () => {
 			if (selectedDate) {
 				try {
-					const response = await fetch(
-						`/fetch-attendees-by-date?date=${selectedDate}`,
-						{
-							method: "GET",
-							headers: {
-								"Content-Type": "application/json",
-							},
-						}
-					);
+					const response = await fetch("/fetch-attendees-by-date", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ date: selectedDate }),
+					});
 					const data = await response.json();
 					setAttendeesBySelectedDate(data);
 				} catch (error) {
@@ -241,7 +260,7 @@ const Attendance = () => {
 				}
 			}
 		};
-		// end of viewAttendeesByDate:
+		// end of viewAttendeesByDate
 
 
 			//new handleSubmit://
