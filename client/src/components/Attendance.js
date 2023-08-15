@@ -246,7 +246,7 @@ const Attendance = () => {
 		const handleViewAttendeesByDate = async () => {
 			if (selectedDate) {
 				try {
-					const response = await fetch("/fetch-attendees-by-date", {
+					const response = await fetch("api/fetch-attendees-by-date", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
