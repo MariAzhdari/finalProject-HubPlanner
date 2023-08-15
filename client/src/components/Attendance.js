@@ -170,10 +170,10 @@ const Attendance = () => {
 					// );
 					// setOnlineTrainees(onlineTrain);
 					// Separate volunteers and trainees based on attendance type
-					const volunteers = data?.filter((item) =>
+					const volunteers = data.filter((item) =>
 						item.role.includes("volunteer")
 					);
-					const trainees = data?.filter((item) => item.role.includes("trainee"));
+					const trainees = data.filter((item) => item.role.includes("trainee"));
 
 					// Further separate volunteers and trainees based on attendance type
 					const inPersonVolunteers = volunteers.filter(
