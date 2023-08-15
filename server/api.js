@@ -60,6 +60,7 @@ router.post("/login", async (req, res) => {
 		if (!password === user.rows[0].password) {
 			return res.json("Invalid password");
 		}
+		// eslint-disable-next-line no-console
 		console.log(user.rows[0]);
  res.json(user.rows[0]);
 	} catch (err) {
@@ -101,7 +102,45 @@ router.post("/login", async (req, res) => {
 //      });
 //  }
 // });
+// endpoint for calender data//
+router.get("/fetch-calendar-data",async (_, res) => {
+	try {
+		//  const currentDate = new Date();
+		// 	const currentWeekNumber = Math.ceil(
+		// 		(currentDate - new Date(currentDate.getFullYear(), 0, 1)) / 604800000
+		// 	);
+		// const currentDate = new Date();
+		// const currentDayOfWeek = currentDate.getDay();
+		// const daysToSubtract = currentDayOfWeek;
+		// const startOfWeek = new Date(currentDate);
+		// startOfWeek.setDate(startOfWeek.getDate() - daysToSubtract);
+		// const endOfWeek = new Date(startOfWeek);
+		// endOfWeek.setDate(endOfWeek.getDate() + 6);
+		const calenderData = await pool.query(
+			"SELECT * FROM session WHERE EXTRACT(WEEK FROM session_date) = EXTRACT(WEEK FROM CURRENT_DATE) "
+		);
 
+		res.json(calenderData.rows);
+		// const currentDate = new Date().toISOString(); // Get current date in ISO format
+
+	// 	const query = `
+    //   SELECT *
+    //   FROM session
+    //   WHERE session_date > $1
+    //   ORDER BY session_date ASC
+    //   LIMIT 1`;
+//   const sessionData = await pool.query(query, [currentDate]);
+		// const sessionData = await pool.query(
+		// 	"SELECT * FROM session WHERE session_date > $1 ORDER BY session_date ASC LIMIT 1`; ",
+		// 	[currentDate]
+		// );
+		// res.json(sessionData.rows);
+	} catch (error) {
+		// eslint-disable-next-line no-console
+		console.error("Error fetching session data:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
 
 
 
@@ -114,6 +153,7 @@ router.get("/fetch-attendance-data", async (_, res) => {
 		const attendanceData = await pool.query("SELECT * FROM Attendance; ");
 		res.json(attendanceData.rows);
 	} catch (error) {
+		// eslint-disable-next-line no-console
 		console.error("Error fetching attendance data:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
@@ -133,6 +173,7 @@ router.post("/submit-attendance", async (req, res) => {
 
     res.status(201).json(newAttendance.rows[0]);
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error("Error submitting attendance:", error);
     res.status(500).json({ error: "Internal server error" });
   }

@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/cyfLogo1.png";
 import "./calendar.css";
 
 const Calendar = () => {
+	const [sessionData, setSessionData] = useState([]);
+
+	const fetchSessions = async () => {
+		try {
+			const response = await fetch("api/fetch-calendar-data");
+			const data = await response.json();
+			setSessionData(data);
+		} catch (error) {
+			console.error("Error fetching session data:", error);
+		}
+	};
+
+	useEffect(() => {
+		fetchSessions();
+	}, []); // Fetch session data when component mounts
+	// Handle Syllabus Button Click
+	const handleSyllabusButtonClick = () => {
+		// Redirect to the Syllabus link
+		window.location.href = "https://syllabus.codeyourfuture.io/Overview";
+	};
+	// Handle Agenda Button Click
+	const handleAgendaButtonClick = () => {
+		// Redirect to the Agenda link
+		window.location.href =
+			"https://docs.google.com/spreadsheets/d/10TPHM4i0KTRt99AumwzFmzDGm8uCJKrEPnx-IsvYMfM/edit?pli=1#gid=0";
+	};
+
 	return (
 		<div>
 			<div className="navbar">
@@ -35,18 +62,37 @@ const Calendar = () => {
 			<div className="main">
 				<div className="left">
 					<div className="leftContent">
-						<div className="leftItem" id="week">
-							Week 20
+						<div className="leftItem">
+							<div className="leftItem">
+								{sessionData.map((session) => (
+									<div key={session.id} className="">
+										<div className="weekNumber">{`Week ${session.weeknumber}`}</div>
+										<div className="sessionName">{session.name}</div>
+									</div>
+								))}
+							</div>
+							<div className="leftItem">
+								{sessionData.map((session) => (
+									<div key={session.id} className="">
+										<div className="sessionDate">{new Date(session.session_date).toLocaleDateString()}</div>
+										<div className="timeOfSession">10:00-17:00</div>
+									</div>
+								))}
+							</div>
 						</div>
-						<div className="leftItem">React</div>
-						<div className="leftItem">Saturday 23 July 2023</div>
-						<div className="leftItem">10:00 - 17:00</div>
 					</div>
 				</div>
 				<div className="right">
 					<div className="rightContent">
-						<button className="agendaButton">Agenda</button>
-						<button className="syllabusButton">Syllabus</button>
+						<button className="agendaButton" onClick={handleAgendaButtonClick}>
+							Agenda
+						</button>
+						<button
+							className="syllabusButton"
+							onClick={handleSyllabusButtonClick}
+						>
+							Syllabus
+						</button>
 					</div>
 				</div>
 			</div>
