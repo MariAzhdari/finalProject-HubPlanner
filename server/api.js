@@ -148,6 +148,36 @@ router.get("/fetch-calendar-data",async (_, res) => {
 //******Attendance page******//
 ///////////////////////////////
 
+// router.get("/fetch-attendance-data", async (_, res) => {
+// 	try {
+// 		const attendanceData = await pool.query("SELECT * FROM Attendance; ");
+// 		res.json(attendanceData.rows);
+// 	} catch (error) {
+// 		console.error("Error fetching attendance data:", error);
+// 		res.status(500).json({ error: "Internal server error" });
+// 	}
+// });
+
+
+// // Submit attendance data
+// router.post("/submit-attendance", async (req, res) => {
+//   const { userID ,name, role, date, attendanceType } = req.body;
+
+//   try {
+
+//     const newAttendance = await pool.query(
+//       "INSERT INTO Attendance (userid, name, role, date, attendance_type) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+//       [userID, name, role, date, attendanceType]
+//     );
+
+//     res.status(201).json(newAttendance.rows[0]);
+//   } catch (error) {
+//     console.error("Error submitting attendance:", error);
+//     res.status(500).json({ error: "Internal server error" });
+//   }
+// });
+
+// Fetch attendance data
 router.get("/fetch-attendance-data", async (_, res) => {
 	try {
 		const attendanceData = await pool.query("SELECT * FROM Attendance; ");
@@ -159,12 +189,62 @@ router.get("/fetch-attendance-data", async (_, res) => {
 	}
 });
 
+// Check if user has already submitted attendance for a specific date
+router.post("/check-attendance", async (req, res) => {
+  const { userID, date } = req.body;
+
+  try {
+    const existingAttendance = await pool.query(
+      "SELECT * FROM Attendance WHERE userid = $1 AND date = $2",
+      [userID, date]
+    );
+
+    if (existingAttendance.rows.length > 0) {
+      res.status(200).json({ exists: true });
+    } else {
+      res.status(200).json({ exists: false });
+    }
+  } catch (error) {
+    console.error("Error checking attendance:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Delete user's previous attendance for a specific date
+router.post("/delete-attendance", async (req, res) => {
+  const { userID, date } = req.body;
+
+  try {
+    await pool.query(
+      "DELETE FROM Attendance WHERE userid = $1 AND date = $2",
+      [userID, date]
+    );
+
+    res.status(204).send(); // 204 No Content - successful deletion
+  } catch (error) {
+    console.error("Error deleting attendance:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 // Submit attendance data
 router.post("/submit-attendance", async (req, res) => {
   const { userID ,name, role, date, attendanceType } = req.body;
 
   try {
+    // Check if the user has already submitted attendance
+    const existingAttendance = await pool.query(
+      "SELECT * FROM Attendance WHERE userid = $1 AND date = $2",
+      [userID, date]
+    );
+
+    if (existingAttendance.rows.length > 0) {
+      // Delete the user's previous submission
+      await pool.query(
+        "DELETE FROM Attendance WHERE userid = $1 AND date = $2",
+        [userID, date]
+      );
+    }
 
     const newAttendance = await pool.query(
       "INSERT INTO Attendance (userid, name, role, date, attendance_type) VALUES ($1, $2, $3, $4, $5) RETURNING *",
@@ -179,6 +259,54 @@ router.post("/submit-attendance", async (req, res) => {
   }
 });
 
+
+// new Fetch attendees by selected date:
+router.post("/fetch-attendees-by-date", async (req, res) => {
+	const selectedDate = req.body.date;
+  console.log(selectedDate);
+
+	try {
+		const attendanceData = await pool.query(
+			"SELECT * FROM Attendance WHERE date = $1",
+			[selectedDate]
+		);
+		// const names = attendanceData.rows.map((user) => user.name);
+		res.json(attendanceData.rows);
+    console.log(attendanceData.rows);
+	} catch (error) {
+		console.error("Error fetching attendees by date:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
+
+
+
+// old Fetch attendees by selected date
+// router.get("/fetch-attendees-by-date", async (req, res) => {
+//     const selectedDate = req.query.date;
+
+//     try {
+//         const attendanceData = await pool.query(
+//             "SELECT * FROM Attendance WHERE date = $1",
+//             [selectedDate]
+//         );
+//         res.json(attendanceData.rows);
+//     } catch (error) {
+//         console.error("Error fetching attendees by date:", error);
+//         res.status(500).json({ error: "Internal server error" });
+//     }
+// });
+
+
+
+
+
+
+
+
+
+//////old/////
 // // Fetch user data
 // router.get("/fetch-user-data", async (req, res) => {
 // 	try {
@@ -264,7 +392,9 @@ router.post("/submit-attendance", async (req, res) => {
 // }
 // }
 
-
+///////////////////////////////////////////
+///*******end of attendance page********//
+//////////////////////////////////////////
 
 export default router;
 

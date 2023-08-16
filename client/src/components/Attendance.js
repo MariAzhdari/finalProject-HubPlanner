@@ -130,6 +130,9 @@ const Attendance = () => {
     const [inPersonTrainees, setInPersonTrainees] = useState();
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
+	const [submissionStatus, setSubmissionStatus] = useState(null);
+
+	// const [data, setData] = useState([]);
 
 
 	useEffect(() => {
@@ -145,53 +148,183 @@ const Attendance = () => {
 						},
 					});
 					const data = await response.json();
+					// const dataResponse = await response.json();
+					// setData(dataResponse);
 					console.log(data);
-					const inpersonVol = data.filter(
-						(item) =>
-							item.role.includes("volunteer") &&
-							item.attendance_type === "in-person"
+					// const inpersonVol = data.filter(
+					// 	(item) =>
+					// 		item.role.includes("volunteer") &&
+					// 		item.attendance_type === "in-person"
+					// );
+					// setInPersonVolunteers(inpersonVol);
+					// const onlineVol = data.filter(
+					// 	(item) =>
+					// 		item.role.includes("volunteer") &&
+					// 		item.attendance_type === "remote"
+					// );
+					// setOnlineVolunteers(onlineVol);
+					// const inpersonTrain = data.filter(
+					// 	(item) => item.attendance_type === "in-person"
+					// );
+					// setInPersonTrainees(inpersonTrain);
+					// const onlineTrain = data.filter(
+					// 	(item) => item.attendance_type === "remote"
+					// );
+					// setOnlineTrainees(onlineTrain);
+					// Separate volunteers and trainees based on attendance type
+					const volunteers = data.filter((item) =>
+						item.role.includes("volunteer")
 					);
-					setInPersonVolunteers(inpersonVol);
-					const onlineVol = data.filter(
-						(item) =>
-							item.role.includes("volunteer") &&
-							item.attendance_type === "remote"
-					);
-					setOnlineVolunteers(onlineVol);
-					const inpersonTrain = data.filter(
+					const trainees = data.filter((item) => item.role.includes("trainee"));
+
+					// Further separate volunteers and trainees based on attendance type
+					const inPersonVolunteers = volunteers.filter(
 						(item) => item.attendance_type === "in-person"
 					);
-					setInPersonTrainees(inpersonTrain);
-					const onlineTrain = data.filter(
+					const onlineVolunteers = volunteers.filter(
 						(item) => item.attendance_type === "remote"
 					);
-					setOnlineTrainees(onlineTrain);
+					const inPersonTrainees = trainees.filter(
+						(item) => item.attendance_type === "in-person"
+					);
+					const onlineTrainees = trainees.filter(
+						(item) => item.attendance_type === "remote"
+					);
+
+					setInPersonVolunteers(inPersonVolunteers);
+					setOnlineVolunteers(onlineVolunteers);
+					setInPersonTrainees(inPersonTrainees);
+					setOnlineTrainees(onlineTrainees);
 				} catch (error) {
 					console.error("Error fetching attendance data:", error);
 				}
 			};
+            //old handlesubmit://
+			// const handleSubmit = async (e) => {
+			// 		e.preventDefault();
+			// 		try {
+			// 			const response = await fetch("api/submit-attendance", {
+			// 				method: "POST",
+			// 				headers: {
+			// 					"Content-Type": "application/json",
+			// 				},
+			// 				body: JSON.stringify({
+			// 					userID,
+			// 					name,
+			// 					role,
+			// 					date,
+			// 					attendanceType,
+			// 				}),
+			// 			});
+			// 			fetchAttendanceData();
+			// 		} catch (error) {
+			// 			console.error("Error submitting attendance:", error);
+			// 		}
+			// 	};
 
+
+			//viewAttendeesByDate://
+    const [selectedDate, setSelectedDate] = useState("");
+	const [attendeesBySelectedDate, setAttendeesBySelectedDate] = useState([]);
+
+		// const handleViewAttendeesByDate = async () => {
+		// 	if (selectedDate) {
+		// 		try {
+		// 			const response = await fetch(
+		// 				`/fetch-attendees-by-date?date=${selectedDate}`,
+		// 				{
+		// 					method: "GET",
+		// 					headers: {
+		// 						"Content-Type": "application/json",
+		// 					},
+		// 				}
+		// 			);
+		// 			const data = await response.json();
+		// 			setAttendeesBySelectedDate(data);
+		// 		} catch (error) {
+		// 			console.error("Error fetching attendees by date:", error);
+		// 		}
+		// 	}
+		// };
+
+
+		const handleViewAttendeesByDate = async () => {
+			if (selectedDate) {
+				try {
+					setAttendeesBySelectedDate([]);
+					const response = await fetch("api/fetch-attendees-by-date", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ date: selectedDate }),
+					});
+					const data = await response.json();
+					setAttendeesBySelectedDate(data);
+				} catch (error) {
+					console.error("Error fetching attendees by date:", error);
+				}
+			}
+		};
+		// end of viewAttendeesByDate
+
+
+			//new handleSubmit://
 			const handleSubmit = async (e) => {
-					e.preventDefault();
-					try {
-						const response = await fetch("api/submit-attendance", {
+				e.preventDefault();
+
+				try {
+					// Check if the user has already submitted attendance
+					const existingAttendance = await fetch("api/check-attendance", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							userID,
+							date,
+						}),
+					});
+
+					if (existingAttendance.ok) {
+						// Delete the user's previous submission
+						await fetch("api/delete-attendance", {
 							method: "POST",
 							headers: {
 								"Content-Type": "application/json",
 							},
 							body: JSON.stringify({
 								userID,
-								name,
-								role,
 								date,
-								attendanceType,
 							}),
 						});
-						fetchAttendanceData();
-					} catch (error) {
-						console.error("Error submitting attendance:", error);
 					}
-				};
+
+					// Submit the new attendance
+					const response = await fetch("api/submit-attendance", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							userID,
+							name,
+							role,
+							date,
+							attendanceType,
+						}),
+					});
+
+					if (response.ok) {
+						fetchAttendanceData(); // Refresh the attendance data
+						setSubmissionStatus("submitted");
+					}
+				} catch (error) {
+					console.error("Error submitting attendance:", error);
+				}
+			};
+
+
 				return (
 					<div className="top-container">
 						<div className="navbar">
@@ -225,7 +358,7 @@ const Attendance = () => {
 									<input type="text" value={name} />
 								</div>
 								<div className="input-container">
-                                    <input type="text" value={role} />
+									<input type="text" value={role} />
 								</div>
 								<div className="input-container">
 									<input
@@ -245,12 +378,17 @@ const Attendance = () => {
 										<option>Attendance</option>
 										<option value="in-person">In-Person</option>
 										<option value="remote">Online</option>
-										<option value="not-attend">Not-Attend</option>
+										{/* <option value="not-attend">Not-Attend</option> */}
 									</select>
 								</div>
-								<button type="submit" className="submit-btn">
-									Submit
-								</button>
+								<div className="submit-container">
+									<button type="submit" className="submit-btn">
+										Submit
+									</button>
+									{submissionStatus === "submitted" && (
+										<p className="submission-message">Submitted successfully</p>
+									)}
+								</div>
 							</form>
 						</div>
 						<div className="container">
@@ -258,31 +396,35 @@ const Attendance = () => {
 								<h2>In-Person</h2>
 								<div className="columns">
 									<div className="column">
-										<h3>Volunteer</h3>
+										<h3>Volunteer({inPersonVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{inPersonVolunteers?.map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{inPersonVolunteers
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 									<div className="column">
-										<h3>Trainee</h3>
+										<h3>Trainee({inPersonTrainees?.length || 0})</h3>
 										<ul className="list">
-											{inPersonTrainees?.map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{inPersonTrainees
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 								</div>
@@ -291,36 +433,167 @@ const Attendance = () => {
 								<h2>Online</h2>
 								<div className="columns">
 									<div className="column">
-										<h3>Volunteer</h3>
+										<h3>Volunteer({onlineVolunteers?.length || 0})</h3>
 										<ul className="list">
-											{onlineVolunteers?.map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{onlineVolunteers
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 									<div className="column">
-										<h3>Trainee</h3>
+										<h3>Trainee({onlineTrainees?.length || 0})</h3>
 										<ul className="list">
-											{onlineTrainees?.map((user) => (
-												<li key={user.name}>
-													{user.name}(
-													<span>
-														{moment(user.date).format("Do MMMM YYYY")}
-													</span>
-													)
-												</li>
-											))}
+											{onlineTrainees
+												?.sort((a, b) => b.date.localeCompare(a.date))
+												.map((user) => (
+													<li key={user.name}>
+														{user.name}(
+														<span>
+															{moment(user.date).format("Do MMMM YYYY")}
+														</span>
+														)
+													</li>
+												))}
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
+						{/* datepicker for viewAttendeesByDate: */}
+						<div className="datepicker-container">
+							{/* <label htmlFor="datepicker">View Attendees by Date:</label> */}
+							<input
+								type="date"
+								id="datepicker"
+								onChange={(e) => setSelectedDate(e.target.value)}
+								value={selectedDate}
+							/>
+							<button
+								type="button"
+								className="view-btn"
+								onClick={handleViewAttendeesByDate}
+							>
+								View Attendees By Date
+							</button>
+						</div>
+						{/* Display attendees for the selected date */}
+						{attendeesBySelectedDate.length > 0 && (
+							<div className="section">
+								<h2>
+									Attendees for {moment(selectedDate).format("Do MMMM YYYY")}
+								</h2>
+								{/* <ul className="list">
+									{attendeesBySelectedDate.map((user) => (
+										<li key={user.name}>{user.name}</li>
+									))}
+								</ul> */}
+
+								<div className="container">
+									<div className="section">
+										<h2>In-Person</h2>
+										<div className="columns">
+											<div className="column">
+												<h3>
+													Volunteer({attendeesBySelectedDate?.length || 0})
+												</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "in-person" &&
+																user.role.includes("volunteer")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+											<div className="column">
+												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "in-person" &&
+																user.role.includes("trainee")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div className="section">
+										<h2>Online</h2>
+										<div className="columns">
+											<div className="column">
+												<h3>
+													Volunteer({attendeesBySelectedDate?.length || 0})
+												</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "remote" &&
+																user.role.includes("volunteer")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+											<div className="column">
+												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "remote" &&
+																user.role.includes("trainee")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						)}
 					</div>
 				);
 };

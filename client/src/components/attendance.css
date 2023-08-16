@@ -143,6 +143,7 @@ box-shadow: 0 0 5px rgb(211, 210, 210);
 
 .columns {
   display: flex;
+  
 }
 
 .column {
@@ -152,6 +153,7 @@ box-shadow: 0 0 5px rgb(211, 210, 210);
   margin: 10px;
   background-color: #fbf7f7;
   height: 40vh;
+  
 }
 
 
@@ -166,13 +168,53 @@ h2, h3 {
 .list {
   list-style: none;
   padding: 0;
+  /* max-height: 30vh; Adjust this value as needed */
+  /* overflow-y: auto; Add vertical scrollbar if content exceeds height */
   
 }
 
 .list li {
   margin-top: 10px;
   margin-bottom: 5px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  /* overflow: hidden; Hide any overflowing text */
+  /* text-overflow: ellipsis; Show ellipsis (...) when text is clipped */
 }
 .select-container {
     background-color: #fbf7f7;
+}
+/* Apply scroll to the volunteer and trainee lists */
+.list {
+  max-height: 30vh; /* Adjust this value as needed */
+  overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
+}
+
+/* Add this to style the text within the lists */
+.list li {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Show ellipsis (...) when text is clipped */
+}
+
+.datepicker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; /* Add margin as needed */
+}
+
+.view-btn {
+  margin-top: 10px; /* Add margin as needed */
+}
+.submission-message {
+    margin-top: 0px; /* Adjust the margin as needed */
+    color: green;    /* You can adjust the color to your preference */
+    font-size: 14px; /* Adjust the font size as needed */
+}
+.submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    margin-top: 10px;   /* Adjust margin as needed */
 }
