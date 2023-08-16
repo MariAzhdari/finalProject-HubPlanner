@@ -460,7 +460,7 @@ const Attendance = () => {
 						</div>
 						{/* datepicker for viewAttendeesByDate: */}
 						<div className="datepicker-container">
-							<label htmlFor="datepicker">View Attendees by Date:</label>
+							{/* <label htmlFor="datepicker">View Attendees by Date:</label> */}
 							<input
 								type="date"
 								id="datepicker"
@@ -472,7 +472,7 @@ const Attendance = () => {
 								className="view-btn"
 								onClick={handleViewAttendeesByDate}
 							>
-								View
+								View Attendees By Date
 							</button>
 						</div>
 						{/* Display attendees for the selected date */}
