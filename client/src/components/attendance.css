@@ -207,3 +207,14 @@ h2, h3 {
 .view-btn {
   margin-top: 10px; /* Add margin as needed */
 }
+.submission-message {
+    margin-top: 0px; /* Adjust the margin as needed */
+    color: green;    /* You can adjust the color to your preference */
+    font-size: 14px; /* Adjust the font size as needed */
+}
+.submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    margin-top: 10px;   /* Adjust margin as needed */
+}

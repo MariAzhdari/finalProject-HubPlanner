@@ -130,6 +130,8 @@ const Attendance = () => {
     const [inPersonTrainees, setInPersonTrainees] = useState();
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
+	const [submissionStatus, setSubmissionStatus] = useState(null);
+
 	// const [data, setData] = useState([]);
 
 
@@ -315,6 +317,7 @@ const Attendance = () => {
 
 					if (response.ok) {
 						fetchAttendanceData(); // Refresh the attendance data
+						setSubmissionStatus("submitted");
 					}
 				} catch (error) {
 					console.error("Error submitting attendance:", error);
@@ -378,9 +381,14 @@ const Attendance = () => {
 										{/* <option value="not-attend">Not-Attend</option> */}
 									</select>
 								</div>
-								<button type="submit" className="submit-btn">
-									Submit
-								</button>
+								<div className="submit-container">
+									<button type="submit" className="submit-btn">
+										Submit
+									</button>
+									{submissionStatus === "submitted" && (
+										<p className="submission-message">Submitted successfully</p>
+									)}
+								</div>
 							</form>
 						</div>
 						<div className="container">
