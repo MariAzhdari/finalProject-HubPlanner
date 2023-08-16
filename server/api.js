@@ -57,7 +57,7 @@ router.post("/login", async (req, res) => {
 		if (user.rows.length === 0) {
 			return res.json("Invalid user");
 		}
-		if (!password === user.rows[0].password) {
+		if (password !== user.rows[0].password) {
 			return res.json("Invalid password");
 		}
 		// eslint-disable-next-line no-console
