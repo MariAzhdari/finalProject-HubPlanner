@@ -22,13 +22,23 @@ const Calendar = () => {
 	// Handle Syllabus Button Click
 	const handleSyllabusButtonClick = () => {
 		// Redirect to the Syllabus link
-		window.location.href = "https://syllabus.codeyourfuture.io/Overview";
+		// (window.location.href = "https://syllabus.codeyourfuture.io/Overview"),
+		// 	"_blank",
+		// 	"noopener,noreferrer";
+		const agendaLink = "https://syllabus.codeyourfuture.io/Overview";
+		const newTab = window.open();
+		newTab.opener = null;
+		newTab.location = agendaLink;
 	};
 	// Handle Agenda Button Click
 	const handleAgendaButtonClick = () => {
 		// Redirect to the Agenda link
-		window.location.href =
-			"https://docs.google.com/spreadsheets/d/10TPHM4i0KTRt99AumwzFmzDGm8uCJKrEPnx-IsvYMfM/edit?pli=1#gid=0";
+		// (window.location.href =
+			const agendaLink =
+      "https://docs.google.com/spreadsheets/d/10TPHM4i0KTRt99AumwzFmzDGm8uCJKrEPnx-IsvYMfM/edit?pli=1#gid=0";
+    const newTab = window.open();
+    newTab.opener = null;
+    newTab.location = agendaLink;
 	};
 
 	return (
@@ -74,7 +84,9 @@ const Calendar = () => {
 							<div className="leftItem">
 								{sessionData.map((session) => (
 									<div key={session.id} className="">
-										<div className="sessionDate">{new Date(session.session_date).toLocaleDateString()}</div>
+										<div className="sessionDate">
+											{new Date(session.session_date).toLocaleDateString()}
+										</div>
 										<div className="timeOfSession">10:00-17:00</div>
 									</div>
 								))}
@@ -87,11 +99,8 @@ const Calendar = () => {
 						<button className="agendaButton" onClick={handleAgendaButtonClick}>
 							Agenda
 						</button>
-						<button
-							className="syllabusButton"
-							onClick={handleSyllabusButtonClick}
-						>
-							Syllabus
+						<button className="syllabusButton" onClick={handleSyllabusButtonClick}>
+							syllabus
 						</button>
 					</div>
 				</div>
