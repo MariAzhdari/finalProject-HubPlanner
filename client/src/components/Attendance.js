@@ -249,6 +249,7 @@ const Attendance = () => {
 		const handleViewAttendeesByDate = async () => {
 			if (selectedDate) {
 				try {
+					setAttendeesBySelectedDate([]);
 					const response = await fetch("api/fetch-attendees-by-date", {
 						method: "POST",
 						headers: {
@@ -481,11 +482,108 @@ const Attendance = () => {
 								<h2>
 									Attendees for {moment(selectedDate).format("Do MMMM YYYY")}
 								</h2>
-								<ul className="list">
+								{/* <ul className="list">
 									{attendeesBySelectedDate.map((user) => (
 										<li key={user.name}>{user.name}</li>
 									))}
-								</ul>
+								</ul> */}
+
+								<div className="container">
+									<div className="section">
+										<h2>In-Person</h2>
+										<div className="columns">
+											<div className="column">
+												<h3>
+													Volunteer({attendeesBySelectedDate?.length || 0})
+												</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "in-person" &&
+																user.role.includes("volunteer")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+											<div className="column">
+												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "in-person" &&
+																user.role.includes("trainee")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div className="section">
+										<h2>Online</h2>
+										<div className="columns">
+											<div className="column">
+												<h3>
+													Volunteer({attendeesBySelectedDate?.length || 0})
+												</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "remote" &&
+																user.role.includes("volunteer")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+											<div className="column">
+												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<ul className="list">
+													{attendeesBySelectedDate
+														?.filter(
+															(user) =>
+																user.attendance_type === "remote" &&
+																user.role.includes("trainee")
+														)
+														.map((user) => (
+															<li key={user.name}>
+																{user.name}(
+																<span>
+																	{moment(user.date).format("Do MMMM YYYY")}
+																</span>
+																)
+															</li>
+														))}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						)}
 					</div>
