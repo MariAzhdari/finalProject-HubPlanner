@@ -11,27 +11,6 @@ const TravelCheck = () => {
 	const [showLineStatuses, setShowLineStatuses] = useState(false);
 	const [showDisruptions, setShowDisruptions] = useState(false);
 
-	// const fetchModes = async () => {
-	// 	try {
-	// 		const response = await axios.get(
-	// 			"https://api.tfl.gov.uk/Line/Meta/Modes"
-	// 		);
-	// 		setModes(response.data);
-	// 	} catch (error) {
-	// 		console.error("Error fetching modes:", error);
-	// 	}
-	// };
-
-	const fetchLineStatus = async () => {
-		const selectedModes = "tube,dlr";
-		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Status`;
-		try {
-			const response = await axios.get(url);
-			setLineStatuses(response.data);
-		} catch (error) {
-			console.error("Error fetching line statuses:", error);
-		}
-	};
 
 	const fetchDisruptions = async () => {
 		const selectedModes = "tube,dlr";
@@ -43,6 +22,17 @@ const TravelCheck = () => {
 			console.error("Error fetching disruptions:", error);
 		}
 	};
+
+	const fetchLineStatus = async () => {
+  const selectedModes = "tube";
+  const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Status`;
+   try {
+     const response = await axios.get(url);
+	      setLineStatuses(response.data);
+	    } catch (error) {
+	      console.error("Error fetching line statuses:", error);
+	    }
+	  };
 
 	return (
 		<>
@@ -71,20 +61,6 @@ const TravelCheck = () => {
 				</ul>
 				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
-
-			{/* <button onClick={fetchModes}>Fetch Modes</button>
-			<div className="modes-container">
-				<ul>
-					{modes.map((mode, index) => (
-						<li key={index}>
-							Mode Name: {mode.modeName} | Is TFL Service:
-							{mode.isTflService ? "Yes" : "No"} | Is Fare Paying:
-							{mode.isFarePaying ? "Yes" : "No"} | Is Scheduled Service:
-							{mode.isScheduledService ? "Yes" : "No"}
-						</li>
-					))}
-				</ul>
-			</div> */}
 
 			<button
 				onClick={() => {
@@ -123,7 +99,8 @@ const TravelCheck = () => {
 						{lineStatuses.map((status, index) => (
 							<li key={index}>
 								Line: {status.name}
-								{/* Status: {status.statusDescription} */}
+								Status:{" "}
+								{status.lineStatuses[0]?.statusSeverityDescription || "Unknown"}
 							</li>
 						))}
 					</ul>
@@ -134,8 +111,4 @@ const TravelCheck = () => {
 };
 
 export default TravelCheck;
-
-
-
-
 
