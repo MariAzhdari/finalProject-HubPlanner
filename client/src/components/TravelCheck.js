@@ -28,11 +28,11 @@ const TravelCheck = () => {
   const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Status`;
    try {
      const response = await axios.get(url);
-	      setLineStatuses(response.data);
-	    } catch (error) {
-	      console.error("Error fetching line statuses:", error);
-	    }
-	  };
+     setLineStatuses(response.data);
+   } catch (error) {
+     console.error("Error fetching line statuses:", error);
+  }
+};
 
 	return (
 		<>
