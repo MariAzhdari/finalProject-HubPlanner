@@ -21,8 +21,7 @@ function Login() {
 			alert("All fields must be filled out!");
 			return;
 		}
-
-		const response = await axios.post("/api/login", {
+       const response = await axios.post("/api/login", {
 			email,
 			password,
 		});
@@ -96,6 +95,7 @@ function Login() {
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 						/>
+
 						<i
 							className={
 								showPassword
@@ -103,6 +103,13 @@ function Login() {
 									: "fas fa-eye passwordToggleIcon"
 							}
 							onClick={() => setShowPassword(!showPassword)}
+							onKeyDown={(e) => {
+								if (e.key === "Enter" || e.key === "Space") {
+									setShowPassword(!showPassword);
+								}
+							}}
+							role="button"
+							tabIndex="0"
 						></i>
 					</div>
 
