@@ -112,7 +112,8 @@ router.get("/fetch-calendar-data",async (_, res) => {
 		// const endOfWeek = new Date(startOfWeek);
 		// endOfWeek.setDate(endOfWeek.getDate() + 6);
 		const calenderData = await pool.query(
-			"SELECT * FROM session WHERE EXTRACT(WEEK FROM session_date) = EXTRACT(WEEK FROM CURRENT_DATE) "
+			// "SELECT * FROM session WHERE EXTRACT(WEEK FROM session_date) = EXTRACT(WEEK FROM CURRENT_DATE) "
+			"SELECT * FROM session"
 		);
 
 		res.json(calenderData.rows);
