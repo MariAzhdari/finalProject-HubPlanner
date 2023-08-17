@@ -196,10 +196,38 @@ h1, h2 {
 }
 
 .list li:hover {
-    color: #df2030;
+    color: #c2df20;
 }
 
 /* Footer styles */
+
+.useful-links-footer {
+    background-color: #faeded;
+    padding: 20px 0; 
+    text-align: center; 
+    width: 100%; 
+   margin-bottom:100% ; 
+   
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #fff; /* Text color for the links */
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s; 
+  
+}
+
+.footer-link:hover {
+    background-color: #f0e4e4;
+    color: #ffd700;
+}
 
 
 
