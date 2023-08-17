@@ -135,7 +135,8 @@ const LineOptions = [
 ];
 
 const TravelCheck = () => {
-	const [lineStatuses, setLineStatuses] = useState([]);
+	const [showNationalRailStrike, setShowNationalRailStrike] = useState(false);
+   const [lineStatuses, setLineStatuses] = useState([]);
 	const [disruptions, setDisruptions] = useState([]);
 	const [showLineStatuses, setShowLineStatuses] = useState(false);
 	const [showDisruptions, setShowDisruptions] = useState(false);
@@ -145,6 +146,39 @@ const TravelCheck = () => {
 	);
 	const [lineData, setLineData] = useState([]);
 	const [showStatusForm, setShowStatusForm] = useState(false);
+ const [showDisruptionsAndLines, setShowDisruptionsAndLines] = useState(false);
+
+ const nationalRailStrikeData = [
+		{
+			date: "Saturday 19 August",
+			details: [
+				"between Birmingham New Street and Bristol Temple Meads / Plymouth",
+				"between Birmingham New Street and Cardiff Central",
+				"between Birmingham New Street and Nottingham",
+			],
+		},
+		{
+			date: "Saturday 26 August",
+			details: [
+				"For journeys on Saturday 26 August, you can check your journey on Monday 21 August.",
+			],
+		},
+		{
+			date: "Saturday 2 September",
+			details: [
+				"For journeys on Saturday 2 September, you can check your journey on Monday 28 August.",
+			],
+		},
+		{
+			date: "Saturday 9 September",
+			details: [
+				"For journeys on Saturday 9 September, you can check your journey on Monday 4 September.",
+			],
+		},
+ ];
+
+
+
 
 	//at the moment Disruption
 	const fetchDisruptions = async () => {
@@ -270,17 +304,24 @@ const TravelCheck = () => {
 				<img className="logo-img" src={Logo} alt="logo" />
 			</div>
 
-			{/* Disruptions */}
-			<button onClick={() => setShowDisruptions(!showDisruptions)}>
-				Toggle Disruptions
+			{/* National Rail Strike */}
+			<button
+				onClick={() => setShowNationalRailStrike(!showNationalRailStrike)}
+			>
+				Toggle National Rail Strike
 			</button>
-			{showDisruptions && (
-				<div className="disruptions-container">
-					<h2>Disruptions</h2>
-					<ul className="disruption-list">
-						{disruptions.map((disruption, index) => (
-							<li key={index} className="disruption-item">
-								{disruption.description}
+			{showNationalRailStrike && (
+				<div className="national-rail-strike-container">
+					<h2>National Rail Strike</h2>
+					<ul className="national-rail-strike-list">
+						{nationalRailStrikeData.map((strike, index) => (
+							<li key={index} className="strike-item">
+								<strong>{strike.date}</strong>
+								<ul>
+									{strike.details.map((detail, detailIndex) => (
+										<li key={detailIndex}>{detail}</li>
+									))}
+								</ul>
 								<br />
 							</li>
 						))}
@@ -288,12 +329,26 @@ const TravelCheck = () => {
 				</div>
 			)}
 
-			{/* London Lines */}
-			<button onClick={() => setShowLineStatuses(!showLineStatuses)}>
-				Toggle London Lines
+			{/* Toggle Disruptions and Lines */}
+			<button
+				onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
+			>
+				Toggle Disruptions and Lines
 			</button>
-			{showLineStatuses && (
+
+			{showDisruptionsAndLines && (
 				<div>
+					<div className="disruptions-container">
+						<h2>Disruptions</h2>
+						<ul className="disruption-list">
+							{disruptions.map((disruption, index) => (
+								<li key={index} className="disruption-item">
+									{disruption.description}
+									<br />
+								</li>
+							))}
+						</ul>
+					</div>
 					<h1>Lines</h1>
 					<ul>
 						{lineStatuses.map((status, index) => (
