@@ -146,6 +146,7 @@ const TravelCheck = () => {
 	);
 	const [lineData, setLineData] = useState([]);
 	const [showStatusForm, setShowStatusForm] = useState(false);
+ const [showDisruptionsAndLines, setShowDisruptionsAndLines] = useState(false);
 
  const nationalRailStrikeData = [
 		{
@@ -328,30 +329,26 @@ const TravelCheck = () => {
 				</div>
 			)}
 
-			{/* Disruptions */}
-			<button onClick={() => setShowDisruptions(!showDisruptions)}>
-				Toggle Disruptions
+			{/* Toggle Disruptions and Lines */}
+			<button
+				onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
+			>
+				Toggle Disruptions and Lines
 			</button>
-			{showDisruptions && (
-				<div className="disruptions-container">
-					<h2>Disruptions</h2>
-					<ul className="disruption-list">
-						{disruptions.map((disruption, index) => (
-							<li key={index} className="disruption-item">
-								{disruption.description}
-								<br />
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
 
-			{/* London Lines */}
-			<button onClick={() => setShowLineStatuses(!showLineStatuses)}>
-				Toggle London Lines
-			</button>
-			{showLineStatuses && (
+			{showDisruptionsAndLines && (
 				<div>
+					<div className="disruptions-container">
+						<h2>Disruptions</h2>
+						<ul className="disruption-list">
+							{disruptions.map((disruption, index) => (
+								<li key={index} className="disruption-item">
+									{disruption.description}
+									<br />
+								</li>
+							))}
+						</ul>
+					</div>
 					<h1>Lines</h1>
 					<ul>
 						{lineStatuses.map((status, index) => (

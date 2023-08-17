@@ -200,26 +200,9 @@ h1, h2 {
 }
 
 /* Footer styles */
-.footer {
-    background-color: #ef0437;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-}
 
-.footer a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    padding: 8px 16px;
-    transition: background-color 0.3s;
-    border-radius: 8px;
-}
 
-.footer a:hover {
-    background-color: rgba(47, 20, 203, 0.1);
-}
+
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
