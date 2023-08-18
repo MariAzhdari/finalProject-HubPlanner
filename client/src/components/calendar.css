@@ -1,17 +1,17 @@
 /* calendar.css */
 
 /* Navbar styles */
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 .navList {
   display: flex;
   justify-content: space-evenly;
-  /* margin: 0; */
+
   margin-top: 40px;
   padding: 0;
   list-style: none;
@@ -31,7 +31,7 @@
 .navListItem:hover{
     color: brown;
     
-}
+} */
 
 
 .logo-img {

@@ -4,35 +4,24 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #ef0437;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.navList {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navListItem {
-    margin: 0 15px;
-    cursor: pointer;
+    background-color: #e2e1e1;
+    color: #222020; 
 }
 
 .navListItem a {
+    font-size:1.2rem ;
     text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-    padding: 8px 16px;
+    color: #131212;
+    padding: 15px 16px;
     transition: background-color 0.3s;
-    border-radius: 8px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .navListItem a:hover {
     background-color: rgba(47, 20, 203, 0.1);
+    font-size:1.23rem ;
+    transition: all 0.3s;   
 }
 
 .logo-img {
@@ -41,25 +30,25 @@
 }
 
 /* Main section */
-.Right {
+/* .Right {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     margin-top: 30px;
-}
+} */
 
 /* Button Styles */
 button {
     padding: 15px 25px;
-    background-color: #e11425;
+    background-color: rgb(205, 21, 21);
     color: #ffffff;
-    border: 2px solid #e11425;
-    border-radius: 8px;
+    border: 2px solid rgb(204, 40, 40);
+    border-radius: 5px;
     font-weight: 600;
     font-size: 18px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.7s;
     display: block;
     margin: 20px auto;
     text-transform: uppercase;
@@ -68,7 +57,7 @@ button {
 
 button:hover {
     background-color: #ffffff;
-    color: #e11425;
+    color:rgb(204, 40, 40);
 }
 
 /* Disruptions container */
@@ -91,24 +80,23 @@ button:hover {
     font-size: 18px;
     padding: 10px;
     margin: 10px 0;
-    border-left: 5px solid #e11425;
-    background-color: #f8f8f8;
+    border-left: 5px solid rgb(204, 40, 40);
+    background-color: #f8f5f5;
     transition: background-color 0.3s;
 }
 
 .disruption-item:hover {
-    background-color: #e6e6e6;
+    background-color: #d9d9da;
 }
 
-h1, h2 {
-    border-bottom: 2px solid #e11425;
+ h1, h2 {
     padding-bottom: 10px;
     font-size: 24px;
     text-align: center;
 }
 
 /* Line statuses styles */
-.line-status-container {
+/* .line-status-container {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
@@ -118,9 +106,10 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
-.line-status-list {
+/* .line-status-list {
+    color: #df5020;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -128,9 +117,10 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
-.line-status-item {
+/* .line-status-item {
+    color: #df5020;
     font-size: 18px;
     padding: 10px;
     margin: 10px 0;
@@ -138,10 +128,10 @@ h1, h2 {
     position: relative;
     background-color: #f8f8f8;
     transition: background-color 0.3s;
-    text-align: left;
-}
+    
+} */
 
-.line-status-item::before {
+/* .line-status-item::before {
     content: '';
     width: 10px;
     height: 10px;
@@ -151,15 +141,15 @@ h1, h2 {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-}
+} */
 
 .line-status-item:hover {
     background-color: #e6e6e6;
 }
 
-.Datebutton, .Travelbutton {
+/* .Datebutton, .Travelbutton {
     padding: 15px 25px;
-    background-color: #c8c9ca;
+    background-color: #116cc6;
     color: #2d2d2d;
     border: none;
     border-radius: 8px;
@@ -167,14 +157,14 @@ h1, h2 {
     font-size: 20px;
     margin: 10px 0;
     transition: all 0.3s;
-}
+} */
 
-.Datebutton:hover, .Travelbutton:hover {
+/* .Datebutton:hover, .Travelbutton:hover {
     background-color: #9ca9b3;
     transform: translateY(-5px);
-}
+} */
 
-.list-container {
+/* .list-container {
     margin-top: 50px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -182,7 +172,7 @@ h1, h2 {
     padding: 30px;
     max-width: 700px;
     margin: 50px auto;
-}
+} */
 
 .list {
     list-style: none;

@@ -21,8 +21,7 @@ function Login() {
 			alert("All fields must be filled out!");
 			return;
 		}
-
-		const response = await axios.post("/api/login", {
+       const response = await axios.post("/api/login", {
 			email,
 			password,
 		});
@@ -39,11 +38,58 @@ function Login() {
 
 	return (
 		<div className="container">
+			<div className="contentContainer">
+				<h1>CYF Hub Planner</h1>
+				<form className="loginForm">
+					<div className="inputWrapper">
+						<input
+							className="loginInput transparentInput"
+							type="text"
+							placeholder="Enter your email..."
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+
+					<div className="inputWrapper">
+						<input
+							className="loginInput transparentInput"
+							type={showPassword ? "text" : "password"}
+							placeholder="Enter your password..."
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+
+						<i
+							className={
+								showPassword
+									? "fas fa-eye-slash passwordToggleIcon"
+									: "fas fa-eye passwordToggleIcon"
+							}
+							onClick={() => setShowPassword(!showPassword)}
+							onKeyDown={(e) => {
+								if (e.key === "Enter" || e.key === "Space") {
+									setShowPassword(!showPassword);
+								}
+							}}
+							role="button"
+							tabIndex="0"
+						></i>
+					</div>
+
+					<button onClick={loginHandler} className="loginButton" type="submit">
+						Login
+					</button>
+					<p>
+						Do not have an account? <Link to="/form">Register</Link>
+					</p>
+					{!allFieldsFilled}
+				</form>
+			</div>
 			<div className="imageContainer">
 				<img src={Logo} alt="placeholder" />
 				<h1 className="cyfName">Code Your Future</h1>
-				<div className="down">
-					<div className="downLeft">
+				
 						<div className="down">
 							<div className="downLeft">
 								<a
@@ -74,48 +120,7 @@ function Login() {
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="contentContainer">
-				<h1>CYF Hub Planner</h1>
-				<form className="loginForm">
-					<div className="inputWrapper">
-						<input
-							className="loginInput transparentInput"
-							type="text"
-							placeholder="Enter your email..."
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-					</div>
 
-					<div className="inputWrapper">
-						<input
-							className="loginInput transparentInput"
-							type={showPassword ? "text" : "password"}
-							placeholder="Enter your password..."
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<i
-							className={
-								showPassword
-									? "fas fa-eye-slash passwordToggleIcon"
-									: "fas fa-eye passwordToggleIcon"
-							}
-							onClick={() => setShowPassword(!showPassword)}
-						></i>
-					</div>
-
-					<button onClick={loginHandler} className="loginButton" type="submit">
-						Login
-					</button>
-					<p>
-						Do not have an account? <Link to="/form">Register</Link>
-					</p>
-					{!allFieldsFilled}
-				</form>
-			</div>
-		</div>
 	);
 }
 
