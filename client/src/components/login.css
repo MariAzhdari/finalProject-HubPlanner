@@ -1,36 +1,17 @@
-.contentContainer {
-  flex: 1 0 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
 
 .contentContainer h1{
  text-align: center;
- color:red;
-}
-
-.contentContainer p li{
- text-align: center;
- margin: 0px 40px;
- font-size: 1.2rem;
-}
-
-.loginButton a{
-  padding: 20px 30px;
-  color: rgb(16, 15, 14);
-  border-radius: 4px;
-  margin-bottom: 60px;
-  font-size: 1.2rem;
+ color:brown;
+ font-size:2.3rem ;
 }
 
 .cyfName {
   margin-top: -10px;
+  color:brown;
+  font-size:2.3rem ;  
 }
 
-.down {
+/* .down {
   display: flex;
   justify-content: center; 
 }
@@ -39,7 +20,7 @@
   margin-top: 60px;
   display: flex; 
   gap: 10px; 
-}
+} */
 
 .inputWrapper {
   position: relative;
@@ -54,7 +35,8 @@
 
 .loginInput.transparentInput {
   background-color: transparent;
-  border: none;
+  border: 1px solid #d5cece;
+  border-radius: 1px;
   flex-grow: 1;
   outline: none;
   width: 100%;
@@ -73,7 +55,7 @@
 }
 
 .loginInput.transparentInput:focus + .passwordToggleIcon {
-  color: #007BFF;
+  color: #3c3e41;
 }
 
 @media (max-width: 600px) {
@@ -101,14 +83,14 @@
   }
 }
 
-.container {
+/* .container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
   padding: 10px;
-}
+} */
 
 .loginForm, .registerForm {
   width: 100%;
@@ -126,15 +108,15 @@
   border: 1px solid #ddd;
 }
 
-.loginButton, .registerButton {
+/* .loginButton, .registerButton {
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #8f9397;
   color: #fff;
   cursor: pointer;
-}
+} */
 
 .loginButton:hover, .registerButton:hover {
   background-color: #0056b3;
