@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #e3e0e0;
+    background-color: #e2e1e1;
     color: #222020; 
 }
 
@@ -12,20 +12,18 @@
     font-size:1.2rem ;
     text-decoration: none;
     color: #131212;
-    font-weight: 600;
-    padding: 8px 16px;
+    padding: 15px 16px;
     transition: background-color 0.3s;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-   transform: translateY(-50%);
 }
 
 .navListItem a:hover {
     background-color: rgba(47, 20, 203, 0.1);
+    font-size:1.23rem ;
+    
 }
-.navListItem a:focus {
-    background-color: rgba(47, 20, 203, 0.1);
-}
+
 
 
 .logo-img {
