@@ -530,7 +530,16 @@ const Attendance = () => {
 												</ul>
 											</div>
 											<div className="column">
-												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<h3>
+													{/* Trainee({attendeesBySelectedDate?.length || 0}) */}
+													Trainee(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "in-person" &&
+															user.role.includes("trainee")
+													).length || 0}
+													)
+												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
 														?.filter(
@@ -556,7 +565,14 @@ const Attendance = () => {
 										<div className="columns">
 											<div className="column">
 												<h3>
-													Volunteer({attendeesBySelectedDate?.length || 0})
+													{/* Volunteer({attendeesBySelectedDate?.length || 0}) */}
+													Volunteer(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "remote" &&
+															user.role.includes("volunteer")
+													).length || 0}
+													)
 												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
@@ -577,7 +593,16 @@ const Attendance = () => {
 												</ul>
 											</div>
 											<div className="column">
-												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<h3>
+													{/* Trainee({attendeesBySelectedDate?.length || 0}) */}
+													Trainee(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "remote" &&
+															user.role.includes("trainee")
+													).length || 0}
+													)
+												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
 														?.filter(
