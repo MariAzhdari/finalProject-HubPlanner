@@ -131,6 +131,8 @@ const Attendance = () => {
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
 	const [submissionStatus, setSubmissionStatus] = useState(null);
+	const [dateError, setDateError] = useState(false);
+	const [attendanceTypeError, setAttendanceTypeError] = useState(false);
 
 	// const [data, setData] = useState([]);
 
