@@ -502,7 +502,14 @@ const Attendance = () => {
 										<div className="columns">
 											<div className="column">
 												<h3>
-													Volunteer({attendeesBySelectedDate?.length || 0})
+													{/* Volunteer({attendeesBySelectedDate?.length || 0}) */}
+													Volunteer(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "in-person" &&
+															user.role.includes("volunteer")
+													).length || 0}
+													)
 												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
