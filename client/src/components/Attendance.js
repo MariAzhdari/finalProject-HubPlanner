@@ -134,6 +134,11 @@ const Attendance = () => {
 	const [dateError, setDateError] = useState(false);
 	const [attendanceTypeError, setAttendanceTypeError] = useState(false);
 
+	    const handleDateChange = (e) => {
+				setDate(e.target.value);
+				setDateError(false);
+			};
+
 	// const [data, setData] = useState([]);
 
 
