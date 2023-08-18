@@ -4,36 +4,29 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px 50px;
-    background-color: #ef0437;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.navList {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navListItem {
-    margin: 0 15px;
-    cursor: pointer;
+    background-color: #e3e0e0;
+    color: #222020; 
 }
 
 .navListItem a {
+    font-size:1.2rem ;
     text-decoration: none;
-    color: #ffffff;
+    color: #131212;
     font-weight: 600;
     padding: 8px 16px;
     transition: background-color 0.3s;
     border-radius: 8px;
+    cursor: pointer;
+   transform: translateY(-50%);
 }
 
 .navListItem a:hover {
     background-color: rgba(47, 20, 203, 0.1);
 }
+.navListItem a:focus {
+    background-color: rgba(47, 20, 203, 0.1);
+}
+
 
 .logo-img {
     max-width: 100px;

@@ -73,30 +73,7 @@
   margin-top: 120%;
 }
 
-@media (max-width: 600px) {
-  .contentContainer {
-    flex: 1 0 100%;
-  }
-}
 
-@media (min-width: 601px) and (max-width: 1024px) {
-  .contentContainer {
-    flex: 1 0 50%;
-  }
-}
-
-@media (min-width: 1025px) {
-  .contentContainer {
-    flex: 1 0 30%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
 
 .container {
   display: flex;

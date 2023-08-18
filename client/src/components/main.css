@@ -1,4 +1,9 @@
+.navbar{
+  background-color: #fbf7f7;
+}
+
 .navList {
+  
   display: flex;
   justify-content: space-around;
   margin: 0;
