@@ -89,8 +89,7 @@ function Login() {
 			<div className="imageContainer">
 				<img src={Logo} alt="placeholder" />
 				<h1 className="cyfName">Code Your Future</h1>
-				<div className="down">
-					<div className="downLeft">
+				
 						<div className="down">
 							<div className="downLeft">
 								<a
@@ -121,8 +120,7 @@ function Login() {
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+		
 	);
 }
 
