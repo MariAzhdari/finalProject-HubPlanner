@@ -134,7 +134,7 @@ const Attendance = () => {
 	const [dateError, setDateError] = useState(false);
 	const [attendanceTypeError, setAttendanceTypeError] = useState(false);
 
-	    const handleDateChange = (e) => {
+   const handleDateChange = (e) => {
 				setDate(e.target.value);
 				setDateError(false);
 			};
@@ -416,10 +416,11 @@ const Attendance = () => {
 										onChange={handleAttendanceTypeChange}
 										value={attendanceType}
 									>
-										<option>Attendance</option>
+										<option value="" disabled selected>
+											Attendance
+										</option>
 										<option value="in-person">In-Person</option>
 										<option value="remote">Online</option>
-										{/* <option value="not-attend">Not-Attend</option> */}
 									</select>
 									{attendanceTypeError && (
 										<p className="validation-error">
