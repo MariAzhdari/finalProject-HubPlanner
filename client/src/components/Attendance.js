@@ -131,6 +131,18 @@ const Attendance = () => {
     const [onlineVolunteers, setOnlineVolunteers] = useState();
     const [onlineTrainees, setOnlineTrainees] = useState();
 	const [submissionStatus, setSubmissionStatus] = useState(null);
+	const [dateError, setDateError] = useState(false);
+	const [attendanceTypeError, setAttendanceTypeError] = useState(false);
+
+   const handleDateChange = (e) => {
+				setDate(e.target.value);
+				setDateError(false);
+			};
+
+			const handleAttendanceTypeChange = (e) => {
+				setAttendanceType(e.target.value);
+				setAttendanceTypeError(false);
+			};
 
 	// const [data, setData] = useState([]);
 
@@ -273,6 +285,21 @@ const Attendance = () => {
 			const handleSubmit = async (e) => {
 				e.preventDefault();
 
+				// Validate inputs before submitting
+				if (!date) {
+					setDateError(true);
+					return;
+				} else {
+					setDateError(false);
+				}
+
+				if (!attendanceType) {
+					setAttendanceTypeError(true);
+					return;
+				} else {
+					setAttendanceTypeError(false);
+				}
+
 				try {
 					// Check if the user has already submitted attendance
 					const existingAttendance = await fetch("api/check-attendance", {
@@ -318,6 +345,9 @@ const Attendance = () => {
 					if (response.ok) {
 						fetchAttendanceData(); // Refresh the attendance data
 						setSubmissionStatus("submitted");
+						// Clear input fields after successful submission
+						setDate("");
+						setAttendanceType("");
 					}
 				} catch (error) {
 					console.error("Error submitting attendance:", error);
@@ -365,21 +395,38 @@ const Attendance = () => {
 										type="date"
 										id="date-input"
 										placeholder="Date"
-										onChange={(e) => setDate(e.target.value)}
+										// onChange={(e) => setDate(e.target.value)}
+										onChange={handleDateChange}
 										value={date}
-									></input>
+										className={dateError ? "error" : ""}
+									/>
+									{dateError && (
+										<p className="validation-error">Please select a date.</p>
+									)}
 								</div>
+
 								<div className="attendance-select">
 									<select
-										className="select-container"
+										// className="select-container"
+										className={`select-container ${
+											attendanceTypeError ? "error" : ""
+										}`}
 										id="attendanceType"
-										onChange={(e) => setAttendanceType(e.target.value)}
+										// onChange={(e) => setAttendanceType(e.target.value)}
+										onChange={handleAttendanceTypeChange}
+										value={attendanceType}
 									>
-										<option>Attendance</option>
+										<option value="" disabled selected>
+											Attendance
+										</option>
 										<option value="in-person">In-Person</option>
 										<option value="remote">Online</option>
-										{/* <option value="not-attend">Not-Attend</option> */}
 									</select>
+									{attendanceTypeError && (
+										<p className="validation-error">
+											Please select an attendance type.
+										</p>
+									)}
 								</div>
 								<div className="submit-container">
 									<button type="submit" className="submit-btn">
@@ -502,7 +549,14 @@ const Attendance = () => {
 										<div className="columns">
 											<div className="column">
 												<h3>
-													Volunteer({attendeesBySelectedDate?.length || 0})
+													{/* Volunteer({attendeesBySelectedDate?.length || 0}) */}
+													Volunteer(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "in-person" &&
+															user.role.includes("volunteer")
+													).length || 0}
+													)
 												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
@@ -523,7 +577,16 @@ const Attendance = () => {
 												</ul>
 											</div>
 											<div className="column">
-												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<h3>
+													{/* Trainee({attendeesBySelectedDate?.length || 0}) */}
+													Trainee(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "in-person" &&
+															user.role.includes("trainee")
+													).length || 0}
+													)
+												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
 														?.filter(
@@ -549,7 +612,14 @@ const Attendance = () => {
 										<div className="columns">
 											<div className="column">
 												<h3>
-													Volunteer({attendeesBySelectedDate?.length || 0})
+													{/* Volunteer({attendeesBySelectedDate?.length || 0}) */}
+													Volunteer(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "remote" &&
+															user.role.includes("volunteer")
+													).length || 0}
+													)
 												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
@@ -570,7 +640,16 @@ const Attendance = () => {
 												</ul>
 											</div>
 											<div className="column">
-												<h3>Trainee({attendeesBySelectedDate?.length || 0})</h3>
+												<h3>
+													{/* Trainee({attendeesBySelectedDate?.length || 0}) */}
+													Trainee(
+													{attendeesBySelectedDate?.filter(
+														(user) =>
+															user.attendance_type === "remote" &&
+															user.role.includes("trainee")
+													).length || 0}
+													)
+												</h3>
 												<ul className="list">
 													{attendeesBySelectedDate
 														?.filter(
