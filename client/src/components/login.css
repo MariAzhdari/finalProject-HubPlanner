@@ -59,7 +59,7 @@
 .downLeft {
   flex: 3;
   display: flex;
-  margin-bottom: 200px;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: flex-end;
   margin-top: 120%;
@@ -68,11 +68,12 @@
 
 
 .container {
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+ min-height: 85vh;
   padding: 10px;
 }
 
@@ -99,6 +100,7 @@
 }
 
 @media (min-width: 768px) {
+ 
   .container {
     flex-direction: row;
     justify-content: space-between;
@@ -107,6 +109,8 @@
   .loginForm, .registerForm {
     width: 45%;
   }
+
+  
 }
 
 .down {
@@ -125,6 +129,15 @@
     flex-direction: column;
     gap: 20px;
   }
+   .logoLogin{
+  display: none;
+}
+.downLeft {
+  margin-top: 30%;
+  display: flex; 
+  gap: 10px; 
+}
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

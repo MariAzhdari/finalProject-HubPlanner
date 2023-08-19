@@ -39,7 +39,7 @@ function Login() {
 	return (
 		<div className="container">
 			<div className="imageContainer">
-				<img src={Logo} alt="placeholder" />
+				<img src={Logo} alt="placeholder" className="logoLogin" />
 				<div className="down">
 					<div className="downLeft">
 						<a
