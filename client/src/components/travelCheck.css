@@ -100,7 +100,7 @@ button:hover {
     background-color: #d9d9da;
 }
 
- /* h1, h2 {
+  h1, h2 {
     padding-bottom: 10px;
     font-size: 24px;
     text-align: center;
@@ -108,8 +108,11 @@ button:hover {
 
 
 .line-status-item:hover {
-    background-color: #e6e6e6;
-} */
+    background-color: #5dc60d;
+} 
+#londonline{
+   margin-left: 45%;
+}
 
 
 
@@ -172,6 +175,13 @@ footer {
     .footer {
         padding: 10px;
     }
+    #londonline{
+   margin-left: 25%;
+}
+.logo-img{
+    align-items: center;
+       margin-left: 25%;
+}
 }
 
 
