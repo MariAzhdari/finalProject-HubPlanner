@@ -1,63 +1,79 @@
 
-.contentContainer {
-  flex: 1 0 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-}
-
 .contentContainer h1{
  text-align: center;
- color:red;
+ color:brown;
+ font-size:2.3rem ;
 }
 
-.contentContainer p li{
- text-align: center;
- margin: 0px 40px;
- font-size: 1.2rem;
-}
-
-.loginButton a{
-  padding: 20px 30px;
-  color: rgb(16, 15, 14);
-  border-radius: 4px;
-  margin-bottom: 60px;
-  font-size: 1.2rem;
-}
- .cyfName{
+.cyfName {
   margin-top: -10px;
- }
+  color:brown;
+  font-size:2.3rem ;  
+}
+
+
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding:3px 8px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.loginInput.transparentInput {
+  background-color: transparent;
+  border: 1px solid #d5cece;
+  border-radius: 1px;
+  flex-grow: 1;
+  outline: none;
+  width: 100%;
+}
+
+.passwordToggleIcon {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loginInput.transparentInput:focus {
+  box-shadow: none;
+}
+
+.loginInput.transparentInput:focus + .passwordToggleIcon {
+  color: #3c3e41;
+}
+
+
+
 
 .down {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: center; 
+  align-items: center;
+  z-index: 999;
+  font-family: "Josefin Sans", sans-serif;
+  justify-content:space-between;
 }
-
 .downLeft {
-  margin-top: 60px;
-  display: flex; 
-  gap: 10px; 
+  flex: 3;
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 120%;
 }
 
-@media (max-width: 600px) {
-  .contentContainer {
-    flex: 1 0 100%;
-  }
-}
 
-@media (min-width: 601px) and (max-width: 1024px) {
-  .contentContainer {
-    flex: 1 0 50%;
-  }
-}
-
-@media (min-width: 1025px) {
-  .contentContainer {
-    flex: 1 0 30%;
-  }
-}
 
 .container {
   display: flex;
@@ -84,18 +100,9 @@
   border: 1px solid #ddd;
 }
 
-.loginButton, .registerButton {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
 .loginButton:hover, .registerButton:hover {
-  background-color: #0056b3;
+  background-color: #878888;
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -106,5 +113,42 @@
 
   .loginForm, .registerForm {
     width: 45%;
+  }
+}
+
+.down {
+  display: flex;
+  justify-content: center; 
+}
+
+.downLeft {
+  margin-top: 60px;
+  display: flex; 
+  gap: 10px; 
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contentContainer {
+    flex: 1 0 50%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .contentContainer {
+    flex: 1 0 30%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .contentContainer {
+    flex: 1 0 100%;
   }
 }

@@ -19,35 +19,39 @@ function Form() {
 	async function loginHandler(e) {
 		e.preventDefault();
 
-	if (!allFieldsFilled) {
-				alert("All fields must be filled out!");
-				return;
-			}
-
-
-		const response = await axios.post("/api/register", {
-			name,
-			email,
-			password,
-			role,
-			city,
-		});
-		console.log(response.data);
-
-		setUser(response.data);
-		localStorage.setItem("user", JSON.stringify(response.data));
-		if (user?.email) {
-			navigate("/");
+		if (!allFieldsFilled) {
+			alert("All fields must be filled out!");
+			return;
 		}
 
-	}
+		try {
+			const response = await axios.post("/api/register", {
+				name,
+				email,
+				password,
+				role,
+				city,
+			});
 
+			setUser(response.data);
+			localStorage.setItem("user", JSON.stringify(response.data));
+			if (user?.email) {
+				navigate("/");
+			}
+		} catch (error) {
+			if (error.response && error.response.status === 400) {
+				alert("User with this email already registered.");
+			} else {
+				alert("An error occurred. Please try again later.");
+			}
+		}
+	}
 	return (
 		<>
 			{/*... Rest of your code ...*/}
 			<img className="logo-img" src={Logo1} alt="logo" />
 			<form className="loginForm">
-				<label className="label">Name</label>
+				<label className="label"> Full Name</label>
 				<input
 					className="loginInput"
 					type="text"
