@@ -11,6 +11,55 @@ Date.prototype.getISOWeek = function () {
 	return Math.ceil(((date - yearStart) / 86400000 + 1) / 7);
 };
 
+const syllabusLinks = [
+  "https://syllabus.codeyourfuture.io/git/overview",
+  "https://syllabus.codeyourfuture.io/html-css/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/html-css/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/html-css/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/html-css/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-1/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-1/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-1/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-1/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-2/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-2/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-2/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/js-core-2/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-3/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/js-core-3/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-3/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/js-core-3/week-4/lesson",
+    "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/js-core-3/tv-show-dom-project/",
+  "https://syllabus.codeyourfuture.io/react/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/react/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/react/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/react/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/node/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/node/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/node/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/node/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/db/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/Overview",
+  "https://syllabus.codeyourfuture.io/db/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/db/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/db/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/finalproject/week-1/lesson",
+  "https://syllabus.codeyourfuture.io/finalproject/week-2/lesson",
+  "https://syllabus.codeyourfuture.io/finalproject/week-3/lesson",
+  "https://syllabus.codeyourfuture.io/finalproject/week-4/lesson",
+  "https://syllabus.codeyourfuture.io/finalproject/demoday/preparation",
+  "https://syllabus.codeyourfuture.io/finalproject/demoday/practice-day"
+  // Add more links for each week...
+];
+
+
+
+
 const Calendar = () => {
 	const [sessionData, setSessionData] = useState([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -62,10 +111,19 @@ console.log(filteredData);
 		// (window.location.href = "https://syllabus.codeyourfuture.io/Overview"),
 		// 	"_blank",
 		// 	"noopener,noreferrer";
-		const agendaLink = "https://syllabus.codeyourfuture.io/Overview";
-		const newTab = window.open();
-		newTab.opener = null;
-		newTab.location = agendaLink;
+		// const agendaLink = "https://syllabus.codeyourfuture.io/Overview";
+		// const newTab = window.open();
+		// newTab.opener = null;
+		// newTab.location = agendaLink;
+		const currentWeekIndex =
+			unfilteredSessionData[currentIndex]?.weeknumber - 1;
+
+		if (currentWeekIndex >= 0 && currentWeekIndex < syllabusLinks.length) {
+			const syllabusLink = syllabusLinks[currentWeekIndex];
+			const newTab = window.open();
+			newTab.opener = null;
+			newTab.location = syllabusLink;
+		}
 	};
 	// Handle Agenda Button Click
 	const handleAgendaButtonClick = () => {
