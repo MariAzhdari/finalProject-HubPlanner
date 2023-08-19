@@ -38,6 +38,39 @@ function Login() {
 
 	return (
 		<div className="container">
+			<div className="imageContainer">
+				<img src={Logo} alt="placeholder" />
+				<h1 className="cyfName">Code Your Future</h1>
+
+				<div className="down">
+					<div className="downLeft">
+						<a
+							href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<i className="topIcon fab fa-facebook-square"></i>
+						</a>
+						<a
+							href="https://www.instagram.com/codeyourfuture_/channel/"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<i className="topIcon fab fa-instagram-square"></i>
+						</a>
+						<a
+							href="https://twitter.com/codeyourfuture?lang=en"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<i className="topIcon fab fa-twitter-square"></i>
+						</a>
+						<a href="mailto:contact@codeyourfuture.io">
+							<i className="topIcon fas fa-envelope-square"></i>
+						</a>
+					</div>
+				</div>
+			</div>
 			<div className="contentContainer">
 				<h1>CYF Hub Planner</h1>
 				<form className="loginForm">
@@ -86,41 +119,7 @@ function Login() {
 					{!allFieldsFilled}
 				</form>
 			</div>
-			<div className="imageContainer">
-				<img src={Logo} alt="placeholder" />
-				<h1 className="cyfName">Code Your Future</h1>
-				
-						<div className="down">
-							<div className="downLeft">
-								<a
-									href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-facebook-square"></i>
-								</a>
-								<a
-									href="https://www.instagram.com/codeyourfuture_/channel/"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-instagram-square"></i>
-								</a>
-								<a
-									href="https://twitter.com/codeyourfuture?lang=en"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-twitter-square"></i>
-								</a>
-								<a href="mailto:contact@codeyourfuture.io">
-									<i className="topIcon fas fa-envelope-square"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
+		</div>
 	);
 }
 
