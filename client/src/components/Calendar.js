@@ -196,12 +196,14 @@ const goToNextSession = () => {
 							</div>
 							<div className="leftItem">10:00-17:00</div>
 						</div>
-						<button className="previousButton" onClick={goToPreviousSession}>
-							Previous
-						</button>
-						<button className="nextButton" onClick={goToNextSession}>
-							Next
-						</button>
+						<div className="next">
+							<button className="previousButton" onClick={goToPreviousSession}>
+								Previous
+							</button>
+							<button className="nextButton" onClick={goToNextSession}>
+								Next
+							</button>
+						</div>
 					</div>
 				</div>
 				<div className="right">
