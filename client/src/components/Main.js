@@ -40,6 +40,7 @@ const [name] = useState(user.name);
 				<div className="up">
 					<h1>Hub Planner</h1>
 					<p>Your Attendance, Your Journey, One Click Away!</p>
+					<h2 className="welcome"> welcome {name}</h2>
 				</div>
 				<div className="down">
 					<div className="down">
@@ -70,7 +71,7 @@ const [name] = useState(user.name);
 							</a>
 						</div>
 					</div>
-					<h1 className="welcome"> welcome {name}</h1>
+
 					<img className="logo-img2" src={Logo} alt="logo" />
 				</div>
 			</div>

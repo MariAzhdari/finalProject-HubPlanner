@@ -5,14 +5,6 @@
  font-size:2.3rem ;
 }
 
-.cyfName {
-  margin-top: -10px;
-  color:brown;
-  font-size:2.3rem ;  
-}
-
-
-
 .inputWrapper {
   position: relative;
   display: flex;
@@ -57,7 +49,7 @@
   height: 50px;
   background-color: white;
   position: sticky;
-  top: 0;
+  top: 10px;
   display: flex;
   align-items: center;
   z-index: 999;
@@ -67,7 +59,7 @@
 .downLeft {
   flex: 3;
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   justify-content: center;
   align-items: flex-end;
   margin-top: 120%;
@@ -80,7 +72,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+ min-height: 75vh;
   padding: 10px;
 }
 
@@ -88,7 +80,7 @@
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 3px solid brown;
   border-radius: 10px;
 }
 
@@ -101,11 +93,13 @@
 }
 
 .loginButton:hover, .registerButton:hover {
-  background-color: #878888;
+  background-color: #27580b;
   color: white;
+ border:1px solid #ccc;
 }
 
 @media (min-width: 768px) {
+ 
   .container {
     flex-direction: row;
     justify-content: space-between;
@@ -114,6 +108,8 @@
   .loginForm, .registerForm {
     width: 45%;
   }
+
+  
 }
 
 .down {
@@ -132,6 +128,15 @@
     flex-direction: column;
     gap: 20px;
   }
+   .logoLogin{
+  display: none;
+}
+.downLeft {
+  margin-top: 30%;
+  display: flex; 
+  gap: 10px; 
+}
+
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

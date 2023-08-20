@@ -266,7 +266,12 @@ const TravelCheck = () => {
 				<ul className="link-list">
 					{usefulLinks.map((link, index) => (
 						<li key={index}>
-							<a href={link.url} target="_blank" rel="noopener noreferrer">
+							<a
+								href={link.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="footer-link"
+							>
 								{link.name}
 							</a>
 						</li>
@@ -277,130 +282,137 @@ const TravelCheck = () => {
 	};
 
 	return (
-		<>
-			<div className="navbar">
-				<ul className="navList">
-					<li className="navListItem">
-						<Link className="link" to="/main">
-							MAIN
-						</Link>
-					</li>
-					<li className="navListItem">
-						<Link className="link" to="/calendar">
-							CYF CALENDAR
-						</Link>
-					</li>
-					<li className="navListItem">
-						<Link className="link" to="/travel">
-							TRAVEL CHECK
-						</Link>
-					</li>
-					<li className="navListItem">
-						<Link className="link" to="/attendance">
-							ATTENDANCE
-						</Link>
-					</li>
-				</ul>
-				<img className="logo-img" src={Logo} alt="logo" />
-			</div>
-
-			{/* National Rail Strike */}
-			<button
-				onClick={() => setShowNationalRailStrike(!showNationalRailStrike)}
-			>
-				Toggle National Rail Strike
-			</button>
-			{showNationalRailStrike && (
-				<div className="national-rail-strike-container">
-					<h2>National Rail Strike</h2>
-					<ul className="national-rail-strike-list">
-						{nationalRailStrikeData.map((strike, index) => (
-							<li key={index} className="strike-item">
-								<strong>{strike.date}</strong>
-								<ul>
-									{strike.details.map((detail, detailIndex) => (
-										<li key={detailIndex}>{detail}</li>
-									))}
-								</ul>
-								<br />
-							</li>
-						))}
+		<div id="page-container">
+			<div id="travel">
+			<>
+				<div className="navbar">
+					<ul className="navList">
+						<li className="navListItem">
+							<Link className="link" to="/main">
+								MAIN
+							</Link>
+						</li>
+						<li className="navListItem">
+							<Link className="link" to="/calendar">
+								CYF CALENDAR
+							</Link>
+						</li>
+						<li className="navListItem">
+							<Link className="link" to="/travel">
+								TRAVEL CHECK
+							</Link>
+						</li>
+						<li className="navListItem">
+							<Link className="link" to="/attendance">
+								ATTENDANCE
+							</Link>
+						</li>
 					</ul>
+					<img className="logo-img" src={Logo} alt="logo" />
 				</div>
-			)}
 
-			{/* Toggle Disruptions and Lines */}
-			<button
-				onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
-			>
-				Toggle Disruptions and Lines
-			</button>
-
-			{showDisruptionsAndLines && (
-				<div>
-					<div className="disruptions-container">
-						<h2>Disruptions</h2>
-						<ul className="disruption-list">
-							{disruptions.map((disruption, index) => (
-								<li key={index} className="disruption-item">
-									{disruption.description}
+				{/* National Rail Strike */}
+				<button
+					onClick={() => setShowNationalRailStrike(!showNationalRailStrike)}
+				>
+					Toggle National Rail Strike
+				</button>
+				{showNationalRailStrike && (
+					<div className="national-rail-strike-container">
+						<h2>National Rail Strike</h2>
+						<ul className="national-rail-strike-list">
+							{nationalRailStrikeData.map((strike, index) => (
+								<li key={index} className="strike-item">
+									<strong>{strike.date}</strong>
+									<ul>
+										{strike.details.map((detail, detailIndex) => (
+											<li key={detailIndex}>{detail}</li>
+										))}
+									</ul>
 									<br />
 								</li>
 							))}
 						</ul>
 					</div>
-					<h1>Lines</h1>
-					<ul>
-						{lineStatuses.map((status, index) => (
-							<li key={index}>
-								Line: {status.name}
-								Status:{" "}
-								{status.lineStatuses[0]?.statusSeverityDescription || "Unknown"}
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
-
-			{/* London Underground Line Status */}
-			<div className="status-form">
-				{showStatusForm ? (
-					<>
-						<h1>London Underground Line Status</h1>
-						<div className="options">
-							<select value={selectedLine} onChange={handleLineChange}>
-								{LineOptions.map((line) => (
-									<option key={line} value={line}>
-										{line}
-									</option>
-								))}
-							</select>
-							<input
-								type="date"
-								value={selectedDate}
-								onChange={handleDateChange}
-							/>
-							<button onClick={toggleForm}>Close</button>
-						</div>
-						<div className="line-data">
-							<h2>{selectedLine} Line Status</h2>
-							{lineData.length > 0 ? (
-								<ul>
-									{lineData[0].lineStatuses.map((status) => (
-										<li key={status.id}>{status.statusSeverityDescription}</li>
-									))}
-								</ul>
-							) : (
-								<p>No data available for the selected date.</p>
-							)}
-						</div>
-					</>
-				) : (
-					<button onClick={toggleForm}>Show Line Status</button>
 				)}
-			</div>
+
+				{/* Toggle Disruptions and Lines */}
+				<button
+					onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
+				>
+					Toggle Disruptions and Lines
+				</button>
+
+				{showDisruptionsAndLines && (
+					<div>
+						<div className="disruptions-container">
+							<h2>Disruptions</h2>
+							<ul className="disruption-list">
+								{disruptions.map((disruption, index) => (
+									<li key={index} className="disruption-item">
+										{disruption.description}
+										<br />
+									</li>
+								))}
+							</ul>
+						</div>
+						<h1>Lines</h1>
+						<ul id="londonline">
+							{lineStatuses.map((status, index) => (
+								<li key={index}>
+									Line: {status.name}
+									Status:{" "}
+									{status.lineStatuses[0]?.statusSeverityDescription ||
+										"Unknown"}
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+
+				{/* London Underground Line Status */}
+				<div className="status-form">
+					{showStatusForm ? (
+						<>
+							<h1>London Underground Line Status</h1>
+							<div className="options">
+								<select value={selectedLine} onChange={handleLineChange}>
+									{LineOptions.map((line) => (
+										<option key={line} value={line}>
+											{line}
+										</option>
+									))}
+								</select>
+								<input
+									type="date"
+									value={selectedDate}
+									onChange={handleDateChange}
+								/>
+								<button onClick={toggleForm}>Close</button>
+							</div>
+							<div className="line-data">
+								<h2>{selectedLine} Line Status</h2>
+								{lineData.length > 0 ? (
+									<ul>
+										{lineData[0].lineStatuses.map((status) => (
+											<li key={status.id}>
+												{status.statusSeverityDescription}
+											</li>
+										))}
+									</ul>
+								) : (
+									<p>No data available for the selected date.</p>
+								)}
+							</div>
+						</>
+					) : (
+						<button onClick={toggleForm}>Show Line Status</button>
+					)}
+				</div>
+			</>
 			<UsefulLinksFooter />
-		</>
+			</div>
+		</div>
 	);
 };
 
