@@ -182,26 +182,26 @@ const goToNextSession = () => {
 			<div className="main">
 				<div className="left">
 					<div className="leftContent">
+						<div className="leftItem">{`Week ${
+							unfilteredSessionData[currentIndex]?.weeknumber || ""
+						}`}</div>
 						<div className="leftItem">
-							<div className="leftItem">{`Week ${
-								unfilteredSessionData[currentIndex]?.weeknumber || ""
-							}`}</div>
-							<div className="leftItem">
-								{unfilteredSessionData[currentIndex]?.name || ""}
-							</div>
-							<div className="leftItem">
-								{new Date(
-									unfilteredSessionData[currentIndex]?.session_date
-								).toLocaleDateString()}
-							</div>
-							<div className="leftItem">10:00-17:00</div>
+							{unfilteredSessionData[currentIndex]?.name || ""}
 						</div>
-						<button className="previousButton" onClick={goToPreviousSession}>
-							Previous
-						</button>
-						<button className="nextButton" onClick={goToNextSession}>
-							Next
-						</button>
+						<div className="leftItem">
+							{new Date(
+								unfilteredSessionData[currentIndex]?.session_date
+							).toLocaleDateString()}
+						</div>
+						<div className="leftItem">10:00-17:00</div>
+						<div className="buttonContainer">
+							<button className="previousButton" onClick={goToPreviousSession}>
+								Previous class
+							</button>
+							<button className="nextButton" onClick={goToNextSession}>
+								Upcoming class
+							</button>
+						</div>
 					</div>
 				</div>
 				<div className="right">
@@ -223,3 +223,5 @@ const goToNextSession = () => {
 };
 
 export default Calendar;
+
+
