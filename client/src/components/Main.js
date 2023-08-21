@@ -23,13 +23,13 @@ const [name] = useState(user.name);
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/attendance">
-							ATTENDANCE
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/travel">
-							TRAVEL CHECK
+						<Link className="link" to="/attendance">
+							ATTENDANCE
 						</Link>
 					</li>
 				</ul>
@@ -38,9 +38,8 @@ const [name] = useState(user.name);
 			</div>
 			<div className="container">
 				<div className="up">
-					<h1>Hub Planner</h1>
+					<h1 className="welcome">{name} welcome to HUB PLANNER</h1>
 					<p>Your Attendance, Your Journey, One Click Away!</p>
-					<h2 className="welcome"> welcome {name}</h2>
 				</div>
 				<div className="down">
 					<div className="down">
