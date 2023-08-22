@@ -34,15 +34,20 @@ function Form() {
 			});
 
 			setUser(response.data);
-			localStorage.setItem("user", JSON.stringify(response.data));
-			if (user?.email) {
+    setName("");
+    setEmail("");
+	setPassword("") ;
+    setCity("");
+    setRole("");
+			// localStorage.setItem("user", JSON.stringify(response.data));
+			if (response.status===200) {
 				navigate("/");
 			}
 		} catch (error) {
 			if (error.response && error.response.status === 400) {
 				alert("User with this email already registered.");
 			} else {
-				alert("An error occurred. Please try again later.");
+				alert("err");
 			}
 		}
 	}
