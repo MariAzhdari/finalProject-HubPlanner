@@ -198,10 +198,10 @@ const goToNextSession = () => {
 						</div>
 						<div className="next">
 							<button className="previousButton" onClick={goToPreviousSession}>
-								Previous
+								Previous class
 							</button>
 							<button className="nextButton" onClick={goToNextSession}>
-								Next
+								Next class
 							</button>
 						</div>
 					</div>

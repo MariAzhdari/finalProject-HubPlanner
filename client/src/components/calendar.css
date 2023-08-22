@@ -56,9 +56,11 @@ h1:hover {
   text-align: center;
   align-items: center;
   font-size: 25px;
+   background-color: rgb(246, 242, 242);  
 }
 .leftItem:nth-child(1) {
   border-bottom: 4px solid brown;
+ 
 
 }
 
@@ -97,12 +99,12 @@ h1:hover {
 }
 
 .agendaButton {
-  background-color: rgb(238, 229, 229);
+ background-color: rgb(246, 242, 242);  
  
 }
 
 .syllabusButton {
- background-color: rgb(238, 229, 229);
+ background-color: rgb(246, 242, 242);  
  
 }
 .main {
