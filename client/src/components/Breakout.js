@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import moment from "moment";
 import React, { useState } from "react";
 function Breakout() {
@@ -16,121 +16,129 @@ function Breakout() {
 	};
 	const handleViewAttendeesByDate = async (e) => {
 		setSelectedDate(e.target.value);
-		let apiUrl = "api/fetch-attendance-data" + `:${e.target.value}`;
-		const response = await axios.get(apiUrl, {
+if (e.target.value) {
+	try {
+
+		const response = await fetch("api/fetch-attendees-by-date", {
+			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
+			body: JSON.stringify({ date: e.target.value }),
 		});
-		const data = response.data;
-		const volunteers = data.filter((item) => item.role.includes("volunteer"));
-		const trainees = data.filter((item) => item.role.includes("trainee"));
-		const inPersonVolunteers = volunteers.filter(
-			(item) => item.attendance_type === "in-person"
-		);
-		const onlineVolunteers = volunteers.filter(
-			(item) => item.attendance_type === "remote"
-		);
-		const inPersonTrainees = trainees.filter(
-			(item) => item.attendance_type === "in-person"
-		);
-		console.log(inPersonTrainees);
-		const onlineTrainees = trainees.filter(
-			(item) => item.attendance_type === "remote"
-		);
-		console.log(onlineTrainees);
-		const shuffledInPersonVolunteers = shuffleArray(inPersonVolunteers);
-		const shuffledOnlineVolunteers = shuffleArray(onlineVolunteers);
-		const shuffledInPersonTrainees = shuffleArray(inPersonTrainees);
-		const shuffledOnlineTrainees = shuffleArray(onlineTrainees);
-		const newBreakoutRooms = [];
-		// In-Person Rooms
-		const inPersonRoomCount = Math.ceil(
-			(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
-		);
-		for (let i = 0; i < inPersonRoomCount; i++) {
-			const roomAttendees = [];
-			// Add volunteers to the room
-			if (shuffledInPersonVolunteers.length > 0) {
-				roomAttendees.push(shuffledInPersonVolunteers.pop());
+		const data = await response.json();
+console.log(data);
+const volunteers = data.filter((item) => item.role.includes("volunteer"));
+
+const trainees = data.filter((item) => item.role.includes("trainee"));
+const inPersonVolunteers = volunteers.filter(
+	(item) => item.attendance_type === "in-person"
+);
+const onlineVolunteers = volunteers.filter(
+	(item) => item.attendance_type === "remote"
+);
+const inPersonTrainees = trainees.filter(
+	(item) => item.attendance_type === "in-person"
+);
+console.log(inPersonTrainees);
+const onlineTrainees = trainees.filter(
+	(item) => item.attendance_type === "remote"
+);
+console.log(onlineTrainees);
+const shuffledInPersonVolunteers = shuffleArray(inPersonVolunteers);
+const shuffledOnlineVolunteers = shuffleArray(onlineVolunteers);
+const shuffledInPersonTrainees = shuffleArray(inPersonTrainees);
+const shuffledOnlineTrainees = shuffleArray(onlineTrainees);
+const newBreakoutRooms = [];
+// In-Person Rooms
+const inPersonRoomCount = Math.ceil(
+	(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
+);
+for (let i = 0; i < inPersonRoomCount; i++) {
+	const roomAttendees = [];
+	// Add volunteers to the room
+	if (shuffledInPersonVolunteers.length > 0) {
+		roomAttendees.push(shuffledInPersonVolunteers.pop());
+	}
+	// Add trainees to the room
+	while (roomAttendees.length < 5) {
+		if (shuffledInPersonTrainees.length > 0) {
+			roomAttendees.push(shuffledInPersonTrainees.pop());
+		} else {
+			break;
+		}
+	}
+	if (
+		roomAttendees.filter((attendee) => attendee.role === "trainee").length >= 3
+	) {
+		newBreakoutRooms.push({
+			roomType: "In-Person",
+			attendees: roomAttendees,
+		});
+	} else {
+		// Put trainees in existing rooms
+		for (const room of newBreakoutRooms) {
+			if (
+				room.roomType === "In-Person" &&
+				room.attendees.filter((attendee) => attendee.role === "trainee")
+					.length < 5
+			) {
+				room.attendees.push(
+					...roomAttendees.filter((attendee) => attendee.role === "trainee")
+				);
+				break;
 			}
-			// Add trainees to the room
-			while (roomAttendees.length < 5) {
-				if (shuffledInPersonTrainees.length > 0) {
-					roomAttendees.push(shuffledInPersonTrainees.pop());
-				} else {
+		}
+	}
+	const onlineRoomCount = Math.ceil(
+		(shuffledOnlineVolunteers.length + shuffledOnlineTrainees.length) / 5
+	);
+	for (let i = 0; i < onlineRoomCount; i++) {
+		const roomAttendees = [];
+		// Add volunteers to the room
+		if (shuffledOnlineVolunteers.length > 0) {
+			roomAttendees.push(shuffledOnlineVolunteers.pop());
+		}
+		// Add trainees to the room
+		while (roomAttendees.length < 5) {
+			if (shuffledOnlineTrainees.length > 0) {
+				roomAttendees.push(shuffledOnlineTrainees.pop());
+			} else {
+				break;
+			}
+		}
+		if (
+			roomAttendees.filter((attendee) => attendee.role === "trainee").length >=
+			3
+		) {
+			newBreakoutRooms.push({
+				roomType: "Online",
+				attendees: roomAttendees,
+			});
+		} else {
+			// Put trainees in existing rooms
+			for (const room of newBreakoutRooms) {
+				if (
+					room.roomType === "Online" &&
+					room.attendees.filter((attendee) => attendee.role === "trainee")
+						.length < 5
+				) {
+					room.attendees.push(
+						...roomAttendees.filter((attendee) => attendee.role === "trainee")
+					);
 					break;
 				}
 			}
-			if (
-				roomAttendees.filter((attendee) => attendee.role === "trainee")
-					.length >= 3
-			) {
-				newBreakoutRooms.push({
-					roomType: "In-Person",
-					attendees: roomAttendees,
-				});
-			} else {
-				// Put trainees in existing rooms
-				for (const room of newBreakoutRooms) {
-					if (
-						room.roomType === "In-Person" &&
-						room.attendees.filter((attendee) => attendee.role === "trainee")
-							.length < 5
-					) {
-						room.attendees.push(
-							...roomAttendees.filter((attendee) => attendee.role === "trainee")
-						);
-						break;
-					}
-				}
-			}
-			const onlineRoomCount = Math.ceil(
-				(shuffledOnlineVolunteers.length + shuffledOnlineTrainees.length) / 5
-			);
-			for (let i = 0; i < onlineRoomCount; i++) {
-				const roomAttendees = [];
-				// Add volunteers to the room
-				if (shuffledOnlineVolunteers.length > 0) {
-					roomAttendees.push(shuffledOnlineVolunteers.pop());
-				}
-				// Add trainees to the room
-				while (roomAttendees.length < 5) {
-					if (shuffledOnlineTrainees.length > 0) {
-						roomAttendees.push(shuffledOnlineTrainees.pop());
-					} else {
-						break;
-					}
-				}
-				if (
-					roomAttendees.filter((attendee) => attendee.role === "trainee")
-						.length >= 3
-				) {
-					newBreakoutRooms.push({
-						roomType: "Online",
-						attendees: roomAttendees,
-					});
-				} else {
-					// Put trainees in existing rooms
-					for (const room of newBreakoutRooms) {
-						if (
-							room.roomType === "Online" &&
-							room.attendees.filter((attendee) => attendee.role === "trainee")
-								.length < 5
-						) {
-							room.attendees.push(
-								...roomAttendees.filter(
-									(attendee) => attendee.role === "trainee"
-								)
-							);
-							break;
-						}
-					}
-				}
-			}
 		}
-		// ... (same logic for online rooms)
-		setBreakoutRooms(newBreakoutRooms);
+	}
+}
+// ... (same logic for online rooms)
+setBreakoutRooms(newBreakoutRooms);
+	} catch (error) {
+		console.error("Error fetching attendees by date:", error);
+	}
+}
+
 	};
 	// New function to calculate breakout rooms
 	// Existing code for handleDateChange, handleAttendanceTypeChange, handleSubmit, handleViewAttendeesByDate...
@@ -163,6 +171,7 @@ function Breakout() {
 	};
 	return (
 		<div className="top-container">
+
 			<div className="datepicker-container">
 				<h3>Select A date</h3>
 				<input
