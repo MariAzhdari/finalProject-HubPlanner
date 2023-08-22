@@ -30,11 +30,11 @@
 }
 .up h1 {
   color:brown;
-    font-size:50px;
+    font-size:40px;
     text-transform:uppercase;
-    font-weight: 700;
+    font-weight: 600;
     text-shadow: 0 2px 2px rgba(0,0,0,.1);
-    -webkit-mask-image: linear-gradient(-75deg, rgba(102, 87, 87, 0.2) 20%, #b31515 60%, rgba(39, 22, 22, 0.2) 90%);
+    -webkit-mask-image: linear-gradient(-85deg, rgba(102, 87, 87, 0.2) 10%, #b31515 60%, rgba(39, 22, 22, 0.2) 90%);
     -webkit-mask-size: 200%;
   
 }
@@ -67,16 +67,20 @@ font-size: 2rem;
   display: none;
 }
 .up h1 {
-  color:brown;
+   color:brown;
     font-size:20px;
     text-transform:uppercase;
     font-weight: 500;
-    text-shadow: 0 2px 2px rgba(0,0,0,.1);
-    -webkit-mask-image: linear-gradient(-75deg, rgba(102, 87, 87, 0.2) 20%, #b31515 60%, rgba(39, 22, 22, 0.2) 90%);
+    text-shadow: 1px 2px 2px rgba(0,0,0,.1);
+    -webkit-mask-image: linear-gradient(-75deg, rgba(2, 0, 0, 0.2) 0%, #780d0d 20%, rgba(5, 5, 5, 0.2) 160%);
     -webkit-mask-size: 100%;
   
   
   
+}
+.container {
+ margin: auto;
+
 }
 
 
