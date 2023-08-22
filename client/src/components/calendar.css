@@ -1,37 +1,4 @@
-/* calendar.css */
 
-/* Navbar styles */
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: rgb(255, 255, 255);
-}
-.navList {
-  display: flex;
-  justify-content: space-evenly;
-
-  margin-top: 40px;
-  padding: 0;
-  list-style: none;
-  margin-left: 40px;
-  
-}
-
-.navListItem {
-  margin-right: 20px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 20px;
-  
-}
-
-.navListItem:hover{
-    color: brown;
-    
-} */
 
 
 .logo-img {
@@ -39,8 +6,7 @@
   max-height: 100px;
   margin-right: 40px;
   margin-top: 30px;
-  /* width: 150px;
-  height: 150px; */
+ 
 }
 
 /* Main container styles */
@@ -83,7 +49,6 @@ h1:hover {
 .leftItem {
   width: 100%;
   padding: 10px;
-  border: 1px solid #b1aeae;
   flex:1;
   display: flex;
   flex-direction: column;
@@ -93,22 +58,16 @@ h1:hover {
   font-size: 25px;
 }
 .leftItem:nth-child(1) {
-  margin-bottom: -2px;
-    border-bottom: 4px solid brown;
- border-top: 4px solid brown;
+  border-bottom: 4px solid brown;
+
 }
 
 
 .leftItem:nth-child(3) {
-  margin-top: -2px;
-    border-bottom: 4px solid brown;
+  border-bottom: 4px solid brown;
   border-top: 4px solid brown;
 }
-.leftItem:nth-child(4) {
-  margin-bottom: -2px;
-   border-bottom: 4px solid brown;
-  border-bottom: 4px solid brown;
-}
+
 
 /* Right container styles */
 .right {
@@ -161,4 +120,33 @@ h1:hover {
   display: flex;
   flex-direction: column;
 }
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+margin-top: 10%;
+border: none;
+
+}
+
+
+.agendaButton, .syllabusButton {
+  width: 100%;
+  padding: 6px;
+  color: brown;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+.leftItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+ font-size: 22px;
+}
+
 }
