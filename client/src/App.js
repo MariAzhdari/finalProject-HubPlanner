@@ -5,7 +5,7 @@ import Main from "./components/Main";
 import Calendar from "./components/Calendar";
 import Attendance from "./components/Attendance";
 import TravelCheck from "./components/TravelCheck";
-
+import Breakout from "./components/Breakout";
 
 
 const App = () => (
