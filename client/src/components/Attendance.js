@@ -369,13 +369,13 @@ const Attendance = () => {
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/attendance">
-							ATTENDANCE
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/travel">
-							TRAVEL CHECK
+						<Link className="link" to="/attendance">
+							ATTENDANCE
 						</Link>
 					</li>
 				</ul>
