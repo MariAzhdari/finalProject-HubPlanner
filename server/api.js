@@ -31,11 +31,16 @@ router.post("/register",  async (req, res) => {
     if (user.rows.length > 0) {
 			return res.json(user.rows[0]);
 		}
+
         let newUser = await pool.query(
 			"INSERT INTO users (name, email, password, role, city) VALUES ($1, $2, $3, $4 ,$5) RETURNING *",
 			[name, email, password, role, city]
 		);
-        res.json(newUser.rows[0]);
+        // res.json(newUser.rows[0]);
+		return res
+		.status(200)
+		.json({ message: "done" });
+
 		// const jwtToken = jwtGenerator(newUser.rows[0].user_id);
 		// return res.json({ jwtToken });
 	} catch (err) {
