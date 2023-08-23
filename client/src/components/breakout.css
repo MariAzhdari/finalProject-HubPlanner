@@ -1,0 +1,68 @@
+/* Small screens */
+@media (max-width: 576px) {
+  .breakout-section {
+    
+  }
+
+  .breakout-columns {
+    
+    display: block;
+  }
+
+  .breakout-column {
+    
+    margin-bottom: 20px;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 577px) and (max-width: 768px) {
+  .breakout-section {
+    
+  }
+
+  .breakout-columns {
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .breakout-column {
+    
+  }
+}
+
+/* Large screens */
+@media (min-width: 769px) and (max-width: 992px) {
+  .breakout-section {
+    
+  }
+
+  .breakout-columns {
+    
+  }
+
+  .breakout-column {
+    
+  }
+}
+
+/* Default styles for all screen sizes */
+.breakout-section {
+  
+}
+
+.breakout-columns {
+  
+}
+
+.breakout-column {
+  
+}
+
+.breakout-list {
+  
+}
+
+

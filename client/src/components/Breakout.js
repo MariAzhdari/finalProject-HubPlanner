@@ -1,6 +1,8 @@
-
 import moment from "moment";
 import React, { useState } from "react";
+import Logo from "./img/cyfLogo1.png";
+import { Link } from "react-router-dom";
+
 function Breakout() {
 	// Existing code for state variables and handlers...
 	// New state for breakout rooms
@@ -51,45 +53,45 @@ const shuffledInPersonTrainees = shuffleArray(inPersonTrainees);
 const shuffledOnlineTrainees = shuffleArray(onlineTrainees);
 const newBreakoutRooms = [];
 // In-Person Rooms
-const inPersonRoomCount = Math.ceil(
-	(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
-);
-for (let i = 0; i < inPersonRoomCount; i++) {
-	const roomAttendees = [];
-	// Add volunteers to the room
-	if (shuffledInPersonVolunteers.length > 0) {
-		roomAttendees.push(shuffledInPersonVolunteers.pop());
-	}
-	// Add trainees to the room
-	while (roomAttendees.length < 5) {
-		if (shuffledInPersonTrainees.length > 0) {
-			roomAttendees.push(shuffledInPersonTrainees.pop());
-		} else {
-			break;
-		}
-	}
-	if (
-		roomAttendees.filter((attendee) => attendee.role === "trainee").length >= 3
-	) {
-		newBreakoutRooms.push({
-			roomType: "In-Person",
-			attendees: roomAttendees,
-		});
-	} else {
-		// Put trainees in existing rooms
-		for (const room of newBreakoutRooms) {
-			if (
-				room.roomType === "In-Person" &&
-				room.attendees.filter((attendee) => attendee.role === "trainee")
-					.length < 5
-			) {
-				room.attendees.push(
-					...roomAttendees.filter((attendee) => attendee.role === "trainee")
-				);
-				break;
-			}
-		}
-	}
+// const inPersonRoomCount = Math.ceil(
+// 	(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
+// );
+// for (let i = 0; i < inPersonRoomCount; i++) {
+// 	const roomAttendees = [];
+// 	// Add volunteers to the room
+// 	if (shuffledInPersonVolunteers.length > 0) {
+// 		roomAttendees.push(shuffledInPersonVolunteers.pop());
+// 	}
+// 	// Add trainees to the room
+// 	while (roomAttendees.length < 5) {
+// 		if (shuffledInPersonTrainees.length > 0) {
+// 			roomAttendees.push(shuffledInPersonTrainees.pop());
+// 		} else {
+// 			break;
+// 		}
+// 	}
+// 	if (roomAttendees.filter((attendee) => attendee.role.includes("trainee")).length >= 3) {
+
+// 		newBreakoutRooms.push({
+// 			roomType: "In-Person",
+// 			attendees: roomAttendees,
+// 		});
+// 	} else {
+// 		// Put trainees in existing rooms
+// 		for (const room of newBreakoutRooms) {
+// 			if (
+// 				room.roomType === "In-Person" &&
+// 				room.attendees.filter((attendee) => attendee.role.includes("trainee"))
+// 					.length < 5) {
+
+// 				room.attendees.push(
+// 					...roomAttendees.filter((attendee) => attendee.role.includes("trainee")));
+
+// 				break;
+// 			}
+// 		}
+// 	}
+///end of in-person rooms:
 	const onlineRoomCount = Math.ceil(
 		(shuffledOnlineVolunteers.length + shuffledOnlineTrainees.length) / 5
 	);
@@ -108,7 +110,7 @@ for (let i = 0; i < inPersonRoomCount; i++) {
 			}
 		}
 		if (
-			roomAttendees.filter((attendee) => attendee.role === "trainee").length >=
+			roomAttendees.filter((attendee) => attendee.role.includes("trainee")).length >=
 			3
 		) {
 			newBreakoutRooms.push({
@@ -120,18 +122,18 @@ for (let i = 0; i < inPersonRoomCount; i++) {
 			for (const room of newBreakoutRooms) {
 				if (
 					room.roomType === "Online" &&
-					room.attendees.filter((attendee) => attendee.role === "trainee")
+					room.attendees.filter((attendee) => attendee.role.includes("trainee"))
 						.length < 5
 				) {
 					room.attendees.push(
-						...roomAttendees.filter((attendee) => attendee.role === "trainee")
+						...roomAttendees.filter((attendee) => attendee.role.includes("trainee"))
 					);
 					break;
 				}
 			}
 		}
 	}
-}
+
 // ... (same logic for online rooms)
 setBreakoutRooms(newBreakoutRooms);
 	} catch (error) {
@@ -146,20 +148,25 @@ setBreakoutRooms(newBreakoutRooms);
 	// New JSX for rendering breakout rooms
 	const renderBreakoutRooms = () => {
 		return (
-			<div className="section">
+			<div className="breakout-section">
 				<h2>Breakout Rooms</h2>
-				<div className="columns">
+				<div className="breakout-columns">
 					{breakoutRooms.map((room, index) => (
-						<div className="column" key={index}>
+						<div className="breakout-column" key={index}>
 							<h3>
 								{room.roomType} Room {index + 1}
 							</h3>
-							<ul className="list">
+							<ul className="breakout-list">
 								{room.attendees.map((user) => (
-									<li key={user.name}>
-										{user.name} (
-										<span>{moment(user.date).format("Do MMMM YYYY")}</span>)
-										<span>: {user.role}</span>
+									<li
+										key={user.name}
+										style={{
+											color: user.role.includes("volunteer") ? "red" : "black",
+										}}
+									>
+										{capitalizeFirstLetter(user.name)}
+										{/* (<span>{moment(user.date).format("Do MMMM YYYY")}</span>) */}
+										<span>: {capitalizeFirstLetter(user.role)}</span>
 									</li>
 								))}
 							</ul>
@@ -168,8 +175,40 @@ setBreakoutRooms(newBreakoutRooms);
 				</div>
 			</div>
 		);
+		function capitalizeFirstLetter(str) {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+		}
 	};
+
 	return (
+		<>
+		<div className="navbar">
+				<ul className="navList">
+					<li className="navListItem">
+						<Link className="link" to="/main">
+							MAIN
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/calendar">
+							CYF CALENDAR
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/attendance">
+							ATTENDANCE
+						</Link>
+					</li>
+				</ul>
+				<img className="logo-img" src={Logo} alt="logo" />
+			</div>
+
+
 		<div className="top-container">
 
 			<div className="datepicker-container">
@@ -183,6 +222,7 @@ setBreakoutRooms(newBreakoutRooms);
 			</div>
 			{renderBreakoutRooms()}
 		</div>
+		</>
 	);
 }
 export default Breakout;
