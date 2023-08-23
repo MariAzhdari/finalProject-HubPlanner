@@ -406,7 +406,7 @@ const TravelCheck = () => {
 							</div>
 						</>
 					) : (
-						<button onClick={toggleForm}>Show Line Status</button>
+						<button onClick={toggleForm}>Show Line Status By Date</button>
 					)}
 				</div>
 			</>
