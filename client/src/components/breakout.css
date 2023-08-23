@@ -1,16 +1,16 @@
 /* Small screens */
 @media (max-width: 576px) {
   .breakout-section {
-    /* Your CSS rules for small screens here */
+    
   }
 
   .breakout-columns {
-    /* Adjust column layout for small screens */
+    
     display: block;
   }
 
   .breakout-column {
-    /* Your CSS rules for individual columns on small screens here */
+    
     margin-bottom: 20px;
   }
 }
@@ -18,18 +18,18 @@
 /* Medium screens */
 @media (min-width: 577px) and (max-width: 768px) {
   .breakout-section {
-    /* Your CSS rules for medium screens here */
+    
   }
 
   .breakout-columns {
-    /* Adjust column layout for medium screens */
+    
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 
   .breakout-column {
-    /* Your CSS rules for individual columns on medium screens here */
+    
   }
 }
 

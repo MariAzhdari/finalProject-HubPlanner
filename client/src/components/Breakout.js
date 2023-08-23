@@ -155,10 +155,15 @@ setBreakoutRooms(newBreakoutRooms);
 							</h3>
 							<ul className="breakout-list">
 								{room.attendees.map((user) => (
-									<li key={user.name} style={{ color:user.role.includes("volunteer")? "red":"black" }}>
-										{user.name}
+									<li
+										key={user.name}
+										style={{
+											color: user.role.includes("volunteer") ? "red" : "black",
+										}}
+									>
+										{capitalizeFirstLetter(user.name)}
 										{/* (<span>{moment(user.date).format("Do MMMM YYYY")}</span>) */}
-										<span>: {user.role}</span>
+										<span>: {capitalizeFirstLetter(user.role)}</span>
 									</li>
 								))}
 							</ul>
@@ -167,7 +172,11 @@ setBreakoutRooms(newBreakoutRooms);
 				</div>
 			</div>
 		);
+		function capitalizeFirstLetter(str) {
+			return str.charAt(0).toUpperCase() + str.slice(1);
+		}
 	};
+
 	return (
 		<div className="top-container">
 
