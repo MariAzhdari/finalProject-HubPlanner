@@ -435,9 +435,14 @@ const Attendance = () => {
 							<p className="submission-message">Submitted successfully</p>
 						)}
 					</div>
+					<Link to="/breakout">
+						{" "}
+						{/* Link to the breakout page */}
+						<button className="breakout-btn">Breakout Rooms</button>
+					</Link>
 				</form>
 			</div>
-			<div className="container">
+			<div className="container1">
 				<div className="section">
 					<h2>In-Person</h2>
 					<div className="columns">
@@ -529,7 +534,7 @@ const Attendance = () => {
 									))}
 								</ul> */}
 
-					<div className="container">
+					<div className="container1">
 						<div className="section">
 							<h2>In-Person</h2>
 							<div className="columns">
