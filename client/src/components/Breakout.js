@@ -1,4 +1,3 @@
-
 import moment from "moment";
 import React, { useState } from "react";
 function Breakout() {
@@ -89,6 +88,7 @@ const newBreakoutRooms = [];
 // 			}
 // 		}
 // 	}
+///end of in-person rooms:
 	const onlineRoomCount = Math.ceil(
 		(shuffledOnlineVolunteers.length + shuffledOnlineTrainees.length) / 5
 	);
@@ -145,15 +145,15 @@ setBreakoutRooms(newBreakoutRooms);
 	// New JSX for rendering breakout rooms
 	const renderBreakoutRooms = () => {
 		return (
-			<div className="section">
+			<div className="breakout-section">
 				<h2>Breakout Rooms</h2>
-				<div className="columns">
+				<div className="breakout-columns">
 					{breakoutRooms.map((room, index) => (
-						<div className="column" key={index}>
+						<div className="breakout-column" key={index}>
 							<h3>
 								{room.roomType} Room {index + 1}
 							</h3>
-							<ul className="list">
+							<ul className="breakout-list">
 								{room.attendees.map((user) => (
 									<li key={user.name}>
 										{user.name} (
