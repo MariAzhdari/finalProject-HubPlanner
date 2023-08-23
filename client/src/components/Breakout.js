@@ -155,9 +155,9 @@ setBreakoutRooms(newBreakoutRooms);
 							</h3>
 							<ul className="breakout-list">
 								{room.attendees.map((user) => (
-									<li key={user.name}>
-										{user.name} (
-										<span>{moment(user.date).format("Do MMMM YYYY")}</span>)
+									<li key={user.name} style={{ color:user.role.includes("volunteer")? "red":"black" }}>
+										{user.name}
+										{/* (<span>{moment(user.date).format("Do MMMM YYYY")}</span>) */}
 										<span>: {user.role}</span>
 									</li>
 								))}
