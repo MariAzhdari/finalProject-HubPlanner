@@ -22,7 +22,7 @@ function Login() {
 			return;
 		}
        const response = await axios.post("/api/login", {
-			email,
+			email: email.toLowerCase(),
 			password,
 		});
 
