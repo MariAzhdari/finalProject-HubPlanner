@@ -71,6 +71,10 @@ button:hover {
     color:rgb(204, 40, 40);
 }
 
+.options select{
+    padding: 2px;
+}
+
 /* Disruptions container */
 .disruptions-container {
     background-color: #ffffff;
@@ -175,38 +179,19 @@ footer {
     .footer {
         padding: 10px;
     }
-    #londonline{
+    
+   .londonLine{
    margin-left: 25%;
 }
 .logo-img{
     align-items: center;
        margin-left: 25%;
 }
+.options select{
+    padding: 0px;
+}
 }
 
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
 
-    .navList {
-        flex-direction: column;
-        margin-top: 20px;
-    }
 
-    .navListItem {
-        margin: 10px 0;
-    }
-
-    .Right {
-        padding: 0 20px;
-    }
-
-    .list-container {
-        padding: 20px;
-    }
-} 

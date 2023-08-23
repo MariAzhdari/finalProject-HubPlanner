@@ -362,7 +362,7 @@ const TravelCheck = () => {
 								</ul>
 							</div>
 							<h1>Lines</h1>
-							<ul id="londonline">
+							<ul className="londonLine">
 								{lineStatuses.map((status, index) => (
 									<li key={index}>
 										Line: {status.name}
