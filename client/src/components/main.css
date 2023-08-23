@@ -59,7 +59,19 @@ border: none;
 font-size: 2rem;
 }
 
-
+.logout{
+ padding:none;
+}
+.linkLogout{
+ color: black;
+ padding:4px;
+ font-size:10px ;
+ background-color: #e2e1e1;
+ border: none;
+}
+.linkLogout1{
+  text-decoration: none;
+}
 
 @media (max-width: 768px) {
   

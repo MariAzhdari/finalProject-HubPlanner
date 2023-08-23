@@ -11,9 +11,7 @@ function Login() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem("user") || null);
 	const navigate = useNavigate();
-
 	const allFieldsFilled = email && password;
-
 	async function loginHandler(e) {
 		e.preventDefault();
 
@@ -34,6 +32,12 @@ function Login() {
 		} else {
 			alert(response.data);
 		}
+
+
+
+
+
+		
 	}
 
 	return (
