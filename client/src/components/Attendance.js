@@ -518,6 +518,7 @@ const Attendance = () => {
 					View Attendees By Date
 				</button>
 			</div>
+
 			{/* Display attendees for the selected date */}
 			{attendeesBySelectedDate.length > 0 && (
 				<div className="section">

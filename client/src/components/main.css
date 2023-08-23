@@ -16,8 +16,8 @@
 }
 
 .container {
-  border: 4px solid brown;
-  height: 60vh;
+  /* border: 4px solid brown; */
+  height: 50vh;
   margin: 40px 40px 40px 40px;
   justify-content: center;
 }

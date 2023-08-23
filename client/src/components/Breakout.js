@@ -51,45 +51,44 @@ const shuffledInPersonTrainees = shuffleArray(inPersonTrainees);
 const shuffledOnlineTrainees = shuffleArray(onlineTrainees);
 const newBreakoutRooms = [];
 // In-Person Rooms
-const inPersonRoomCount = Math.ceil(
-	(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
-);
-for (let i = 0; i < inPersonRoomCount; i++) {
-	const roomAttendees = [];
-	// Add volunteers to the room
-	if (shuffledInPersonVolunteers.length > 0) {
-		roomAttendees.push(shuffledInPersonVolunteers.pop());
-	}
-	// Add trainees to the room
-	while (roomAttendees.length < 5) {
-		if (shuffledInPersonTrainees.length > 0) {
-			roomAttendees.push(shuffledInPersonTrainees.pop());
-		} else {
-			break;
-		}
-	}
-	if (
-		roomAttendees.filter((attendee) => attendee.role === "trainee").length >= 3
-	) {
-		newBreakoutRooms.push({
-			roomType: "In-Person",
-			attendees: roomAttendees,
-		});
-	} else {
-		// Put trainees in existing rooms
-		for (const room of newBreakoutRooms) {
-			if (
-				room.roomType === "In-Person" &&
-				room.attendees.filter((attendee) => attendee.role === "trainee")
-					.length < 5
-			) {
-				room.attendees.push(
-					...roomAttendees.filter((attendee) => attendee.role === "trainee")
-				);
-				break;
-			}
-		}
-	}
+// const inPersonRoomCount = Math.ceil(
+// 	(shuffledInPersonVolunteers.length + shuffledInPersonTrainees.length) / 5
+// );
+// for (let i = 0; i < inPersonRoomCount; i++) {
+// 	const roomAttendees = [];
+// 	// Add volunteers to the room
+// 	if (shuffledInPersonVolunteers.length > 0) {
+// 		roomAttendees.push(shuffledInPersonVolunteers.pop());
+// 	}
+// 	// Add trainees to the room
+// 	while (roomAttendees.length < 5) {
+// 		if (shuffledInPersonTrainees.length > 0) {
+// 			roomAttendees.push(shuffledInPersonTrainees.pop());
+// 		} else {
+// 			break;
+// 		}
+// 	}
+// 	if (roomAttendees.filter((attendee) => attendee.role.includes("trainee")).length >= 3) {
+
+// 		newBreakoutRooms.push({
+// 			roomType: "In-Person",
+// 			attendees: roomAttendees,
+// 		});
+// 	} else {
+// 		// Put trainees in existing rooms
+// 		for (const room of newBreakoutRooms) {
+// 			if (
+// 				room.roomType === "In-Person" &&
+// 				room.attendees.filter((attendee) => attendee.role.includes("trainee"))
+// 					.length < 5) {
+
+// 				room.attendees.push(
+// 					...roomAttendees.filter((attendee) => attendee.role.includes("trainee")));
+
+// 				break;
+// 			}
+// 		}
+// 	}
 	const onlineRoomCount = Math.ceil(
 		(shuffledOnlineVolunteers.length + shuffledOnlineTrainees.length) / 5
 	);
@@ -108,7 +107,7 @@ for (let i = 0; i < inPersonRoomCount; i++) {
 			}
 		}
 		if (
-			roomAttendees.filter((attendee) => attendee.role === "trainee").length >=
+			roomAttendees.filter((attendee) => attendee.role.includes("trainee")).length >=
 			3
 		) {
 			newBreakoutRooms.push({
@@ -120,18 +119,18 @@ for (let i = 0; i < inPersonRoomCount; i++) {
 			for (const room of newBreakoutRooms) {
 				if (
 					room.roomType === "Online" &&
-					room.attendees.filter((attendee) => attendee.role === "trainee")
+					room.attendees.filter((attendee) => attendee.role.includes("trainee"))
 						.length < 5
 				) {
 					room.attendees.push(
-						...roomAttendees.filter((attendee) => attendee.role === "trainee")
+						...roomAttendees.filter((attendee) => attendee.role.includes("trainee"))
 					);
 					break;
 				}
 			}
 		}
 	}
-}
+
 // ... (same logic for online rooms)
 setBreakoutRooms(newBreakoutRooms);
 	} catch (error) {
