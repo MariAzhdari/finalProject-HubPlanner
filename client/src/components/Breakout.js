@@ -1,5 +1,8 @@
 import moment from "moment";
 import React, { useState } from "react";
+import Logo from "./img/cyfLogo1.png";
+import { Link } from "react-router-dom";
+
 function Breakout() {
 	// Existing code for state variables and handlers...
 	// New state for breakout rooms
@@ -178,6 +181,34 @@ setBreakoutRooms(newBreakoutRooms);
 	};
 
 	return (
+		<>
+		<div className="navbar">
+				<ul className="navList">
+					<li className="navListItem">
+						<Link className="link" to="/main">
+							MAIN
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/calendar">
+							CYF CALENDAR
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
+						</Link>
+					</li>
+					<li className="navListItem">
+						<Link className="link" to="/attendance">
+							ATTENDANCE
+						</Link>
+					</li>
+				</ul>
+				<img className="logo-img" src={Logo} alt="logo" />
+			</div>
+
+
 		<div className="top-container">
 
 			<div className="datepicker-container">
@@ -191,6 +222,7 @@ setBreakoutRooms(newBreakoutRooms);
 			</div>
 			{renderBreakoutRooms()}
 		</div>
+		</>
 	);
 }
 export default Breakout;
