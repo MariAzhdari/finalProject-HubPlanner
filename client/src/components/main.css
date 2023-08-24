@@ -18,6 +18,7 @@
   height: 50vh;
   margin: 40px 40px 40px 40px;
   justify-content: center;
+  position: relative;
 }
 
 .logo-img2 {
@@ -25,12 +26,16 @@
   width: 60rem;
   height: 400px;
   margin-top: 500px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-40%); 
 }
 .up h1 {
   color:brown;
-    font-size:40px;
-    text-transform:uppercase;
-    font-weight: 500;
+  font-size:40px;
+  text-transform:uppercase;
+  font-weight: 500;
     /* text-shadow: 0 2px 2px rgba(0,0,0,.1); */
     /* -webkit-mask-image: linear-gradient(-85deg, rgba(102, 87, 87, 0.2) 10%, #b31515 60%, rgba(39, 22, 22, 0.2) 90%);
     -webkit-mask-size: 200%; */
@@ -74,7 +79,7 @@ font-size: 2rem;
 }
 .up h1 {
    color:brown;
-    font-size:20px;
+    font-size:30px;
     text-transform:uppercase;
     font-weight: 500;
     text-shadow: 1px 2px 2px rgba(0,0,0,.1);

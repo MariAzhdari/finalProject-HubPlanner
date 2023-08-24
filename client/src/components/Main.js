@@ -71,10 +71,9 @@ const [name] = useState(user.name);
 								</a>
 							</div>
 						</div>
-
-						<img className="logo-img2" src={Logo} alt="logo" />
 					</div>
 				</div>
+				<img className="logo-img2" src={Logo} alt="logo" />
 			</div>
 		</div>
 	);
