@@ -379,7 +379,7 @@ const Attendance = () => {
 						</Link>
 					</li>
 				</ul>
-				<img className="logo-img" src={Logo} alt="logo" />
+				<img className="logo-img1" src={Logo} alt="logo" />
 			</div>
 			<div className="middle-container">
 				<form className="middle-container" onSubmit={handleSubmit}>

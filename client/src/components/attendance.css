@@ -59,7 +59,7 @@ body {
   text-decoration: none;
 }
 
-.logo-img {
+.logo-img1 {
     max-width: 100px;
     margin-right: 40px;
     margin-top: 30px;
@@ -255,11 +255,14 @@ a {
   align-items: center;
   gap: 10px;
   flex: 1;
+  margin-top: 10px;
   }
 
   .navbar {
+  display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   padding: 20px;
   }
 
@@ -268,4 +271,22 @@ a {
   margin-top: 20px;
   }
   
+  /* .logo-img{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  } */
+
+.logo-img1 {
+  display: block; /* To allow margin: auto to work */
+  margin: auto; /* This centers the image horizontally */
+  max-width: 100px; /* Adjust as needed */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  
+}
+
+
 } 
