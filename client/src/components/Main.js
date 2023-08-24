@@ -8,8 +8,6 @@ const Main = () => {
 const user = JSON.parse(localStorage.getItem("user"));
 const [name] = useState(user.name);
 
-
-
 		return (
 			<div>
 				<div className="navbar">

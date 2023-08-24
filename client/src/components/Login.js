@@ -32,12 +32,6 @@ function Login() {
 		} else {
 			alert(response.data);
 		}
-
-
-
-
-
-		
 	}
 
 	return (
