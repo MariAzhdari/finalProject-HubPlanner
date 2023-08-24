@@ -287,6 +287,12 @@ a {
   margin: auto;
   
 }
-
+.section {
+  border: none;
+}
+.columns {
+  display: flex;
+  flex-direction: column;
+}
 
 } 
