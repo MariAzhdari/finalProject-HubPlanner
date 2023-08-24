@@ -1,127 +1,10 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import Logo from "./img/cyfLogo1.png";
-// import "./travelCheck.css";
-// import axios from "axios";
-
-// const TravelCheck = () => {
-// 	// const [modes, setModes] = useState([]);
-// 	const [lineStatuses, setLineStatuses] = useState([]);
-// 	const [disruptions, setDisruptions] = useState([]);
-// 	const [showLineStatuses, setShowLineStatuses] = useState(false);
-// 	const [showDisruptions, setShowDisruptions] = useState(false);
-
-// 	const fetchDisruptions = async () => {
-// 		const selectedModes = "tube,dlr";
-// 		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Disruption`;
-// 		try {
-// 			const response = await axios.get(url);
-// 			setDisruptions(response.data);
-// 		} catch (error) {
-// 			console.error("Error fetching disruptions:", error);
-// 		}
-// 	};
-
-
-// 	const fetchLineStatus = async () => {
-// 		const selectedModes = "tube";
-// 		const url = `https://api.tfl.gov.uk/Line/Mode/${selectedModes}/Status`;
-// 		try {
-// 			const response = await axios.get(url);
-// 			setLineStatuses(response.data);
-// 		} catch (error) {
-// 			console.error("Error fetching line statuses:", error);
-// 		}
-// 	};
-
-// 	return (
-// 		<>
-// 			<div className="navbar">
-// 				<ul className="navList">
-// 					<li className="navListItem">
-// 						<Link className="link" to="/main">
-// 							MAIN
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/calendar">
-// 							CYF CALENDAR
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/travel">
-// 							TRAVEL CHECK
-// 						</Link>
-// 					</li>
-// 					<li className="navListItem">
-// 						<Link className="link" to="/attendance">
-// 							ATTENDANCE
-// 						</Link>
-// 					</li>
-// 				</ul>
-// 				<img className="logo-img" src={Logo} alt="logo" />
-// 			</div>
-
-		
-
-// 			<button
-// 				onClick={() => {
-// 					fetchDisruptions();
-// 					setShowDisruptions(!showDisruptions);
-// 				}}
-// 			>
-// 				Toggle Disruptions
-// 			</button>
-// 			{showDisruptions && (
-// 				<div className="disruptions-container">
-// 					<h2>Disruptions</h2>
-// 					<ul className="disruption-list">
-// 						{disruptions.map((disruption, index) => (
-// 							<li key={index} className="disruption-item">
-// 								{disruption.description}
-// 								<br />
-// 							</li>
-// 						))}
-// 					</ul>
-// 				</div>
-// 			)}
-
-// 			<button
-// 				onClick={() => {
-// 					fetchLineStatus();
-// 					setShowLineStatuses(!showLineStatuses);
-// 				}}
-// 			>
-// 				London Lines
-// 			</button>
-// 			{showLineStatuses && (
-// 				<div>
-// 					<h1>Lines</h1>
-// 					<ul>
-// 						{lineStatuses.map((status, index) => (
-// 							<li key={index}>
-// 								Line: {status.name}
-// 								Status:{" "}
-// 								{status.lineStatuses[0]?.statusSeverityDescription || "Unknown"}
-// 							</li>
-// 						))}
-// 					</ul>
-// 				</div>
-// 			)}
-// 		</>
-// 	);
-// };
-
-// export default TravelCheck;
-
-
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./img/cyfLogo1.png";
 import "./travelCheck.css";
 import axios from "axios";
 
+//London Lines
 const LineOptions = [
 	"Central",
 	"Circle",
@@ -134,9 +17,11 @@ const LineOptions = [
 	"Waterloo & City",
 ];
 
+
+//all states for this page
 const TravelCheck = () => {
 	const [showNationalRailStrike, setShowNationalRailStrike] = useState(false);
-   const [lineStatuses, setLineStatuses] = useState([]);
+	const [lineStatuses, setLineStatuses] = useState([]);
 	const [disruptions, setDisruptions] = useState([]);
 	const [showLineStatuses, setShowLineStatuses] = useState(false);
 	const [showDisruptions, setShowDisruptions] = useState(false);
@@ -146,9 +31,11 @@ const TravelCheck = () => {
 	);
 	const [lineData, setLineData] = useState([]);
 	const [showStatusForm, setShowStatusForm] = useState(false);
- const [showDisruptionsAndLines, setShowDisruptionsAndLines] = useState(false);
+	const [showDisruptionsAndLines, setShowDisruptionsAndLines] = useState(false);
 
- const nationalRailStrikeData = [
+
+	//nationalRail Data
+	const nationalRailStrikeData = [
 		{
 			date: "Saturday 19 August",
 			details: [
@@ -175,9 +62,7 @@ const TravelCheck = () => {
 				"For journeys on Saturday 9 September, you can check your journey on Monday 4 September.",
 			],
 		},
- ];
-
-
+	];
 
 
 	//at the moment Disruption
@@ -191,6 +76,7 @@ const TravelCheck = () => {
 			console.error("Error fetching disruptions:", error);
 		}
 	};
+
 	//all lines
 	const fetchLineStatus = async () => {
 		const selectedModes = "tube";
@@ -203,6 +89,8 @@ const TravelCheck = () => {
 		}
 	};
 
+
+   //by Date
 	const fetchLineData = async () => {
 		try {
 			const response = await axios.get(
@@ -221,6 +109,7 @@ const TravelCheck = () => {
 		fetchLineData();
 	}, [selectedLine, selectedDate]);
 
+        //handel clicked of this age
 	const handleLineChange = (event) => {
 		setSelectedLine(event.target.value);
 	};
@@ -234,9 +123,7 @@ const TravelCheck = () => {
 		setLineData([]); // Clear line data when toggling the form
 	};
 
-
 	//footer
-
 	const UsefulLinksFooter = () => {
 		const usefulLinks = [
 			{
@@ -284,133 +171,133 @@ const TravelCheck = () => {
 	return (
 		<div id="page-container">
 			<div id="travel">
-			<>
-				<div className="navbar">
-					<ul className="navList">
-						<li className="navListItem">
-							<Link className="link" to="/main">
-								MAIN
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/calendar">
-								CYF CALENDAR
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/travel">
-								TRAVEL CHECK
-							</Link>
-						</li>
-						<li className="navListItem">
-							<Link className="link" to="/attendance">
-								ATTENDANCE
-							</Link>
-						</li>
-					</ul>
-					<img className="logo-img" src={Logo} alt="logo" />
-				</div>
-
-				{/* National Rail Strike */}
-				<button
-					onClick={() => setShowNationalRailStrike(!showNationalRailStrike)}
-				>
-					Toggle National Rail Strike
-				</button>
-				{showNationalRailStrike && (
-					<div className="national-rail-strike-container">
-						<h2>National Rail Strike</h2>
-						<ul className="national-rail-strike-list">
-							{nationalRailStrikeData.map((strike, index) => (
-								<li key={index} className="strike-item">
-									<strong>{strike.date}</strong>
-									<ul>
-										{strike.details.map((detail, detailIndex) => (
-											<li key={detailIndex}>{detail}</li>
-										))}
-									</ul>
-									<br />
-								</li>
-							))}
+				<>
+					<div className="navbar">
+						<ul className="navList">
+							<li className="navListItem">
+								<Link className="link" to="/main">
+									MAIN
+								</Link>
+							</li>
+							<li className="navListItem">
+								<Link className="link" to="/calendar">
+									CYF CALENDAR
+								</Link>
+							</li>
+							<li className="navListItem">
+								<Link className="link" to="/travel">
+									TRAVEL CHECK
+								</Link>
+							</li>
+							<li className="navListItem">
+								<Link className="link" to="/attendance">
+									ATTENDANCE
+								</Link>
+							</li>
 						</ul>
+						<img className="logo-img" src={Logo} alt="logo" />
 					</div>
-				)}
 
-				{/* Toggle Disruptions and Lines */}
-				<button
-					onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
-				>
-					Toggle Disruptions and Lines
-				</button>
-
-				{showDisruptionsAndLines && (
-					<div>
-						<div className="disruptions-container">
-							<h2>Disruptions</h2>
-							<ul className="disruption-list">
-								{disruptions.map((disruption, index) => (
-									<li key={index} className="disruption-item">
-										{disruption.description}
+					{/* National Rail Strike */}
+					<button
+						onClick={() => setShowNationalRailStrike(!showNationalRailStrike)}
+					>
+						Toggle National Rail Strike
+					</button>
+					{showNationalRailStrike && (
+						<div className="national-rail-strike-container">
+							<h2>National Rail Strike</h2>
+							<ul className="national-rail-strike-list">
+								{nationalRailStrikeData.map((strike, index) => (
+									<li key={index} className="strike-item">
+										<strong>{strike.date}</strong>
+										<ul>
+											{strike.details.map((detail, detailIndex) => (
+												<li key={detailIndex}>{detail}</li>
+											))}
+										</ul>
 										<br />
 									</li>
 								))}
 							</ul>
 						</div>
-						<h1>Lines</h1>
-						<ul id="londonline">
-							{lineStatuses.map((status, index) => (
-								<li key={index}>
-									Line: {status.name}
-									Status:{" "}
-									{status.lineStatuses[0]?.statusSeverityDescription ||
-										"Unknown"}
-								</li>
-							))}
-						</ul>
-					</div>
-				)}
-
-				{/* London Underground Line Status */}
-				<div className="status-form">
-					{showStatusForm ? (
-						<>
-							<h1>London Underground Line Status</h1>
-							<div className="options">
-								<select value={selectedLine} onChange={handleLineChange}>
-									{LineOptions.map((line) => (
-										<option key={line} value={line}>
-											{line}
-										</option>
-									))}
-								</select>
-								<input
-									type="date"
-									value={selectedDate}
-									onChange={handleDateChange}
-								/>
-								<button onClick={toggleForm}>Close</button>
-							</div>
-							<div className="line-data">
-								<h2>{selectedLine} Line Status</h2>
-								{lineData.length > 0 ? (
-									<ul>
-										{lineData[0].lineStatuses.map((status) => (
-											<li key={status.id}>
-												{status.statusSeverityDescription}
-											</li>
-										))}
-									</ul>
-								) : (
-									<p>No data available for the selected date.</p>
-								)}
-							</div>
-						</>
-					) : (
-						<button onClick={toggleForm}>Show Line Status</button>
 					)}
-				</div>
-			</>
-			<UsefulLinksFooter />
+
+					{/* Toggle Disruptions and Lines */}
+					<button
+						onClick={() => setShowDisruptionsAndLines(!showDisruptionsAndLines)}
+					>
+						Toggle Disruptions and Lines
+					</button>
+
+					{showDisruptionsAndLines && (
+						<div>
+							<div className="disruptions-container">
+								<h2>Disruptions</h2>
+								<ul className="disruption-list">
+									{disruptions.map((disruption, index) => (
+										<li key={index} className="disruption-item">
+											{disruption.description}
+											<br />
+										</li>
+									))}
+								</ul>
+							</div>
+							<h1>Lines</h1>
+							<ul className="londonLine">
+								{lineStatuses.map((status, index) => (
+									<li key={index}>
+										Line: {status.name}
+										Status:{" "}
+										{status.lineStatuses[0]?.statusSeverityDescription ||
+											"Unknown"}
+									</li>
+								))}
+							</ul>
+						</div>
+					)}
+
+					{/* London Underground Line Status */}
+					<div className="status-form">
+						{showStatusForm ? (
+							<>
+								<h1>London Underground Line Status</h1>
+								<div className="options">
+									<select value={selectedLine} onChange={handleLineChange}>
+										{LineOptions.map((line) => (
+											<option key={line} value={line}>
+												{line}
+											</option>
+										))}
+									</select>
+									<input
+										type="date"
+										value={selectedDate}
+										onChange={handleDateChange}
+									/>
+									<button onClick={toggleForm}>Close</button>
+								</div>
+								<div className="line-data">
+									<h2>{selectedLine} Line Status</h2>
+									{lineData.length > 0 ? (
+										<ul>
+											{lineData[0].lineStatuses.map((status) => (
+												<li key={status.id}>
+													{status.statusSeverityDescription}
+												</li>
+											))}
+										</ul>
+									) : (
+										<p>No data available for the selected date.</p>
+									)}
+								</div>
+							</>
+						) : (
+							<button onClick={toggleForm}>Show Line Status By Date</button>
+						)}
+					</div>
+				</>
+				<UsefulLinksFooter />
 			</div>
 		</div>
 	);

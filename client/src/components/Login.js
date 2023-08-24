@@ -11,9 +11,7 @@ function Login() {
 	const [showPassword, setShowPassword] = useState(false);
 	const [user, setUser] = useState(localStorage.getItem("user") || null);
 	const navigate = useNavigate();
-
 	const allFieldsFilled = email && password;
-
 	async function loginHandler(e) {
 		e.preventDefault();
 
@@ -22,7 +20,7 @@ function Login() {
 			return;
 		}
        const response = await axios.post("/api/login", {
-			email,
+			email: email.toLowerCase(),
 			password,
 		});
 
@@ -34,6 +32,12 @@ function Login() {
 		} else {
 			alert(response.data);
 		}
+
+
+
+
+
+		
 	}
 
 	return (

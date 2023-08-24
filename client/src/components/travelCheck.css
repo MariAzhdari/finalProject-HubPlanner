@@ -40,15 +40,6 @@
     max-height: 100px;
 }
 
-/* Main section */
-/* .Right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 30px;
-} */
-
 /* Button Styles */
 button {
     padding: 15px 25px;
@@ -69,6 +60,10 @@ button {
 button:hover {
     background-color: #ffffff;
     color:rgb(204, 40, 40);
+}
+
+.options select{
+    padding: 2px;
 }
 
 /* Disruptions container */
@@ -106,16 +101,9 @@ button:hover {
     text-align: center;
 }
 
-
-.line-status-item:hover {
-    background-color: #5dc60d;
-} 
-#londonline{
+.londonLine{
    margin-left: 45%;
 }
-
-
-
 
 /* Footer styles */
 footer {
@@ -124,8 +112,6 @@ footer {
   text-align: center;
   padding: 20px 0;
 }
-
-
 
 .link-list {
     list-style: none;
@@ -138,12 +124,11 @@ footer {
     color: #040303; 
     padding: 5px 10px;
 }
+
 .footer-link:hover{
     color: #ee0404;
     font-size: 1.1rem;
 }
-
-
 
 
 
@@ -175,38 +160,19 @@ footer {
     .footer {
         padding: 10px;
     }
-    #londonline{
+    
+   .londonLine{
    margin-left: 25%;
 }
 .logo-img{
     align-items: center;
        margin-left: 25%;
 }
+.options select{
+    padding: 0px;
+}
 }
 
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
 
-    .navList {
-        flex-direction: column;
-        margin-top: 20px;
-    }
 
-    .navListItem {
-        margin: 10px 0;
-    }
-
-    .Right {
-        padding: 0 20px;
-    }
-
-    .list-container {
-        padding: 20px;
-    }
-} 
