@@ -1,7 +1,5 @@
 /* Navbar styles */
-body {
-  overflow: hidden;
-}
+
 .navbar {
     display: flex;
     justify-content: space-between;
