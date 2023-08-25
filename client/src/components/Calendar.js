@@ -53,7 +53,7 @@ const syllabusLinks = [
   "https://syllabus.codeyourfuture.io/finalproject/week-3/lesson",
   "https://syllabus.codeyourfuture.io/finalproject/week-4/lesson",
   "https://syllabus.codeyourfuture.io/finalproject/demoday/preparation",
-  "https://syllabus.codeyourfuture.io/finalproject/demoday/practice-day"
+  "https://syllabus.codeyourfuture.io/finalproject/demoday/practice-day",
   // Add more links for each week...
 ];
 
@@ -163,13 +163,13 @@ const goToNextSession = () => {
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/attendance">
-							ATTENDANCE
+						<Link className="link" to="/travel">
+							TRAVEL CHECK
 						</Link>
 					</li>
 					<li className="navListItem">
-						<Link className="link" to="/travel">
-							TRAVEL CHECK
+						<Link className="link" to="/attendance">
+							ATTENDANCE
 						</Link>
 					</li>
 				</ul>

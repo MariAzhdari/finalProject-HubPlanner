@@ -41,42 +41,43 @@ const [name] = useState(user.name);
 					</div>
 				</div>
 				<div className="container">
-					<div className="up">
-						<h1 className="welcome">{name} welcome to HUB PLANNER</h1>
-						<p>Your Attendance, Your Journey, One Click Away!</p>
-					</div>
-					<div className="down">
+					<div className="up2">
+						<div className="up">
+							<h1 className="welcome">{name}! welcome to "HUB PLANNER"</h1>
+							<p>Your Attendance, Your Journey, One Click Away!</p>
+						</div>
 						<div className="down">
-							<div className="downLeft">
-								<a
-									href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-facebook-square"></i>
-								</a>
-								<a
-									href="https://www.instagram.com/codeyourfuture_/channel/"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-instagram-square"></i>
-								</a>
-								<a
-									href="https://twitter.com/codeyourfuture?lang=en"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<i className="topIcon fab fa-twitter-square"></i>
-								</a>
-								<a href="mailto:contact@codeyourfuture.io">
-									<i className="topIcon fas fa-envelope-square"></i>
-								</a>
+							<div className="down">
+								<div className="downLeft">
+									<a
+										href="https://www.facebook.com/codeyourfuture.io/?locale=en_GB"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<i className="topIcon fab fa-facebook-square"></i>
+									</a>
+									<a
+										href="https://www.instagram.com/codeyourfuture_/channel/"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<i className="topIcon fab fa-instagram-square"></i>
+									</a>
+									<a
+										href="https://twitter.com/codeyourfuture?lang=en"
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<i className="topIcon fab fa-twitter-square"></i>
+									</a>
+									<a href="mailto:contact@codeyourfuture.io">
+										<i className="topIcon fas fa-envelope-square"></i>
+									</a>
+								</div>
 							</div>
 						</div>
-
-						<img className="logo-img2" src={Logo} alt="logo" />
 					</div>
+					<img className="logo-img2" src={Logo} alt="logo" />
 				</div>
 			</div>
 		);
