@@ -38,7 +38,7 @@ body {
 }
 
 
-.logo-img {
+.logo-img1 {
     max-width: 100px;
     margin-right: 40px;
     margin-top: 30px;
@@ -243,6 +243,7 @@ a {
     align-items: center;
     gap: 10px;
     flex: 1;
+    margin-top: 10px;
   }
 
   .navbar {
