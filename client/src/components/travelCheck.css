@@ -16,13 +16,15 @@
     align-items: center;
     padding: 20px 50px;
     background-color: #e2e1e1;
-    color: #222020; 
+    /* color: #222020;  */
+    background-color: rgb(184, 21, 21);
+    color: white; 
 }
 
 .navListItem a {
     font-size:1.2rem ;
     text-decoration: none;
-    color: #131212;
+    color: white;
     padding: 15px 16px;
     transition: background-color 0.3s;
     border-radius: 5px;
@@ -30,7 +32,7 @@
 }
 
 .navListItem a:hover {
-    background-color: rgba(47, 20, 203, 0.1);
+    color: black;
     font-size:1.23rem ;
     transition: all 0.3s;   
 }
