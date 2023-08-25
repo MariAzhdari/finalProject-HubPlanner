@@ -1,12 +1,8 @@
-
-
-
 .logo-img {
   max-width: 100px;
   max-height: 100px;
   margin-right: 40px;
   margin-top: 30px;
- 
 }
 
 /* Main container styles */
@@ -64,7 +60,6 @@ h1:hover {
  
 
 }
-
 
 .leftItem:nth-child(3) {
   border-bottom: 4px solid brown;
@@ -146,7 +141,6 @@ margin-top: 10%;
 border: none;
 
 }
-
 
 .agendaButton, .syllabusButton {
   width: 100%;

@@ -57,9 +57,6 @@ const syllabusLinks = [
   // Add more links for each week...
 ];
 
-
-
-
 const Calendar = () => {
 	const [sessionData, setSessionData] = useState([]);
 	const [currentIndex, setCurrentIndex] = useState(0);
