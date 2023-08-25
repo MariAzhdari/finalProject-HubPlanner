@@ -250,9 +250,28 @@ a {
     flex-direction: column;
     text-align: center;
     padding: 20px;
+    display: flex;
+    align-items: center;
   }
   .navList {
     flex-direction: column;
     margin-top: 20px;
   }
+  .logo-img1 {
+  display: block; /* To allow margin: auto to work */
+  margin: auto; /* This centers the image horizontally */
+  max-width: 100px; /* Adjust as needed */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+
+}
+.section {
+  border: none;
+}
+.columns {
+  display: flex;
+  flex-direction: column;
+}
 }
