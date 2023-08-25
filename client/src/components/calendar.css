@@ -119,7 +119,7 @@ h1:hover {
   display: flex;
 }
 .nextButton{
-  width: 147.3px;
+  width: 213px;
 }
 .agendaButton:hover {
   transform: scale(1.05); /* Slightly increase the size on hover */
