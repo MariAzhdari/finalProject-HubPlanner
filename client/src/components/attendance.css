@@ -228,6 +228,7 @@ h2, h3 {
   background-color: rgb(205, 21, 21);
   padding: 8px;
   text-decoration: none;
+  margin-top: 40px;
 }
 a {
   text-decoration: none; /* Removes the underline from all links */
