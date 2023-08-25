@@ -1,27 +1,24 @@
 /* Navbar styles */
+body {
+  overflow: hidden;
+}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-
     background-color: #f5d7d7;
-
-  
-
 }
+
 
 .navList {
     display: flex;
     justify-content: space-evenly;
-    /* margin: 0; */
+    margin-left: 40px;
     margin-top: 40px;
     padding: 0;
     list-style: none;
-    margin-left: 40px;
-    
-
-}
+    }
 
 .navListItem {
     margin-right: 20px;
@@ -36,17 +33,16 @@
 
 }
 .navListItem a {
-  color: black;
-  text-decoration: none; /* Remove underlines from links */
+  /* color: black; */
+  text-decoration: none;
 }
 
 
-.logo-img {
+.logo-img1 {
     max-width: 100px;
     margin-right: 40px;
     margin-top: 30px;
-    /* width: 150px;
-  height: 150px; */
+    
 }
 
 .middle-container {
@@ -135,6 +131,9 @@ box-shadow: 0 0 5px rgb(211, 210, 210);
   align-items: flex-start;
   padding: 20px;
   height: 50vh;
+}
+.container1 {
+width: 100%;
 }
 
 .section {
@@ -229,51 +228,51 @@ h2, h3 {
   background-color: rgb(205, 21, 21);
   padding: 8px;
   text-decoration: none;
+  margin-top: 40px;
 }
 a {
   text-decoration: none; /* Removes the underline from all links */
 }
 
-/* Small screens */
-@media (max-width: 576px) {
-  
-}
 
-/* Medium screens */
-@media (max-width: 768px) {
- .middle-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  }
-  .submit-container{
-    margin-top: 10px; 
-  }
-  .select-container{
-    margin-top: 10px;
-  }
-  .container1 {
-    max-width: 100%;
-  }
-
-  .attendees-by-date-container {
-    /* Container for the boxes that appear when pressing the button */
-  display: none; /* Initially hide the container */
-  max-height: 50vh; /* Set a maximum height for the container */
-  overflow-y: auto;
-  max-width: 100%; /* Ensure the container doesn't exceed viewport width */
-  overflow-x: hidden; /* Hide horizontal scrollbar */
-  }
-
-  /* When the button is clicked, display the container */
-  .show-attendees .attendees-by-date-container {
-    display: block;
-  }
-}
 
 /* Large screens */
 @media (max-width: 992px) {
-  
+  .middle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    margin-top: 10px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .navList {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .logo-img1 {
+  display: block; /* To allow margin: auto to work */
+  margin: auto; /* This centers the image horizontally */
+  max-width: 100px; /* Adjust as needed */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+
+}
+.section {
+  border: none;
+}
+.columns {
+  display: flex;
+  flex-direction: column;
+}
 }
