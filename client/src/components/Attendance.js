@@ -133,8 +133,8 @@ const Attendance = () => {
 	const [submissionStatus, setSubmissionStatus] = useState(null);
 	const [dateError, setDateError] = useState(false);
 	const [attendanceTypeError, setAttendanceTypeError] = useState(false);
-	const [breakoutRooms, setBreakoutRooms] = useState([]);
-	const [showBreakoutRooms, setShowBreakoutRooms] = useState(false);
+	// const [breakoutRooms, setBreakoutRooms] = useState([]);
+	// const [showBreakoutRooms, setShowBreakoutRooms] = useState(false);
 
 
 
