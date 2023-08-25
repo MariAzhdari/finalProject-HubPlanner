@@ -57,6 +57,7 @@ h1:hover {
   text-align: center;
   align-items: center;
   font-size: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 .leftItem:nth-child(1) {
   border-bottom: 4px solid brown;
@@ -95,10 +96,12 @@ h1:hover {
   cursor: pointer;
   font-size: 30px;
   flex:1;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .agendaButton {
  background-color:#fbf7f7;
+
 }
 
 .syllabusButton {
@@ -117,6 +120,17 @@ h1:hover {
 .nextButton{
   width: 147.3px;
 }
+.agendaButton:hover {
+  transform: scale(1.05); /* Slightly increase the size on hover */
+  box-shadow: 0 8px 8px rgba(124, 20, 20, 0.5); /* Add a subtle 3D shadow effect */
+}
+
+.syllabusButton:hover {
+  transform: scale(1.05); /* Slightly increase the size on hover */
+  box-shadow: 0 8px 8px rgba(124, 20, 20, 0.5); /* Add a subtle 3D shadow effect */
+}
+
+
 
 @media (max-width: 768px) {
 .next{
