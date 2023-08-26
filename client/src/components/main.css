@@ -5,12 +5,11 @@
   cursor: pointer;
   display: flex;
   justify-content: center;
- 
 }
+
 .welcome{
   font-size: 30px;
   color: #1a1919;
-  /* text-shadow: 1px 1px 2px brown; */
 }
 
 .container {
@@ -22,64 +21,62 @@
 }
 
 .logo-img2 {
-  padding-right:15% ;
-  width: 60rem;
-  height: 400px;
+  padding-right:15%;
+  width: 55rem;
+  height: 350px;
   margin-top: 500px;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-40%);
 }
+
 .up h1 {
   color:brown;
   font-size:50px;
   text-transform:uppercase;
   font-weight: 500;
-    /* text-shadow: 2px 2px 2px rgba(0,0,0,.1);
-    -webkit-mask-image: linear-gradient(-85deg, rgba(102, 87, 87, 0.2) 10%, #b31515 100%, rgba(39, 22, 22, 0.2) 90%);
-
-    -webkit-mask-size: 200%;
-  }
-
-.up p {
-  font-size: 30px;
-    /* text-shadow:1px 1px 1px brown; */
 }
+
 .up{
-  /* padding-left:15% ; */
   justify-content: center;
   text-align: center;
 }
+
 .down i {
   justify-content: center;
   text-align: center;
   align-items: center;
   margin-bottom: 20px;
 }
+
 a {
   justify-content: center;
   text-align: center;
   align-items: center;
   margin-bottom: 20px;
-
 }
+
 .up2{
   display: flex;
   flex-direction: column;
 }
+
 .down {
   justify-content: center;
   text-align: center;
   align-items: center;
 }
+
 .link:hover {
   color: brown;
 }
+
 .link {
   text-decoration: none;
   color: black;
 }
+
 .welcome{
 border: none;
 font-size: 2rem;
@@ -88,17 +85,20 @@ font-size: 2rem;
 .logout{
  padding:none;
 }
+
 .linkLogout{
  color: black;
- padding:4px;
+ padding:5px;
  font-size:10px ;
- background-color: #e2e1e1;
+ background-color:rgb(184, 21, 21);
  border: none;
 }
+
 .linkLogout1{
   text-decoration: none;
 }
 
+/* mobile size */
 @media (max-width: 768px) {
   
    .logo-img2{
@@ -106,15 +106,11 @@ font-size: 2rem;
 }
 .up h1 {
    color:brown;
-    font-size:30px;
-    /* text-transform:uppercase; */
-    font-weight: 500;
-    text-shadow: 1px 2px 2px rgba(0,0,0,.1);
-    -webkit-mask-image: linear-gradient(-75deg, rgba(2, 0, 0, 0.2) 0%, #780d0d 20%, rgba(5, 5, 5, 0.2) 160%);
-    -webkit-mask-size: 100%;
-   
+   font-size:30px;
+   font-weight: 500;  
 }
 .container {
  margin: auto;
 }
+
 }

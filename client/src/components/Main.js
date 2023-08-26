@@ -44,7 +44,9 @@ const [name] = useState(user.name);
 					<div className="up2">
 						<div className="up">
 							<h1 className="welcome">{name}! welcome to "HUB PLANNER"</h1>
-							<p>Your Attendance, Your Journey, One Click Away!</p>
+							<p style={{ fontSize: "1.2rem" }}>
+								Your Attendance, Your Journey, One Click Away!
+							</p>
 						</div>
 						<div className="down">
 							<div className="down">
