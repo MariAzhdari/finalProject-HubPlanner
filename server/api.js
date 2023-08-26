@@ -13,7 +13,7 @@ router.get("/", (_, res) => {
 	res.json({ message: "Happy final project 🎉 We are group three!" });
 });
 
-// register endPoint************************************************
+// register page endPoint************************************************
 
 router.post("/register",  async (req, res) => {
 	const { name ,email,  password ,role ,city } = req.body;
@@ -51,7 +51,7 @@ router.post("/register",  async (req, res) => {
 
 
 
-//Login endPoint*************************************************
+//Login page endPoint*************************************************
 router.post("/login", async (req, res) => {
 	const { email, password } = req.body;
     try {
@@ -107,7 +107,7 @@ router.post("/login", async (req, res) => {
 //      });
 //  }
 // });
-// endpoint for calender data//
+// endpoint for the calender page data//
 router.get("/fetch-calendar-data",async (_, res) => {
 	try {
 		const calenderData = await pool.query(
