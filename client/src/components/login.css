@@ -15,6 +15,7 @@
   width: 100%;
 }
 
+
 .loginInput.transparentInput {
   background-color: transparent;
   border: 1px solid #d5cece;
@@ -52,6 +53,7 @@
   font-family: "Josefin Sans", sans-serif;
   justify-content:space-between;
 }
+
 .downLeft {
   flex: 3;
   display: flex;
@@ -61,15 +63,23 @@
   margin-top: 120%;
 }
 
-
-
 .container {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
- min-height: 75vh;
+  min-height: 75vh;
   padding: 10px;
+}
+
+.loginForm{
+  position: absolute;
+  right: 0;
+  width: 200px;
+   right:2%;
 }
 
 .loginForm, .registerForm {
@@ -94,20 +104,6 @@
  border:1px solid #ccc;
 }
 
-@media (min-width: 768px) {
- 
-  .container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .loginForm, .registerForm {
-    width: 45%;
-  }
-
-  
-}
-
 .down {
   display: flex;
   justify-content: center; 
@@ -118,38 +114,70 @@
   display: flex; 
   gap: 10px; 
 }
+.logoLogin{
+   position: absolute;
+   width: 50rem;
+   bottom:0%;
+   left: 30%;
+   transform: translate(-50%, -50%);
+    margin-bottom:-100px ;
+}
+
+
+@media (min-width: 768px) {
+ 
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .loginForm, .registerForm {
+    width: 45%;
+  } 
+}
+
+@media only screen and (min-width: 768px) and (max-width: 992px)  {
+.logoLogin{
+  width:35rem ;
+  padding-right:-200px ;
+  padding-top: -200px;
+  margin-bottom:-100px ;
+
+}
+}
+
 
 @media (max-width: 768px) {
   .container {
+    position: relative;
     flex-direction: column;
     gap: 20px;
   }
-   .logoLogin{
+
+  .logoLogin{
   display: none;
 }
+.down{
+  margin-bottom:16rem;
+}
+
 .downLeft {
   margin-top: 30%;
   display: flex; 
   gap: 10px; 
 }
 
+.loginForm{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 170px; 
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .contentContainer {
-    flex: 1 0 50%;
-  }
-}
-
-@media (min-width: 1025px) {
-  .contentContainer {
-    flex: 1 0 30%;
-  }
 }
 
 
-@media (max-width: 600px) {
-  .contentContainer {
-    flex: 1 0 100%;
-  }
-}
+
+
+
