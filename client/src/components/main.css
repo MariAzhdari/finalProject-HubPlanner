@@ -35,7 +35,7 @@
   color:brown;
   font-size:50px;
   text-transform:uppercase;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .up{
@@ -79,7 +79,8 @@ a {
 
 .welcome{
 border: none;
-font-size: 2rem;
+/* font-size: 2rem; */
+
 }
 
 .logout{
@@ -97,7 +98,9 @@ font-size: 2rem;
 .linkLogout1{
   text-decoration: none;
 }
-
+.up p {
+  font-size: 30px;
+}
 /* mobile size */
 @media (max-width: 768px) {
   
@@ -106,11 +109,15 @@ font-size: 2rem;
 }
 .up h1 {
    color:brown;
-   font-size:30px;
-   font-weight: 500;  
+   font-size: 30px;
+   /* font-size:30px;
+   font-weight: 500;   */
 }
 .container {
  margin: auto;
+}
+.up p {
+  font-size: 25px;
 }
 
 }
