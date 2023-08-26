@@ -133,6 +133,11 @@
     margin-bottom:-100px ;
 }
 
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+
+}
 
 @media (min-width: 768px) {
  
@@ -169,12 +174,15 @@
 }
 .down{
   margin-bottom:16rem;
+  
 }
 
 .downLeft {
-  margin-top: 30%;
+  /* margin-top: 30%;
   display: flex; 
-  gap: 10px; 
+  gap: 10px;  */
+  display: none;
+  
 }
 
 .loginForm{
@@ -184,6 +192,14 @@
   transform: translate(-50%, -50%);
   width: 170px; 
 }
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 }
 
